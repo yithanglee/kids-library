@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @author.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_publisher_author_path(@author.publisher, @author) %> |
+<%= link_to 'Back', publisher_authors_path(@author.publisher) %>

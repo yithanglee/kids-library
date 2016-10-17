@@ -1,0 +1,1 @@
+json.partial! "publisher_authors/publisher_author", publisher_author: @publisher_author
