@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
 
 
+  resources :book_categories
+  resources :categories
+  get 'categories/index'
+
+  get 'categories/new'
+
+  get 'categories/show'
+
+  get 'categories/edit'
+
   resources :publishers do
   	  resources :authors do
     resources :books

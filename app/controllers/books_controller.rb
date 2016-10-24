@@ -23,9 +23,9 @@ class BooksController < ApplicationController
 
   # POST authors/1/books
   def create
-    # byebug
+    byebug
     @book = @author.books.build(book_params)
-    # @book = Book.new
+
     if @book.save
       redirect_to([@book.author.publisher, @book.author, @book], notice: 'Book was successfully created.')
     else
@@ -46,7 +46,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
 
-    redirect_to author_books_url(@author)
+    redirect_to publisher_author_books_url(@author.publisher, @author)
   end
 
   private
@@ -61,6 +61,7 @@ class BooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def book_params
-      params.require(:book).permit(:name, :category, :isbn, :barcode)
+      params.require(:book).permit(:name, :category, :isbn, :barcode, :abc)
+
     end
 end
