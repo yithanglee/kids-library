@@ -16,9 +16,6 @@ Rails.application.routes.draw do
     resources :books
   end
   end
-  get 'user/new'
-
-  get 'user/create'
 
   root 'staticpages#home'
 
