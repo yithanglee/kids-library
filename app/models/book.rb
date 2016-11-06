@@ -1,4 +1,4 @@
 class Book < ApplicationRecord
   belongs_to :author
-  has_many :categories, through: :book_category
+  has_and_belongs_to_many :categories
 end

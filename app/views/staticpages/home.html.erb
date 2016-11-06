@@ -8,3 +8,19 @@
 <%= x.author.name %>
 <%= x.author.publisher.name %>
 <% end %>
+
+
+<%= form_tag('/quick_create', method:"post") do |f| %>
+  <%= text_field_tag(:books, :name) %><br>
+    <%= text_field_tag(:author, :name) %><br>
+      <%= text_field_tag(:publisher, :name) %><br>
+      <ul>
+					<% @categories.each do |x| %>
+						<li>
+							<%= x.name %> 
+							<%= check_box("book", "categories", {:multiple =>true }, x.name, nil) %>
+						</li>
+					<% end %>	
+				</ul>
+  <%= submit_tag("Search") %>
+<% end %>
