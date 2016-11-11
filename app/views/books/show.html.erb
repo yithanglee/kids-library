@@ -20,6 +20,12 @@
   <%= @book.barcode %>
 </p>
 
+<ul>
+	<% @book.categories.each do |x|%>
+		<li><%= x.name%></li>
+	<%end%>
+</ul>
 
-<%= link_to 'Edit', edit_publisher_author_book_path(@book.author.publisher, @book.author, @book) %> |
-<%= link_to 'Back', publisher_author_books_path(@book.author.publisher, @book.author) %>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path(@book) %>

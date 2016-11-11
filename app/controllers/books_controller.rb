@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   # GET authors/1/books
   def index
-    @books = @author.books
+    @books = Book.all
   end
 
   # GET authors/1/books/1
@@ -19,6 +19,7 @@ class BooksController < ApplicationController
 
   # GET authors/1/books/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST authors/1/books
@@ -35,8 +36,24 @@ class BooksController < ApplicationController
 
   # PUT authors/1/books/1
   def update
+    
     if @book.update_attributes(book_params)
-      redirect_to([@book.author.publisher, @book.author, @book], notice: 'Book was successfully updated.')
+      # the old - new category will remain the latest categories, so the old category need to remove the book, and insert the book into the category.
+      old_categories = @book.categories.all
+      old_categories.each do |x|
+        x.books.destroy(@book)
+      end      
+      @categories = params["book"]["categories"]
+        # create new category if didn't exist.
+        @categories.each do |x|
+          a = Category.find_by(name: x)
+          if a.nil?
+            Category.create(name: a)
+          end
+          a.books << @book
+        end
+
+      redirect_to(@book, notice: 'Book was successfully updated.')
     else
       render action: 'edit'
     end
@@ -46,22 +63,22 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
 
-    redirect_to publisher_author_books_url(@author.publisher, @author)
+    redirect_to books_url
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_books
-      @author = Author.find(params[:author_id])
+    
     end
 
     def set_book
-      @book = @author.books.find(params[:id])
+      @book = Book.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def book_params
-      params.require(:book).permit(:name, :category, :isbn, :barcode, :abc)
+      params.require(:book).permit(:name, :category, :isbn, :barcode )
 
     end
 end

@@ -17,13 +17,13 @@
     <td><%= book.category %></td>
     <td><%= book.isbn %></td>
     <td><%= book.barcode %></td>
-    <td><%= link_to 'Show', [book.author.publisher, book.author, book] %></td>
-    <td><%= link_to 'Edit', edit_publisher_author_book_path(book.author.publisher, book.author, book) %></td>
-    <td><%= link_to 'Destroy', [book.author.publisher, book.author, book], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', book_path(book)  %></td>
+    <td><%= link_to 'Edit', edit_book_path(book) %></td>
+    <td><%= link_to 'Destroy', :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Book', new_publisher_author_book_path(params[:publisher_id],params[:author_id]) %>
+<%= link_to 'New Book', new_book_path %>

@@ -1,24 +1,19 @@
-# README
+Kids-library
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is dedicated to the church that i'm currently serving. It has a community library where i volunteer.
 
-Things you may want to cover:
+Functions:
+- homepage to view current loan summary for the day
+- quick add book
+- quick add member
+- quick loan book
+- quick return book
+- search book(author, publisher, category)
+- search user(name, email, phone, address)
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- /homepage
+- /loan processing
+- /users with its loan properties
+- /books with its loan properties
+- search page
