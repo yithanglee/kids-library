@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
 
   # GET publishers/1/authors
   def index
-    @authors = @publisher.authors
+    @authors = Author.all
   end
 
   # GET publishers/1/authors/1
@@ -13,7 +13,7 @@ class AuthorsController < ApplicationController
 
   # GET publishers/1/authors/new
   def new
-    @author = @publisher.authors.build
+    @author = Author.new
   end
 
   # GET publishers/1/authors/1/edit
@@ -22,10 +22,10 @@ class AuthorsController < ApplicationController
 
   # POST publishers/1/authors
   def create
-    @author = @publisher.authors.build(author_params)
+    @author = Author.new(author_params)
 
     if @author.save
-      redirect_to([@author.publisher, @author], notice: 'Author was successfully created.')
+      redirect_to([@author], notice: 'Author was successfully created.')
     else
       render action: 'new'
     end
@@ -34,7 +34,7 @@ class AuthorsController < ApplicationController
   # PUT publishers/1/authors/1
   def update
     if @author.update_attributes(author_params)
-      redirect_to([@author.publisher, @author], notice: 'Author was successfully updated.')
+      redirect_to([@author], notice: 'Author was successfully updated.')
     else
       render action: 'edit'
     end
@@ -44,17 +44,17 @@ class AuthorsController < ApplicationController
   def destroy
     @author.destroy
 
-    redirect_to publisher_authors_url(@publisher)
+    redirect_to authors_url
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_authors
-      @publisher = Publisher.find(params[:publisher_id])
+      # @publisher = Publisher.find(params[:publisher_id])
     end
 
     def set_author
-      @author = @publisher.authors.find(params[:id])
+      @author = Author.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

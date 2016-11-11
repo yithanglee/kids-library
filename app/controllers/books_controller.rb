@@ -15,7 +15,7 @@ class BooksController < ApplicationController
   def new
     # byebug
     @book = Book.new
-        @categories = Category.all
+    @categories = Category.all
   end
 
   # GET authors/1/books/1/edit
@@ -25,18 +25,21 @@ class BooksController < ApplicationController
 
   # POST authors/1/books
   def create
+    byebug
     @book = Book.new(book_params)
 
     if @book.save
+
        @categories = params["book"]["categories"]
         # create new category if didn't exist.
         @categories.each do |x|
           a = Category.find_by(name: x)
-          if a.nil?
-            Category.create(name: a)
-          end
           a.books << @book
         end
+
+        author = Author.find(params["book"]["authors"])
+        author.books << @book
+
       redirect_to( @book, notice: 'Book was successfully created.')
     else
       render action: 'new'
@@ -57,11 +60,16 @@ class BooksController < ApplicationController
         # create new category if didn't exist.
         @categories.each do |x|
           a = Category.find_by(name: x)
-          if a.nil?
-            Category.create(name: a)
-          end
           a.books << @book
         end
+
+      old_author = @book.authors.all
+      old_author.each do |x|
+        x.books.destroy(@book)
+      end
+
+      author = Author.find(params["book"]["authors"])
+      author.books << @book
 
       redirect_to(@book, notice: 'Book was successfully updated.')
     else
@@ -90,7 +98,6 @@ class BooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def book_params
-      params.require(:book).permit(:name, :category, :isbn, :barcode )
-
+      params.require(:book).permit(:name, :isbn, :barcode )
     end
 end
