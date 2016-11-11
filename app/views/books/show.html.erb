@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <b>Category:</b>
-  <%= @book.category %>
-</p>
-
-<p>
   <b>Isbn:</b>
   <%= @book.isbn %>
 </p>
@@ -28,4 +23,4 @@
 
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path(@book) %>
+<%= link_to 'Back', books_path %>

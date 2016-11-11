@@ -2,25 +2,11 @@
 <p>Find me in app/views/staticpages/home.html.erb</p>
 <ul>
 	<% @books.each do |x|%>
-<li><%= x.name %> , <%= x.category %> , <%= x.barcode %></li>	
+<li><%= x.name %> , <%= x.barcode %></li>	
 
 <% end %>
 
 </ul>
 
+<%= render partial: 'books/form'%>
 
-
-<%= form_tag('/quick_create', method:"post") do |f| %>
-  <%= text_field_tag(:books, :name) %><br>
-    <%= text_field_tag(:author, :name) %><br>
-      <%= text_field_tag(:publisher, :name) %><br>
-      <ul>
-					<% @categories.each do |x| %>
-						<li>
-							<%= x.name %> 
-							<%= check_box("book", "categories", {:multiple =>true }, x.name, nil) %>
-						</li>
-					<% end %>	
-				</ul>
-  <%= submit_tag("Search") %>
-<% end %>

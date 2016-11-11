@@ -14,7 +14,8 @@ class BooksController < ApplicationController
   # GET authors/1/books/new
   def new
     # byebug
-    @book = @author.books.build
+    @book = Book.new
+        @categories = Category.all
   end
 
   # GET authors/1/books/1/edit
@@ -24,11 +25,19 @@ class BooksController < ApplicationController
 
   # POST authors/1/books
   def create
-    byebug
-    @book = @author.books.build(book_params)
+    @book = Book.new(book_params)
 
     if @book.save
-      redirect_to([@book.author.publisher, @book.author, @book], notice: 'Book was successfully created.')
+       @categories = params["book"]["categories"]
+        # create new category if didn't exist.
+        @categories.each do |x|
+          a = Category.find_by(name: x)
+          if a.nil?
+            Category.create(name: a)
+          end
+          a.books << @book
+        end
+      redirect_to( @book, notice: 'Book was successfully created.')
     else
       render action: 'new'
     end
@@ -42,7 +51,8 @@ class BooksController < ApplicationController
       old_categories = @book.categories.all
       old_categories.each do |x|
         x.books.destroy(@book)
-      end      
+      end
+         
       @categories = params["book"]["categories"]
         # create new category if didn't exist.
         @categories.each do |x|
@@ -62,8 +72,10 @@ class BooksController < ApplicationController
   # DELETE authors/1/books/1
   def destroy
     @book.destroy
-
-    redirect_to books_url
+    respond_to do |format|
+      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private

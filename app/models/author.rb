@@ -1,4 +1,3 @@
 class Author < ApplicationRecord
-  has_many :books
-  belongs_to :publisher
+	has_and_belongs_to_many :books
 end

@@ -1,9 +1,8 @@
 <h1>Listing books</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Name</th>
-    <th>Category</th>
     <th>Isbn</th>
     <th>Barcode</th>
     <th></th>
@@ -14,12 +13,11 @@
 <% @books.each do |book| %>
   <tr>
     <td><%= book.name %></td>
-    <td><%= book.category %></td>
     <td><%= book.isbn %></td>
     <td><%= book.barcode %></td>
     <td><%= link_to 'Show', book_path(book)  %></td>
     <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%= link_to 'Destroy', :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy',book_path(book), data: {confirm: 'Are you sure?'} ,:method => :delete %></td>
   </tr>
 <% end %>
 </table>

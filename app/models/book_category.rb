@@ -1,3 +1,0 @@
-class BookCategory < ApplicationRecord
-
-end
