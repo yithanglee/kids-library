@@ -4,7 +4,6 @@ class CreateBooks < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :isbn
       t.string :barcode
-
       t.timestamps
     end
   end

@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20161117023326) do
   create_table "loans", force: :cascade do |t|
     t.date     "loan_date"
     t.date     "return_date"
-    t.integer  "book_id"
     t.integer  "user_id"
+    t.integer  "book_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
