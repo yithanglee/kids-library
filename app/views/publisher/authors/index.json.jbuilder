@@ -1,1 +1,0 @@
-json.array! @publisher_authors, partial: 'publisher_authors/publisher_author', as: :publisher_author
