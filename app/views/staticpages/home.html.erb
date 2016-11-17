@@ -2,11 +2,14 @@
 <p>Find me in app/views/staticpages/home.html.erb</p>
 <ul>
 	<% @books.each do |x|%>
-<li><%= x.name %> , <%= x.barcode %></li>	
-
-<% end %>
-
+		<li>
+			<%= x.name %> , 
+			<%= x.barcode %>
+		</li>	
+	<% end %>
 </ul>
 
-<%= render partial: 'books/form'%>
+<%= render partial: 'books/form'%> 
+<%= render partial: 'authors/form'%> 
+
 

@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
-  before_action :set_books
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+
 
   # GET authors/1/books
   def index
     @books = Book.all
+
   end
 
   # GET authors/1/books/1

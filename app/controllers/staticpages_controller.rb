@@ -1,8 +1,11 @@
 class StaticpagesController < ApplicationController
-  def home
+
+  def home    
   	@books = Book.all
   	@categories = Category.all
     @book = Book.new
+    @author = Author.new
+
   end
 
   def help
@@ -25,9 +28,4 @@ class StaticpagesController < ApplicationController
 
   end
 
-  def quick_create
-  	byebug
-  	@publisher = Publisher.create(name:params["publisher"])
-  	@author = @publisher.authors.create()
-  end
 end
