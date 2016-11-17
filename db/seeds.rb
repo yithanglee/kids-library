@@ -30,3 +30,7 @@ Book.create(name:'Weapons: Helmet of Salvation', isbn:'1230000100',barcode:'P100
 Book.create(name:'Weapons: Sword of Truth', isbn:'1230000101',barcode:'P10002')
 
 Book.create(name:'Weapons: Breastplate of Confidence', isbn:'1230000102',barcode:'P10003')
+
+User.create(email:'123@1.com', password:'123')
+User.create(email:'123@2.com', password:'123')
+User.create(email:'123@3.com', password:'123')
