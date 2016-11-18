@@ -31,6 +31,16 @@ class AuthorsController < ApplicationController
     end
   end
 
+    def quick_create
+    @author = Author.new(author_params)
+
+    if @author.save
+      redirect_to( root_url , notice: 'Author was successfully created.')
+    else
+      render action: 'new'
+    end
+  end
+
   # PUT publishers/1/authors/1
   def update
     if @author.update_attributes(author_params)

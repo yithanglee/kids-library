@@ -2,7 +2,7 @@
 
 <h1>Loans</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Loan date</th>
@@ -18,8 +18,8 @@
       <tr>
         <td><%= loan.loan_date %></td>
         <td><%= loan.return_date %></td>
-        <td><%= loan.book_id %></td>
-        <td><%= loan.user_id %></td>
+        <td><%= loan.book.name %></td>
+        <td><%= loan.user.email %></td>
         <td><%= link_to 'Show', loan %></td>
         <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
         <td><%= link_to 'Destroy', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>

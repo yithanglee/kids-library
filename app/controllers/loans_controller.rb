@@ -14,7 +14,8 @@ class LoansController < ApplicationController
 
   # GET /loans/new
   def new
-    @loan = Loan.new
+        a = Time.zone.today
+    @loan = Loan.new(loan_date: a, return_date: a+7)
   end
 
   # GET /loans/1/edit
@@ -24,6 +25,7 @@ class LoansController < ApplicationController
   # POST /loans
   # POST /loans.json
   def create
+    # byebug
     @loan = Loan.new(loan_params)
 
     respond_to do |format|
@@ -66,6 +68,8 @@ class LoansController < ApplicationController
     def set_loan
       @loan = Loan.find(params[:id])
     end
+
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def loan_params

@@ -23,12 +23,12 @@
 
   <div class="field">
     <%= f.label :book_id %>
-    <%= f.number_field :book_id %>
-  </div>
+<%= f.select :book_id, Book.all.collect {|p| [ p.name, p.id ] }%>
+</div>
 
   <div class="field">
     <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
+<%= f.select :user_id, User.all.collect {|p| [ p.email, p.id ] }%>
   </div>
 
   <div class="actions">

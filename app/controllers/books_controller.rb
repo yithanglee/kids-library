@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+  before_action :set_book, only: [:show, :edit, :destroy]
 
 
   # GET authors/1/books
@@ -9,6 +9,7 @@ class BooksController < ApplicationController
 
   # GET authors/1/books/1
   def show
+    
   end
 
   # GET authors/1/books/new
@@ -20,27 +21,50 @@ class BooksController < ApplicationController
 
   # GET authors/1/books/1/edit
   def edit
+    
     @categories = Category.all
   end
 
   # POST authors/1/books
   def create
-    byebug
+    
     @book = Book.new(book_params)
 
     if @book.save
 
-       @categories = params["book"]["categories"]
-        # create new category if didn't exist.
-        @categories.each do |x|
-          a = Category.find_by(name: x)
-          a.books << @book
-        end
+       # @categories = params["book"]["categories"]
+       #  # create new category if didn't exist.
+       #  @categories.each do |x|
+       #    a = Category.find_by(name: x)
+       #    a.books << @book
+       #  end
 
         author = Author.find(params["book"]["authors"])
         author.books << @book
 
       redirect_to( @book, notice: 'Book was successfully created.')
+    else
+      render action: 'new'
+    end
+  end
+
+   def quick_create
+    
+    @book = Book.new(book_params)
+
+    if @book.save 
+
+       # @categories = params["book"]["categories"]
+       #  # create new category if didn't exist.
+       #  @categories.each do |x|
+       #    a = Category.find_by(name: x)
+       #    a.books << @book
+       #  end
+
+        author = Author.find(params["book"]["authors"])
+        author.books << @book
+
+      redirect_to( root_url , notice: 'Book was successfully created.')
     else
       render action: 'new'
     end
@@ -56,12 +80,12 @@ class BooksController < ApplicationController
         x.books.destroy(@book)
       end
          
-      @categories = params["book"]["categories"]
-        # create new category if didn't exist.
-        @categories.each do |x|
-          a = Category.find_by(name: x)
-          a.books << @book
-        end
+      # @categories = params["book"]["categories"]
+      #   # create new category if didn't exist.
+      #   @categories.each do |x|
+      #     a = Category.find_by(name: x)
+      #     a.books << @book
+      #   end
 
       old_author = @book.authors.all
       old_author.each do |x|
@@ -79,6 +103,7 @@ class BooksController < ApplicationController
 
   # DELETE authors/1/books/1
   def destroy
+    
     @book.destroy
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
@@ -98,6 +123,6 @@ class BooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def book_params
-      params.require(:book).permit(:name, :isbn, :barcode )
+      params.require(:book).permit(:name, :isbn, :barcode, :categories )
     end
 end
