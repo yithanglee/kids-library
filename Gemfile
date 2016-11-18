@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+gem 'will_paginate'
+gem 'responders'
 gem 'chunky_png'
 gem 'barby'
 gem 'rmagick'

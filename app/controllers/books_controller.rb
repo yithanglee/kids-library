@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
 
 
+
   # GET authors/1/books
   def index
     @books = Book.all
-
   end
 
   # GET authors/1/books/1
