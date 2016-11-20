@@ -7,7 +7,7 @@ class Book < ApplicationRecord
   has_many :loans, dependent: :destroy
 
 
-
+ searchkick match: :word_start, searchable: [:title, :barcode]
 
 
 end
