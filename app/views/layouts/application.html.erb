@@ -20,6 +20,23 @@
 <% end -%>
 </nav>
   <body>
+    <div class="container">
+      <div id="flash">
+        <% flash.each do |key, value| %>
+            <% if key = notice %>
+              <div class="alert alert-success" role="alert"><div class="flash <%= key %>"><%= value %></div></div>
+            <% elsif key = alert %>
+              <div class="alert alert-danger" role="alert"><div class="flash <%= key %>"><%= value %></div></div>
+            <%end %>
+        <% end %>
+      </div>
+    </div>
     <%= yield %>
+    <footer>
+        <%= form_for Book.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
+    <%= text_field_tag :term, params[:term], placeholder:"What do you wanna find?" %>
+    <%= f.submit 'search', class: 'btn btn-primary' %>
+  <% end %>
+    </footer>
   </body>
 </html>

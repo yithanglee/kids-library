@@ -111,6 +111,15 @@ class BooksController < ApplicationController
     end
   end
 
+  def search
+        @books = Book.search(params[:term], fields: ["title", "barcode"], mispellings: {below: 5})
+        if @books.blank?
+          redirect_to books_path, flash:{danger: "no successful search result"}
+        else
+          render :index
+        end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_books
