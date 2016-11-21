@@ -112,7 +112,7 @@ class BooksController < ApplicationController
   end
 
   def search
-        @books = Book.search(params[:term], fields: ["title", "barcode"], mispellings: {below: 5})
+        @books = Book.search(params[:term], fields: ["name"], mispellings: {below: 5})
         if @books.blank?
           redirect_to books_path, flash:{danger: "no successful search result"}
         else
