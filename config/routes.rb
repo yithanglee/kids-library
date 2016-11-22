@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 	post '/authors/quick_create', to: 'authors#quick_create', as: 'quick_create'
 
+
   resources :loans
   resources :books
   resources :categories
