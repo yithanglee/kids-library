@@ -15,3 +15,18 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+
+$( document ).ready(function() {
+  $( "#term" ).focus();
+});
+
+function countChar(val) {
+  var len = val.value.length;
+  if (len >= 10) {
+     $("#submit").focus();
+      $("#submit").click();
+  } else {
+    $('#charNum').text(len);
+  }
+}

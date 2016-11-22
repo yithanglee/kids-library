@@ -35,8 +35,8 @@
     <footer>
       <div>
         <%= form_for Book.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
-        <%= text_field_tag :term, params[:term], placeholder:"ISBN quick find" %>
-        <%= f.submit 'search', class: 'btn btn-primary' %>
+        <%= text_field_tag :term, params[:term], placeholder:"ISBN quick find", :onkeyup => 'countChar(this)' %>
+        <%= f.submit 'search', class: 'btn btn-primary', id: 'submit' %>
         <% end %>
       </div>
     </footer>
