@@ -6,11 +6,15 @@
     <th>Author</th>
     <th>Isbn</th>
     <th>Barcode</th>
+    <th>Loaned?</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 <%= render @books %>
+
+<%= render 'loans/form_quick' %>
 
 </table>
 <%= link_to 'New Book', new_book_path %>

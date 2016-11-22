@@ -8,6 +8,7 @@
   </head>
 <nav>
   <%= link_to "home", root_url %>
+      <%= link_to "users", users_url %>
     <%= link_to "books", books_url %>
     <%= link_to "authors", authors_url %>
         <%= link_to "loans", loans_url %>
@@ -30,10 +31,13 @@
     <footer>
       <div>
         <%= form_for Book.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
-        <%= text_field_tag :term, params[:term], placeholder:"ISBN quick find", :onkeyup => 'countChar(this)' %>
+        <%= text_field_tag :user, params[:user], placeholder: "Member ID", :onkeyup => 'countMemberId(this)' %>
+        <%= text_field_tag :term, params[:term], placeholder:"ISBN quick find", :onkeyup => 'countChar(this)', id: 'isbn' %>
         <%= f.submit 'search', class: 'btn btn-primary', id: 'submit' %>
         <% end %>
       </div>
+
+
     </footer>
   </body>
 </html>

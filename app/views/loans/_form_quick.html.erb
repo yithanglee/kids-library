@@ -1,0 +1,35 @@
+<%= form_for(Loan.new) do |f| %>
+ 
+  <div class="field">
+    <%= f.label :loan_date %>
+    <%= f.date_select :loan_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :return_date %>
+    <%= f.date_select :return_date, selected: 7.days.from_now %>
+  </div>
+
+  <div class="field">
+    <%= f.label :book_id %>
+    <% if Book.find_by(isbn:params["term"]) == nil %>
+        <%= f.text_field :book_id, required: true %>
+    <% else %>
+
+    <%= f.text_field :book_id, :value => Book.find_by(isbn:params["term"]).id %>
+    <% end %>
+</div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <% if  User.find_by(member_id:params["user"]) == nil %>
+      <%=  f.text_field :user_id, required: true %>
+    <% else %>
+      <%= f.text_field :user_id, :value => User.find_by(member_id:params["user"]).id %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

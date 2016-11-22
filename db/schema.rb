@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117023326) do
+ActiveRecord::Schema.define(version: 20161122132333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,14 @@ ActiveRecord::Schema.define(version: 20161117023326) do
   end
 
   create_table "loans", force: :cascade do |t|
-    t.date     "loan_date"
-    t.date     "return_date"
     t.integer  "user_id"
     t.integer  "book_id"
+    t.date     "loan_date"
+    t.date     "return_date"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["book_id"], name: "index_loans_on_book_id", using: :btree
+    t.index ["user_id"], name: "index_loans_on_user_id", using: :btree
   end
 
   create_table "publishers", force: :cascade do |t|
@@ -77,6 +79,7 @@ ActiveRecord::Schema.define(version: 20161117023326) do
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
+    t.string   "member_id"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end

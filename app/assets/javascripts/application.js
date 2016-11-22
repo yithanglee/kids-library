@@ -18,7 +18,7 @@
 
 
 $( document ).ready(function() {
-  $( "#term" ).focus();
+  $( "#user" ).focus();
 });
 
 function countChar(val) {
@@ -26,6 +26,15 @@ function countChar(val) {
   if (len >= 10) {
      $("#submit").focus();
       $("#submit").click();
+  } else {
+    $('#charNum').text(len);
+  }
+}
+
+function countMemberId(val) {
+  var len = val.value.length;
+  if (len >= 9) {
+     $("#isbn").focus();
   } else {
     $('#charNum').text(len);
   }
