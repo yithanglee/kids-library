@@ -33,10 +33,12 @@
     </div>
     <%= yield %>
     <footer>
+      <div>
         <%= form_for Book.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
-    <%= text_field_tag :term, params[:term], placeholder:"What do you wanna find?" %>
-    <%= f.submit 'search', class: 'btn btn-primary' %>
-  <% end %>
+        <%= text_field_tag :term, params[:term], placeholder:"ISBN quick find" %>
+        <%= f.submit 'search', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
     </footer>
   </body>
 </html>
