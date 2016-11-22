@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :users
+  
   get '/search', to: 'books#search'
 
   post '/books/quick_create', to: 'books#quick_create', as: 'quick_create_book'
