@@ -1,16 +1,20 @@
-<h1>Staticpages#home</h1>
-<p id="notice"><%= notice %></p>
-<p>Find me in app/views/staticpages/home.html.erb</p>
-<ul>
-	<% @books.each do |x|%>
-		<li>
-			<%= x.name %> , 
-			<%= x.barcode %>
-		</li>	
-	<% end %>
-</ul>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+  			<div class="panel-body">
+					<%= render partial: 'books/form_q'%> 
+				</div>
+			</div>
+		</div>
 
-<%= render partial: 'books/form_q'%> 
-<%= render partial: 'authors/form_q'%> 
-
+		<div class="col-lg-6 ">
+			<div class="panel panel-default">
+  			<div class="panel-body">	
+					<%= render partial: 'authors/form_q'%> 
+				</div>
+			</div>		
+		</div>
+	</div>
+</div>
 
