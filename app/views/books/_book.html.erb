@@ -8,7 +8,11 @@
     </td>
     <td><%= book.isbn %></td>
     <td><%= book.barcode %></td>
-    <td><%= book.loans.nil?%></td>
+    <%if book.loans.count > 0 %>
+    <td> Yes </td>
+    <% else %>
+     <td> No </td>
+    <% end %>
 
     <td><%= link_to 'Show', book_path(book)  %></td>
     <td><%= link_to 'Edit', edit_book_path(book) %></td>

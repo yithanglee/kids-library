@@ -1,21 +1,52 @@
-<h1>Listing books</h1>
+
 <p id="notice"><%= notice %></p>
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Author</th>
-    <th>Isbn</th>
-    <th>Barcode</th>
-    <th>Loaned?</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-<%= render @books %>
 
-<%= render 'loans/form_quick' %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="panel panel-default">
+			<div class="panel-heading"><h1>List of books</h1></div>
+  			<div class="panel-body">
+					<table class="table">
+					  <tr>
+					    <th>Name</th>
+					    <th>Author</th>
+					    <th>Isbn</th>
+					    <th>Barcode</th>
+					    <th>Loaned?</th>
+					    <th></th>
+					    <th></th>
+					    <th></th>
+					    <th></th>
+					  </tr>
+					<%= render @books %>
+					</table>
+				</div>
+						<div class="panel-body">
+							<%= render 'loans/form_quick' %>
+							</div>
+			</div>
 
-</table>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="panel panel-default">
+			<div class="panel-heading"><h1>New book</h1></div>
+  			<div class="panel-body">
+					<%= render partial: 'books/form_q'%> 
+				</div>
+			</div>
+			</br>
+			<div class="panel panel-default">
+  			<div class="panel-body">	
+					<%= render partial: 'authors/form_q'%> 
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+
 <%= link_to 'New Book', new_book_path %>
+
 

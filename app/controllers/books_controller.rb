@@ -1,15 +1,22 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+    before_action :set_books, only: [:edit]
+
 
 
   # GET authors/1/books
   def index
+
     @books = Book.all
+    @categories = Category.all
+    @book = Book.new
+    @author = Author.new
+
   end
 
   # GET authors/1/books/1
   def show
-    
+
   end
 
   # GET authors/1/books/new
@@ -49,22 +56,17 @@ class BooksController < ApplicationController
   end
 
    def quick_create
-    
+            @categories = Category.all
     @book = Book.new(book_params)
 
     if @book.save 
 
-       # @categories = params["book"]["categories"]
-       #  # create new category if didn't exist.
-       #  @categories.each do |x|
-       #    a = Category.find_by(name: x)
-       #    a.books << @book
-       #  end
+
 
         author = Author.find(params["book"]["authors"])
         author.books << @book
 
-      redirect_to( root_url , notice: 'Book was successfully created.')
+      redirect_to( books_url , notice: 'Book was successfully created.')
     else
       render action: 'new'
     end
@@ -123,7 +125,7 @@ class BooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_books
-    
+            @books = Book.all
     end
 
     def set_book
