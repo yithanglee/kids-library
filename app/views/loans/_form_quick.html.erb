@@ -13,19 +13,21 @@
   <div class="field">
     <%= f.label :book_id %>
     <% if Book.find_by(isbn:params["term"]) == nil %>
-        <%= f.text_field :book_id, required: true %>
+        <p>No Book Found</p>
     <% else %>
 
-    <%= f.text_field :book_id, :value => Book.find_by(isbn:params["term"]).id %>
+    <%= f.hidden_field :book_id, :value => Book.find_by(isbn:params["term"]).id %>
+    <%= Book.find_by(isbn:params["term"]).name %>
     <% end %>
 </div>
 
   <div class="field">
     <%= f.label :user_id %>
     <% if  User.find_by(member_id:params["user"]) == nil %>
-      <%=  f.text_field :user_id, required: true %>
+      <p>No User Found</p>
     <% else %>
-      <%= f.text_field :user_id, :value => User.find_by(member_id:params["user"]).id %>
+      <%= f.hidden_field :user_id, :value => User.find_by(member_id:params["user"]).id %>
+      <%= User.find_by(member_id:params["user"]).name %>,  <%= User.find_by(member_id:params["user"]).member_id %>
     <% end %>
   </div>
 

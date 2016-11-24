@@ -27,8 +27,6 @@
   <% end %> 
 
 
-<%= f.select :authors, Author.all.collect {|p| [ p.name, p.id ] }%>
-
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,11 +1,6 @@
   <tr>
     <td><%= book.name %></td>
-    <td>
-        <% if book.authors.count == 0 %>
-        <% else %>
-          <%= book.authors.first.name %>
-        <% end %>
-    </td>
+    <td></td>
     <td><%= book.isbn %></td>
     <td><%= book.barcode %></td>
     <%if book.loans.count > 0 %>

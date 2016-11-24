@@ -4,7 +4,7 @@ class StaticpagesController < ApplicationController
   	@books = Book.all
   	@categories = Category.all
     @book = Book.new
-    @author = Author.new
+
 
   end
 

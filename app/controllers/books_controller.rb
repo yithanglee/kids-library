@@ -4,50 +4,39 @@ class BooksController < ApplicationController
 
 
 
-  # GET authors/1/books
+
   def index
 
     @books = Book.all
     @categories = Category.all
     @book = Book.new
-    @author = Author.new
 
   end
 
-  # GET authors/1/books/1
+
   def show
 
   end
 
-  # GET authors/1/books/new
+
   def new
     # byebug
     @book = Book.new
     @categories = Category.all
   end
 
-  # GET authors/1/books/1/edit
+
   def edit
     
     @categories = Category.all
   end
 
-  # POST authors/1/books
+
   def create
     
     @book = Book.new(book_params)
 
     if @book.save
-
-       # @categories = params["book"]["categories"]
-       #  # create new category if didn't exist.
-       #  @categories.each do |x|
-       #    a = Category.find_by(name: x)
-       #    a.books << @book
-       #  end
-
-        author = Author.find(params["book"]["authors"])
-        author.books << @book
 
       redirect_to( @book, notice: 'Book was successfully created.')
     else
@@ -61,18 +50,13 @@ class BooksController < ApplicationController
 
     if @book.save 
 
-
-
-        author = Author.find(params["book"]["authors"])
-        author.books << @book
-
       redirect_to( books_url , notice: 'Book was successfully created.')
     else
       render action: 'new'
     end
   end
 
-  # PUT authors/1/books/1
+
   def update
     
     if @book.update_attributes(book_params)
@@ -89,13 +73,6 @@ class BooksController < ApplicationController
       #     a.books << @book
       #   end
 
-      old_author = @book.authors.all
-      old_author.each do |x|
-        x.books.destroy(@book)
-      end
-
-      author = Author.find(params["book"]["authors"])
-      author.books << @book
 
       redirect_to(@book, notice: 'Book was successfully updated.')
     else
@@ -103,7 +80,7 @@ class BooksController < ApplicationController
     end
   end
 
-  # DELETE authors/1/books/1
+
   def destroy
     
     @book.destroy
