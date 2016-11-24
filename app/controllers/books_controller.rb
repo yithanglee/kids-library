@@ -56,7 +56,7 @@ class BooksController < ApplicationController
   end
 
    def quick_create
-            @categories = Category.all
+
     @book = Book.new(book_params)
 
     if @book.save 

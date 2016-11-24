@@ -35,7 +35,7 @@ class AuthorsController < ApplicationController
     @author = Author.new(author_params)
 
     if @author.save
-      redirect_to( root_url , notice: 'Author was successfully created.')
+      redirect_to( books_url , notice: 'Author was successfully created.')
     else
       render action: 'new'
     end

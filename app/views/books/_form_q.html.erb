@@ -15,17 +15,16 @@
     <%= f.text_field :barcode %>
   </div>
 
-<% Category.all.each do |x| %>
-              <li>
-                <%= x.name %> 
-              
-                  <% if Book.new.categories.all.pluck(:name).include?(x.name) %>
-                    <%= check_box("book", "categories", {:multiple =>true, :checked => true }, x.name, nil) %>
-                  <% else %>
-                    <%= check_box("book", "categories", {:multiple =>true }, x.name, nil) %>
-                  <% end %>
-              </li>
-<% end %> 
+  <% Category.all.each do |x| %>
+    <label><li>
+      <%= x.name %> 
+        <% if Book.new.categories.all.pluck(:name).include?(x.name) %>
+          <%= check_box("book", "categories", {:multiple =>true, :checked => true }, x.name, nil) %>
+        <% else %>
+          <%= check_box("book", "categories", {:multiple =>true }, x.name, nil) %>
+        <% end %>
+    </li></label>
+  <% end %> 
 
 
 <%= f.select :authors, Author.all.collect {|p| [ p.name, p.id ] }%>
