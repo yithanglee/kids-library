@@ -1,33 +1,85 @@
-<%= form_for(Book.new, url: quick_create_book_path ) do |f| %>
+<div class="container-fluid">
+<%= form_for(Book.new, url: quick_create_book_path, :html => {:class => 'form-horizontal'})  do |f| %>
+   
+  <div class="form-group">
+    <%= f.label :name, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">   
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :series, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-6">  
+      <%= f.text_field :series, :class => "form-control"  %>
+    </div>
+
+    <%= f.label :volume, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-2">  
+      <%= f.text_field :volume, :class => "form-control"  %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :isbn, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-4">  
+      <%= f.text_field :isbn, :class => "form-control"  %>
+    </div>
+
+    <%= f.label :barcode, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-4">  
+    <%= f.text_field :barcode, :class => "form-control"  %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :publisher, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-5">  
+      <%= f.text_field :publisher, :class => "form-control"  %>
+    </div>
+
+    <%= f.label :price, :class => "col-lg-2 control-label"  %>
+        <div class="col-lg-3">  
+          <%= f.text_field :price, :class => "form-control"  %>
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <%= f.label :author_1, :class => "col-lg-2 control-label"  %>
+      <div class="col-lg-10">  
+        <%= f.text_field :author_1, :class => "form-control"  %>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :author_2, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-10">  
+        <%= f.text_field :author_2, :class => "form-control"  %>
+    </div>
+  </div>  
+  
+  <div class="form-group">
+    <%= f.label :author_3, :class => "col-lg-2 control-label"  %>
+        <div class="col-lg-10">  
+          <%= f.text_field :author_3, :class => "form-control" %>
+    </div>
+  </div>  
+
+  <div class="form-group">
  
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <% @categories.each do |x| %>
+     <label class="checkbox-inline"> 
+          <% if @book.categories.all.pluck(:name).include?(x.name) %>
+            <%= check_box("book", "categories", {:multiple =>true, :checked => true }, x.name, nil) %>
+          <% else %>
+            <%= check_box("book", "categories", {:multiple =>true }, x.name, nil) %>
+          <% end %>
+          <%= x.name %> 
+     </label> 
+    <% end %> 
   </div>
 
-  <div class="field">
-    <%= f.label :isbn %><br />
-    <%= f.text_field :isbn %>
-  </div>
-  <div class="field">
-    <%= f.label :barcode %><br />
-    <%= f.text_field :barcode %>
-  </div>
+  <%= f.submit 'Create book', :class => "btn btn-default"%>
 
-  <% Category.all.each do |x| %>
-    <label><li>
-      <%= x.name %> 
-        <% if Book.new.categories.all.pluck(:name).include?(x.name) %>
-          <%= check_box("book", "categories", {:multiple =>true, :checked => true }, x.name, nil) %>
-        <% else %>
-          <%= check_box("book", "categories", {:multiple =>true }, x.name, nil) %>
-        <% end %>
-    </li></label>
-  <% end %> 
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
+</div>

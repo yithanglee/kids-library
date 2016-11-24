@@ -3,17 +3,21 @@
 <h1>Users</h1>
 
 <table class="table">
-  <thead>
-    <tr>
-    <th>MemberID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Birthday</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+    <tr>
+      <th>MemberID</th>
+      <th>Name</th>
+      <th>IC</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Birthday</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+
+
     <% @users.each do |user| %>
       <tr>
       <% if user.member_id == nil %>
@@ -22,14 +26,16 @@
       <td><%= user.member_id %></td>
       <%end%>
         <td><%= user.name %></td>
+        <td><%= user.ic %></td>
         <td><%= user.email %></td>
+        <td><%= user.phone %></td>
         <td><%= user.birthday %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
+
 </table>
 
 <br>

@@ -10,30 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122132333) do
+ActiveRecord::Schema.define(version: 20161117023326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "authors", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "authors_books", force: :cascade do |t|
-    t.integer  "book_id"
-    t.integer  "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_authors_books_on_author_id", using: :btree
-    t.index ["book_id"], name: "index_authors_books_on_book_id", using: :btree
-  end
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
     t.string   "isbn"
     t.string   "barcode"
+    t.string   "author_1"
+    t.string   "author_2"
+    t.string   "author_3"
+    t.string   "publisher"
+    t.string   "series"
+    t.string   "volume"
+    t.string   "country"
+    t.string   "condition"
+    t.string   "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,24 +58,15 @@ ActiveRecord::Schema.define(version: 20161122132333) do
     t.index ["user_id"], name: "index_loans_on_user_id", using: :btree
   end
 
-  create_table "publishers", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
+    t.string   "ic"
+    t.string   "member_id"
+    t.string   "email"
+    t.string   "phone"
+    t.date     "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "name"
-    t.string   "email"
-    t.date     "birthday"
-    t.string   "encrypted_password", limit: 128
-    t.string   "confirmation_token", limit: 128
-    t.string   "remember_token",     limit: 128
-    t.string   "member_id"
-    t.index ["email"], name: "index_users_on_email", using: :btree
-    t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 
 end

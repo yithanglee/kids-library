@@ -1,8 +1,15 @@
   <tr>
     <td><%= book.name %></td>
-    <td></td>
     <td><%= book.isbn %></td>
     <td><%= book.barcode %></td>
+    <td><%= book.author_1 %></td>
+    <td><%= book.author_2 %></td>
+    <td><%= book.author_3 %></td>
+    <td><%= book.publisher %></td>
+    <td><%= book.series %></td>
+    <td><%= book.volume %></td>
+    <td><%= book.country %></td>
+    <td><%= book.price %></td>
     <%if book.loans.count > 0 %>
     <td> Yes </td>
     <% else %>
