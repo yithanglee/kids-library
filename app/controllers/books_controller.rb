@@ -38,6 +38,13 @@ class BooksController < ApplicationController
 
     if @book.save
 
+       @categories = params["book"]["categories"]
+        # create new category if didn't exist.
+        @categories.each do |x|
+          a = Category.find_by(name: x)
+          a.books << @book
+        end
+             
       redirect_to( @book, notice: 'Book was successfully created.')
     else
       render action: 'new'
@@ -49,7 +56,12 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save 
-
+      @categories = params["book"]["categories"]
+        # create new category if didn't exist.
+        @categories.each do |x|
+          a = Category.find_by(name: x)
+          a.books << @book
+        end
       redirect_to( books_url , notice: 'Book was successfully created.')
     else
       render action: 'new'
@@ -58,7 +70,7 @@ class BooksController < ApplicationController
 
 
   def update
-    
+    byebug
     if @book.update_attributes(book_params)
       # the old - new category will remain the latest categories, so the old category need to remove the book, and insert the book into the category.
       old_categories = @book.categories.all
@@ -66,12 +78,12 @@ class BooksController < ApplicationController
         x.books.destroy(@book)
       end
          
-      # @categories = params["book"]["categories"]
-      #   # create new category if didn't exist.
-      #   @categories.each do |x|
-      #     a = Category.find_by(name: x)
-      #     a.books << @book
-      #   end
+      @categories = params["book"]["categories"]
+        # create new category if didn't exist.
+        @categories.each do |x|
+          a = Category.find_by(name: x)
+          a.books << @book
+        end
 
 
       redirect_to(@book, notice: 'Book was successfully updated.')
@@ -111,6 +123,6 @@ class BooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def book_params
-      params.require(:book).permit(:name, :isbn, :barcode, :categories )
+      params.require(:book).permit(:name, :isbn, :barcode, :series, :volume, :publisher, :price, :author_1, :author_2, :author_3 )
     end
 end
