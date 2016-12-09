@@ -3,8 +3,6 @@ class BooksController < ApplicationController
     before_action :set_books, only: [:edit]
 
 
-
-
   def index
 
     @books = Book.all
@@ -70,7 +68,6 @@ class BooksController < ApplicationController
 
 
   def update
-    byebug
     if @book.update_attributes(book_params)
       # the old - new category will remain the latest categories, so the old category need to remove the book, and insert the book into the category.
       old_categories = @book.categories.all
@@ -103,9 +100,9 @@ class BooksController < ApplicationController
   end
 
   def search
-        @books = Book.search(params[:term], fields: [{isbn: :exact}])
+        @books = Book.search(params[:term])
         if @books.blank?
-          redirect_to books_path, flash:{danger: "no successful search result"}
+          redirect_to books_path, flash:{alert: "no successful search result"}
         else
           render :index
         end
