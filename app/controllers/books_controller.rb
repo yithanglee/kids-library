@@ -101,10 +101,11 @@ class BooksController < ApplicationController
 
   def search
         @books = Book.search(params[:term])
+        @book = @books
         if @books.blank?
           redirect_to books_path, flash:{alert: "no successful search result"}
         else
-          render :index
+          render :edit
         end
   end
 
