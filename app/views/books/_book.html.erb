@@ -1,4 +1,4 @@
-  <tr>
+  <tr class="list_book" style="cursor: pointer;">
     <td><%= book.name %></td>
     <td><%= book.isbn %></td>
     <td><%= book.barcode %></td>
@@ -16,8 +16,10 @@
      <td> No </td>
     <% end %>
 
-    <td><%= link_to 'Show', book_path(book)  %></td>
-    <td><%= link_to 'Edit', edit_book_path(book) %></td>
+    <td></td>
+    <td style="visibility: hidden"><%= link_to 'Edit', edit_book_path(book), :class => "view_book"  %></td>
 
   </tr>
 
+
+<!-- <%= link_to 'Show', book_path(book)  %> -->

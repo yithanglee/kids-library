@@ -39,3 +39,10 @@ function countMemberId(val) {
     $('#charNum').text(len);
   }
 }
+
+$(document).ready(function(){
+  $(".list_book").click(function(){
+    var href_to_go = $(this).children().children().attr('href');
+    window.location.href = href_to_go;
+  });
+});
