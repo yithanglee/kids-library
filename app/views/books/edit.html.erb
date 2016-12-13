@@ -23,11 +23,9 @@
 					    <th></th>
 					  </tr>
 						<%= render @books %>
+						<%= will_paginate @books %>
 					</table>
 		  	</div>
-		    <div class="panel-body">
-			<%= render 'loans/form_quick' %>
-			</div>
 		  </div>	
 	</div>
 

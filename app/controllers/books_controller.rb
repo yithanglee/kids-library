@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 
   def index
 
-    @books = Book.all
+    @books = Book.paginate(:page => params[:page], :per_page => 5)
     @categories = Category.all
     @book = Book.new
 
@@ -105,14 +105,14 @@ class BooksController < ApplicationController
         if @books.blank?
           redirect_to books_path, flash:{alert: "no successful search result"}
         else
-          render :edit
+          render :show
         end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_books
-            @books = Book.all
+            @books = Book.paginate(:page => params[:page], :per_page => 5)
     end
 
     def set_book
