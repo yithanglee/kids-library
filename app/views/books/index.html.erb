@@ -1,3 +1,13 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+	  $(".list_book").click(function(){
+	    var href_to_go = $(this).children().children().attr('href');
+	    window.location.href = href_to_go;
+	  });
+	});
+
+</script>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-8">

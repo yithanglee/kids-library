@@ -40,6 +40,8 @@ function countMemberId(val) {
   }
 }
 
+
+
 $(document).ready(function(){
   $(".list_book").click(function(){
     var href_to_go = $(this).children().children().attr('href');
