@@ -4,8 +4,11 @@ class BooksController < ApplicationController
 
 
   def index
+    all_books = Book.all
+    page_per_item = 5
+    byebug
 
-    @books = Book.all
+    @books = 
     @categories = Category.all
     @book = Book.new
 
