@@ -43,6 +43,11 @@ function countMemberId(val) {
 
 
 $(document).ready(function(){
+
+   $(".view_book").attr('href', function(i, h) {
+     return h + (h.indexOf('edit') != -1 ? "?page=2" : "");
+   });  
+
   $(".list_book").click(function(){
     var href_to_go = $(this).children().children().attr('href');
     window.location.href = href_to_go;
