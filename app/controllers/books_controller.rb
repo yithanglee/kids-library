@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 
   def index
 
-    @books = Book.paginate(:page => params[:page], :per_page => 5)
+    @books = Book.order('created_at ASC').paginate(:page => params[:page], :per_page => 5)
     @categories = Category.all
     @book = Book.new
 
@@ -25,7 +25,7 @@ class BooksController < ApplicationController
 
 
   def edit
-    
+
     @categories = Category.all
   end
 
@@ -83,7 +83,7 @@ class BooksController < ApplicationController
         end
 
 
-      redirect_to(@book, notice: 'Book was successfully updated.')
+      redirect_to books_path, notice: 'Book was successfully updated.'
     else
       render action: 'edit'
     end
@@ -112,7 +112,7 @@ class BooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_books
-            @books = Book.paginate(:page => params[:page], :per_page => 5)
+            @books = Book.order('created_at ASC').paginate(:page => params[:page], :per_page => 5)
     end
 
     def set_book

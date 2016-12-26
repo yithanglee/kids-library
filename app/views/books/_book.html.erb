@@ -16,8 +16,9 @@
      <td> No </td>
     <% end %>
 
-    <td></td>
-    <td><%= link_to 'Edit', edit_book_path(book), :class => "view_book"  %></td>
+    <td><%= book.updated_at %></td>
+
+    <td><%= link_to 'Edit', edit_book_path(book, page: params[:page]), :class => "view_book" %></td>
 
   </tr>
 

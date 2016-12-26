@@ -23,8 +23,8 @@
 					    <th></th>
 					  </tr>
 						<%= render @books %>
-						<%= will_paginate @books %>
 					</table>
+						<%= will_paginate @books %>
 		  	</div>
 		  </div>	
 	</div>
@@ -41,4 +41,4 @@
 </div>
 
 <%= link_to 'Show', @book %> |
-<%= link_to 'Back', books_path(@book) %>
+<%= link_to 'Back', books_path %>
