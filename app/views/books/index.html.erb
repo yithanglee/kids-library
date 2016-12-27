@@ -4,23 +4,15 @@
 			<div class="panel panel-default">
 			<div class="panel-heading"><h1>List of books</h1></div>
   			<div class="panel-body">
-					<table class="table">
+					<table class="table" style="font-size:18px;">
+					  <col width="250">
 					  <tr>
 					    <th>Name</th>
-					    <th>Isbn</th>
 					    <th>Barcode</th>
 					    <th>Author</th>
-					    <th>Author2</th>
-
-					    <th>Publisher</th>
-					    <th>Series</th>
-					    <th>Volume</th>
-
-					    <th>Price</th>
 					    <th>Loaned?</th>
-					    <th></th>
-					    <th></th>
-					    <!-- <th></th> -->
+					    <th>Updated</th>
+					    <th>Action</th>
 					  </tr>
 					<%= render @books %>
 					</table>
@@ -41,7 +33,5 @@
 	</div>
 </div>
 
-
-<%= link_to 'New Book', new_book_path %>
 
 

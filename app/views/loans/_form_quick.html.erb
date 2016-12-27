@@ -12,12 +12,12 @@
 
   <div class="field">
     <%= f.label :book_id %>
-    <% if Book.find_by(isbn:params["term"]) == nil %>
+    <% if Book.find(@book) == nil %>
         <p>No Book Found</p>
     <% else %>
 
-    <%= f.hidden_field :book_id, :value => Book.find_by(isbn:params["term"]).id %>
-    <%= Book.find_by(isbn:params["term"]).name %>
+    <%= f.hidden_field :book_id, :value => Book.find(@book).id %>
+    <%= Book.find(@book).name %>
     <% end %>
 </div>
 

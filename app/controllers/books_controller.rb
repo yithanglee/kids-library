@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 
   def index
 
-    @books = Book.order('created_at ASC').paginate(:page => params[:page], :per_page => 5)
+    @books = Book.order('created_at ASC').paginate(:page => params[:page], :per_page => 10)
     @categories = Category.all
     @book = Book.new
 
@@ -99,8 +99,9 @@ class BooksController < ApplicationController
     end
   end
 
-  def search
-        @books = Book.search(params[:term])
+  def quick_loan
+        search_params = params.permit(:term, :user)
+        @books = Book.quick_search(search_params)
         @book = @books
         if @books.blank?
           redirect_to books_path, flash:{alert: "no successful search result"}
@@ -109,10 +110,23 @@ class BooksController < ApplicationController
         end
   end
 
+  def search
+        search_params = params.permit(:book_name, :author)
+        @books = Book.search(search_params)
+        if @books.blank?
+          redirect_to books_path, flash:{alert: "no successful search result"}
+        else
+          @books = @books.order('created_at ASC').paginate(:page => params[:page], :per_page => 10)
+          @categories = Category.all
+          @book = Book.new
+          render :index
+        end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_books
-            @books = Book.order('created_at ASC').paginate(:page => params[:page], :per_page => 5)
+            @books = Book.order('created_at ASC').paginate(:page => params[:page], :per_page => 10)
     end
 
     def set_book

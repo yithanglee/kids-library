@@ -1,24 +1,16 @@
-  <tr class="list_book" style="cursor: pointer;">
+  <tr class="list_book">
     <td><%= book.name %></td>
-    <td><%= book.isbn %></td>
     <td><%= book.barcode %></td>
-    <td><%= book.author_1 %></td>
-    <td><%= book.author_2 %></td>
-
-    <td><%= book.publisher %></td>
-    <td><%= book.series %></td>
-    <td><%= book.volume %></td>
-
-    <td><%= book.price %></td>
+    <td><%= book.author_1 %>, <%= book.author_2 %></td>
     <%if book.loans.count > 0 %>
-    <td> Yes </td>
+    <td> Yes (<%=book.loans.last.user.name%>)</td>
     <% else %>
      <td> No </td>
     <% end %>
 
-    <td><%= book.updated_at %></td>
+    <td style="font-size: 12px;"><%= book.updated_at.in_time_zone("Kuala Lumpur") %></td>
 
-    <td><%= link_to 'Edit', edit_book_path(book, page: params[:page]), :class => "view_book" %></td>
+    <td><%= link_to 'Edit', edit_book_path(book, page: params[:page]), :class => "btn btn-default" %></td>
 
   </tr>
 

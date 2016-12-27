@@ -7,9 +7,11 @@ Rails.application.routes.draw do
 
 
   resources :loans
+
   resources :books do
     collection do
       get 'search'
+      get 'quick_loan'
     end
   end
   resources :categories
