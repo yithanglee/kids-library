@@ -1,3 +1,4 @@
+<% if current_user.is_admin? %>
   <tr class="list_book">
     <td><%= book.name %></td>
     <td><%= book.barcode %></td>
@@ -14,5 +15,15 @@
 
   </tr>
 
+<% else %>
+<div class="thumbnail">
+  <%= image_tag('shining-kids.jpg', size:'100')%>
+  <div class="caption">
+  
+  <%= book.name %>
+  <%= link_to 'Show', book_path(book)  %>    
+  </div>
+  
+</div>
 
-<!-- <%= link_to 'Show', book_path(book)  %> -->
+<% end %>

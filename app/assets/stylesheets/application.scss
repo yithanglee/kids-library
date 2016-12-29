@@ -36,3 +36,20 @@ p, ol, ul, td {
 	line-height: 28px;
 	text-transform: capitalize;
 }
+
+.thumbnail {
+	display: block;
+	padding: 20px;
+	margin: 20px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: border 0.2s ease-in-out;
+	-o-transition: border 0.2s ease-in-out;
+	transition: border 0.2s ease-in-out;
+	float: left;
+	max-width: 250px;
+	min-height: 200px;
+	min-width: 200px;
+}
