@@ -12,7 +12,7 @@
 
   <div class="field">
     <%= f.label :book_id %>
-    <% if Book.find(@book) == nil %>
+    <% if @book == nil %>
         <p>No Book Found</p>
     <% else %>
 
@@ -23,15 +23,15 @@
 
   <div class="field">
     <%= f.label :user_id %>
-    <% if  User.find_by(member_id:params["user"]) == nil %>
+    <% if  current_user == nil %>
       <p>No User Found</p>
     <% else %>
-      <%= f.hidden_field :user_id, :value => User.find_by(member_id:params["user"]).id %>
-      <%= User.find_by(member_id:params["user"]).name %>,  <%= User.find_by(member_id:params["user"]).member_id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= current_user.name %>,  <%= current_user.member_id %>
     <% end %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create loan', :class => 'btn btn-default' %>
   </div>
 <% end %>
