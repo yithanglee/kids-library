@@ -9,7 +9,7 @@ class StaticpagesController < ApplicationController
   end
 
   def help
-    require 'barby/barcode/code_128'
+    require 'barby/barcode/ean_13'
     require 'barby/outputter/html_outputter'
     # outputter = Barby::HtmlOutputter.new(barcode)
     # outputter.to_html

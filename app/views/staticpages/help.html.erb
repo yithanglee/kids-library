@@ -11,5 +11,5 @@ td.barby-cell.on { background: #000; }
 
 <%= @lines %>
 
-<% barcode = Barby::Code128.new('P100100') %>
+<% barcode = Barby::EAN13.new("978962933600") %>
 <%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
