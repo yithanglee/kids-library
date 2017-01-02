@@ -1,43 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-9">  
+        <div class="panel panel-default">
+          <div class="panel-heading"><h1>Users</h1></div>
+            <div class="panel-body">
+              <table class="table">
 
-<h1>Users</h1>
-
-<table class="table">
-
-    <tr>
-      <th>MemberID</th>
-      <th>Name</th>
-      <th>IC</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Birthday</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+                  <tr>
+                    <th>MemberID</th>
+                    <th>Name</th>
+                    <th>IC</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Birthday</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
 
 
 
-    <% @users.each do |user| %>
-      <tr>
-      <% if user.member_id == nil %>
-      <td></td>
-      <%else%>
-      <td><%= user.member_id %></td>
-      <%end%>
-        <td><%= user.name %></td>
-        <td><%= user.ic %></td>
-        <td><%= user.email %></td>
-        <td><%= user.phone %></td>
-        <td><%= user.birthday %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+                  <% @users.each do |user| %>
+                    <tr>
+                    <% if user.member_id == nil %>
+                    <td></td>
+                    <%else%>
+                    <td><%= user.member_id %></td>
+                    <%end%>
+                      <td><%= user.name %></td>
+                      <td><%= user.ic %></td>
+                      <td><%= user.email %></td>
+                      <td><%= user.phone %></td>
+                      <td><%= user.birthday %></td>
+                      <td><%= link_to 'Show', user , :class => 'btn btn-default' %></td>
+                      <td><%= link_to 'Edit', edit_user_path(user) , :class => 'btn btn-default'%></td>
+                      <td>
+                      <% if current_user.is_admin? %>
+                      <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default' %>
+                      <% end %>  
+                      </td>
+                    </tr>
+                  <% end %>
 
-</table>
+              </table>
 
-<br>
+              <br>
+              <% if current_user.is_admin? %>
+              <div class="container-fluid">
+                <%= link_to 'New User', new_user_path, :class => 'btn btn-default'  %>
+                </div>
+              <% end %> 
 
-<%= link_to 'New User', new_user_path %>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

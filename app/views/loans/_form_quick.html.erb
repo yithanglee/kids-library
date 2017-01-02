@@ -23,11 +23,11 @@
 
   <div class="field">
     <%= f.label :user_id %>
-    <% if  current_user == nil %>
-      <p>No User Found</p>
+    <% if  !User.find_by(member_id: params[:user]).nil? %>
+      <%= User.find_by(member_id: params[:user]).name %>,  <%= User.find_by(member_id: params[:user]).member_id %>
+      <%= f.hidden_field :user_id, :value => User.find_by(member_id: params[:user]).id %>
     <% else %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-      <%= current_user.name %>,  <%= current_user.member_id %>
+      <p>No User Found</p>
     <% end %>
   </div>
 

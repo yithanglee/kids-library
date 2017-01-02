@@ -1,6 +1,17 @@
 <div class="container-fluid">
 	<div class="row">
-		<% if current_user.is_admin? %>
+		<% if current_user == nil || !current_user.is_admin? %>
+			<div class="col-lg-9">
+					<div class="panel panel-default">
+					<div class="panel-heading"><h1>List of books</h1></div>
+		  				<div class="panel-body">
+		  					<%= render @books %>
+						</div>
+							<div class="container-fluid"><%= will_paginate @books %></div>
+					</div>
+			</div>
+
+		<% elsif current_user.is_admin?  %>
 				<div class="col-lg-8">
 					<div class="panel panel-default">
 					  <div class="panel-heading"><h1>List of books</h1></div>
@@ -30,17 +41,10 @@
 						</div>
 					</div>
 				</div>
-		<% else %>
-			<div class="col-lg-9">
-					<div class="panel panel-default">
-					<div class="panel-heading"><h1>List of books</h1></div>
-		  				<div class="panel-body">
-		  					<%= render @books %>
-						</div>
-							<div class="container-fluid"><%= will_paginate @books %></div>
-					</div>
-			</div>
+
 		<% end %>
+
+
 	</div>
 </div>
 

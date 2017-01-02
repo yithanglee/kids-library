@@ -1,29 +1,18 @@
-<h1>New User</h1>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-9">  
+        <div class="panel panel-default">
+          <div class="panel-heading"><h1>New User</h1></div>
+            <div class="panel-body">
+                <%= render '/users/form', user: @user %>
 
-<%= render '/users/form', user: @user %>
+                    <div class="other-links">
+                      <%= link_to t(".sign_in"), sign_in_path %>
+                    </div>
 
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
-
-<%= link_to 'Back', users_path %>
-
-
-
-
-<!-- <div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
-
-  <%= form_for @user do |form| %>
-    <%= render partial: '/users/form', object: form %>
-
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
-
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
-  <% end %>
+                <%= link_to 'Back', users_path %>
+            </div>
+        </div>
+      </div>
+  </div>
 </div>
- -->

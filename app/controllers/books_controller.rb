@@ -1,12 +1,11 @@
 class BooksController < ApplicationController
-  before_action :require_login
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :set_books, only: [:edit]
 
 
   def index
 
-    @books = Book.order('created_at ASC').paginate(:page => params[:page], :per_page => 10)
+    @books = Book.all.order('name ASC').paginate(:page => params[:page], :per_page => 10)
     @categories = Category.all
     @book = Book.new
 

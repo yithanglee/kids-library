@@ -1,4 +1,16 @@
-<% if current_user.is_admin? %>
+<% if current_user == nil || !current_user.is_admin?%>
+<div class="thumbnail">
+  <%= image_tag('shining-kids.jpg', size:'250')%>
+  <div class="caption">
+  <center>
+  <h3><%= book.name %></h3>
+  <p><%= link_to 'Show', book_path(book)  %></p>    
+  </center>
+  </div>
+</div>
+
+
+<% elsif current_user.is_admin? %>
   <tr class="list_book">
     <td><%= book.name %></td>
     <td><%= book.barcode %></td>
@@ -14,17 +26,5 @@
     <td><%= link_to 'Edit', edit_book_path(book, page: params[:page]), :class => "btn btn-default" %></td>
 
   </tr>
-
-<% else %>
-<div class="thumbnail">
-  <%= image_tag('shining-kids.jpg', size:'100')%>
-  <div class="caption">
-  <center>
-  <h3><%= book.name %></h3>
-  <p><%= link_to 'Show', book_path(book)  %></p>    
-  </center>
-  </div>
-  
-</div>
 
 <% end %>

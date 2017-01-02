@@ -2,22 +2,19 @@
 	<div class="row">
 		<div class="col-lg-8">
 			<div class="panel panel-default">
-			<div class="panel-heading"><div class="container-fluid"><h1><%= @book.name %></h1></div></div>
+			<div class="panel-heading"><div class="container-fluid"><h1><%= @book.name %></h1>by <%= @book.author_1%></div></div>
   				<div class="panel-body">
   				
 					<p>
+						<b>Publisher:</b>
+						<%= @book.publisher%>
+						</br>
 					  <b>Isbn:</b>
 					  <%= @book.isbn %>
 					  </br>
 					  <b>Barcode:</b>
 					  <%= @book.barcode %>
-					</p>
-
-					<ul>
-						<% @book.categories.each do |x|%>
-							<li><%= x.name%></li>
-						<%end%>
-					</ul>  					
+					</p>				
   				
   					<% if current_user.is_admin? %>
 
