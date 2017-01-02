@@ -3,8 +3,10 @@ class Loan < ApplicationRecord
 	belongs_to :user
 	
 
-	after_create :delete_empty, :assign_dates
+	after_create :delete_empty, :assign_dates, :record_history
 	validates :book, uniqueness: {}
+	validates :user, presence: true
+
 
 	private
 
