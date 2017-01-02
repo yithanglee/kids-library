@@ -1,5 +1,15 @@
-<h1>Staticpages#help</h1>
-<p>Find me in app/views/staticpages/help.html.erb</p>
+<style type="text/css">
 
+table.barby-barcode { border-spacing: 0; }
+tr.barby-row {}
+td.barby-cell { width: 3px; height: 30px; }
+td.barby-cell.on { background: #000; }
+
+</style>
+
+<h1>Staticpages#help</h1>
 
 <%= @lines %>
+
+<% barcode = Barby::Code128.new('P100100') %>
+<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>

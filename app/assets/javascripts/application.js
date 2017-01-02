@@ -23,7 +23,7 @@ $( document ).ready(function() {
 
 function countChar(val) {
   var len = val.value.length;
-  if (len >= 10) {
+  if (len >= 13) {
      $("#submit").focus();
       $("#submit").click();
   } else {
