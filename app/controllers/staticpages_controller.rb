@@ -50,6 +50,7 @@ def import_books
 end
 
 def print_book_barcodes
+  byebug
     require 'barby/barcode/ean_13'
     require 'barby/outputter/html_outputter'
     # outputter = Barby::HtmlOutputter.new(barcode)

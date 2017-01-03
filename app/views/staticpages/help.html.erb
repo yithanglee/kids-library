@@ -1,15 +1,15 @@
-<style type="text/css">
-
-table.barby-barcode { border-spacing: 0; }
-tr.barby-row {}
-td.barby-cell { width: 3px; height: 30px; }
-td.barby-cell.on { background: #000; }
-
-</style>
-
 <h1>Staticpages#help</h1>
 
-<%= @lines %>
+This is a box for you to key in so that it generates the barcode.
 
-<% barcode = Barby::EAN13.new("978962933600") %>
-<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
+This is to show you the list of barcode you want to generate.
+
+A button to generate the barcodes.
+
+A div to show the barcodes generated.
+
+<%= form_tag("/staticpages/print_book_barcodes", method: "post") do %>
+  <%= label_tag(:q, "Labels") %>
+  <%= text_area_tag(:q) %>
+  <%= submit_tag("Generate") %>
+<% end %>

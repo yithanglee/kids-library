@@ -1,0 +1,11 @@
+<style type="text/css">
+
+table.barby-barcode { border-spacing: 0; }
+tr.barby-row {}
+td.barby-cell { width: 3px; height: 30px; }
+td.barby-cell.on { background: #000; }
+
+</style>
+
+<% barcode = Barby::EAN13.new("978962933600") %>
+<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
