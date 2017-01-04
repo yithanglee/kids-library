@@ -6,6 +6,17 @@ td.barby-cell { width: 3px; height: 30px; }
 td.barby-cell.on { background: #000; }
 
 </style>
+<% if params[:q] %>
 
-<% barcode = Barby::EAN13.new("978962933600") %>
-<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
+	<div class="container-fluid">
+		<% @a.each do |x| %>
+		<div class="row">
+			<div class="col-lg-9">
+			<p><% barcode = Barby::Code128B.new(x) %>
+			<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
+			<%= x %></p>
+			</div>
+		</div>
+		<% end %>
+	</div>
+<% end %>

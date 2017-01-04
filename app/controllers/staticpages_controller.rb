@@ -50,12 +50,13 @@ def import_books
 end
 
 def print_book_barcodes
-  byebug
-    require 'barby/barcode/ean_13'
+    require 'barby'
+    require 'barby/barcode/code_128'
     require 'barby/outputter/html_outputter'
-    # outputter = Barby::HtmlOutputter.new(barcode)
-    # outputter.to_html
-    # barcode.to_html
+    if params[:q]
+    @a = params[:q].split()
+    end
+
 
 end
 

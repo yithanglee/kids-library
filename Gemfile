@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'prawn'
 gem 'will_paginate'
 gem 'responders'
 gem 'chunky_png'
