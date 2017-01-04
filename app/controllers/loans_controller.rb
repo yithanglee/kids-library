@@ -4,10 +4,11 @@ class LoansController < ApplicationController
   # GET /loans
   # GET /loans.json
   def index
-    if current_user.is_admin?
-    @loans = Loan.all
-    else
+    if current_user == nil
       require_login
+    elsif current_user.is_admin?
+      @loans = Loan.all
+    elsif !current_user.is_admin?
       @loans = Loan.where(user_id: current_user.id)
     end
   end

@@ -56,7 +56,7 @@ def print_book_barcodes
     if params[:q]
     @a = params[:q].split()
     end
-
+# pdf = WickedPdf.new.pdf_from_html_file('/staticpages/print_book_barcodes')
 
 end
 

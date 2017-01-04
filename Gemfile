@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'prawn'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
 gem 'will_paginate'
 gem 'responders'
 gem 'chunky_png'
