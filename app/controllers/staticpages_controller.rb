@@ -9,7 +9,12 @@ class StaticpagesController < ApplicationController
   end
 
   def help
-
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "help"   # Excluding ".pdf" extension.
+      end
+    end
   end
 
 
@@ -50,6 +55,12 @@ def import_books
 end
 
 def print_book_barcodes
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "print_book_barcodes"   # Excluding ".pdf" extension.
+      end
+    end
     require 'barby'
     require 'barby/barcode/code_128'
     require 'barby/outputter/html_outputter'

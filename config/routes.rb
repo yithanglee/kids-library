@@ -33,11 +33,11 @@ Rails.application.routes.draw do
 
 
   match '/search', to: "staticpages#search", via: 'post'
-  match '/staticpages/print_book_barcodes', to: "staticpages#print_book_barcodes", via: 'post'
-    match '/staticpages/print_book_barcodes', to: "staticpages#print_book_barcodes", via: 'get'
+  match '/staticpages/print_book_barcodes', to: "staticpages#print_book_barcodes", via: 'post', as: 'print_barcode'
+  match '/staticpages/print_book_barcodes', to: "staticpages#print_book_barcodes", via: 'get'
   root 'staticpages#home'
 
-  get 'staticpages/help'
+  get 'staticpages/help' => 'staticpages#help', as: 'help'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
