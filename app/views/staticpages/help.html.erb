@@ -12,4 +12,8 @@ A div to show the barcodes generated.
   <%= label_tag(:q, "Labels") %>
   <%= text_area_tag(:q) %>
   <%= submit_tag("Generate") %>
+<select name="format">
+    <option name="html">html</option>
+    <option name="pdf">pdf</option>
+</select>
 <% end %>
