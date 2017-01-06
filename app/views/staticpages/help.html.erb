@@ -2,18 +2,22 @@
 
 This is a box for you to key in so that it generates the barcode.
 
-This is to show you the list of barcode you want to generate.
-
-A button to generate the barcodes.
-
-A div to show the barcodes generated.
-
 <%= form_tag("/staticpages/print_book_barcodes", method: "post") do %>
   <%= label_tag(:q, "Labels") %>
-  <%= text_area_tag(:q) %>
+  <%= text_area_tag :q, nil, size: "25x10" %>
   <%= submit_tag("Generate") %>
 <select name="format">
     <option name="html">html</option>
+    <option name="pdf">pdf</option>
+</select>
+<% end %>
+
+
+<%= form_tag("/staticpages/print_member_cards", method: "post") do %>
+  <%= label_tag(:q, "Labels") %>
+  <%= text_area_tag :q, nil, size: "25x10" %>
+  <%= submit_tag("Generate") %>
+<select name="format">
     <option name="pdf">pdf</option>
 </select>
 <% end %>

@@ -55,15 +55,15 @@ def import_books
 end
 
 def print_book_barcodes
+    require 'barby'
+    require 'barby/barcode/code_128'
+    require 'barby/outputter/html_outputter'
     respond_to do |format|
       format.html
       format.pdf do
         render pdf: "print_book_barcodes"   # Excluding ".pdf" extension.
       end
     end
-    require 'barby'
-    require 'barby/barcode/code_128'
-    require 'barby/outputter/html_outputter'
     if params[:q]
     @a = params[:q].split()
     end
@@ -72,7 +72,18 @@ def print_book_barcodes
 end
 
 def print_member_cards
-  
+    require 'barby'
+    require 'barby/barcode/code_128'
+    require 'barby/outputter/html_outputter'
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "print_member_cards"   # Excluding ".pdf" extension.
+      end
+    end
+    if params[:q]
+    @a = params[:q].split()
+    end  
 end
 
 end

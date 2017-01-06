@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   match '/search', to: "staticpages#search", via: 'post'
   match '/staticpages/print_book_barcodes', to: "staticpages#print_book_barcodes", via: 'post', as: 'print_barcode'
   match '/staticpages/print_book_barcodes', to: "staticpages#print_book_barcodes", via: 'get'
+  match '/staticpages/print_member_cards', to: "staticpages#print_member_cards", via: 'post', as: 'print_member'
+  match '/staticpages/print_member_cards', to: "staticpages#print_member_cards", via: 'get'
   root 'staticpages#home'
 
   get 'staticpages/help' => 'staticpages#help', as: 'help'
