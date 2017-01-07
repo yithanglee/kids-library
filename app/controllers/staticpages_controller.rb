@@ -58,14 +58,14 @@ def print_book_barcodes
     require 'barby'
     require 'barby/barcode/code_128'
     require 'barby/outputter/html_outputter'
+    if params[:q]
+    @a = params[:q].split()
+    end
     respond_to do |format|
       format.html
       format.pdf do
         render pdf: "print_book_barcodes"   # Excluding ".pdf" extension.
       end
-    end
-    if params[:q]
-    @a = params[:q].split()
     end
 # pdf = WickedPdf.new.pdf_from_html_file('/staticpages/print_book_barcodes')
 
@@ -75,15 +75,15 @@ def print_member_cards
     require 'barby'
     require 'barby/barcode/code_128'
     require 'barby/outputter/html_outputter'
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render pdf: "print_member_cards"   # Excluding ".pdf" extension.
-      end
-    end
     if params[:q]
     @a = params[:q].split()
     end  
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "print_member_cards", :page_width => '12.405in', :page_height => '17.535in'
+      end
+    end
 end
 
 end

@@ -1,23 +1,26 @@
-<h1>Staticpages#help</h1>
+<div class="container-fluid">
+	
+	This is a box for you to key in so that it generates the barcode.
 
-This is a box for you to key in so that it generates the barcode.
-
-<%= form_tag("/staticpages/print_book_barcodes", method: "post") do %>
-  <%= label_tag(:q, "Labels") %>
-  <%= text_area_tag :q, nil, size: "25x10" %>
-  <%= submit_tag("Generate") %>
-<select name="format">
-    <option name="html">html</option>
-    <option name="pdf">pdf</option>
-</select>
-<% end %>
+	<%= form_tag("/staticpages/print_book_barcodes", method: "post") do %>
+	  <%= label_tag(:q, "Labels") %><br>
+	  <%= text_area_tag :q, nil, size: "25x10" %><br>
+	  <%= submit_tag("Generate") %>
+	<select name="format">
+	    <option name="pdf">pdf</option>
+	    <option name="html">html</option>
+	</select>
+	<% end %>
 
 
-<%= form_tag("/staticpages/print_member_cards", method: "post") do %>
-  <%= label_tag(:q, "Labels") %>
-  <%= text_area_tag :q, nil, size: "25x10" %>
-  <%= submit_tag("Generate") %>
-<select name="format">
-    <option name="pdf">pdf</option>
-</select>
-<% end %>
+	<%= form_tag("/staticpages/print_member_cards", method: "post") do %>
+	  <%= label_tag(:q, "Member IDs") %><br>
+	  <%= text_area_tag :q, nil, size: "25x10" %><br>
+	  <%= submit_tag("Generate") %>
+	<select name="format">
+	    <option name="pdf">pdf</option>
+	    <option name="html">html</option>
+	</select>
+	<% end %>
+
+</div>

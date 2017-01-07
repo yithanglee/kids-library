@@ -7,35 +7,30 @@
 
 	table.barby-barcode { border-spacing: 0; }
 	tr.barby-row {}
-	td.barby-cell { width: 0.5px; height: 20px; }
+	td.barby-cell { width: 0.01em; height: 40px; }
 	td.barby-cell.on { background: #000; }
 
 	</style>
   </head>
   <body onload='number_pages'>
-    <div id="header">
-    <h1>Shining Kids Library</h1>
-    </div>
     <div id="content">
-      <p>Barcode labels</p>
-<% if params[:q] %>
-	<% @a = params[:q].split() %>
 	<div class="container-fluid">
 		<% @a.each do |x| %>
-		<div class="row">
-			<div class="col-lg-9">
-			<p>
+		
+		<div style="border-radius:5px; border-size:0.1px; border-color: grey; border-style: dotted; width: 460px; float: left; margin: 5px; padding: 15px 15px;">
+			<div style="border-radius:5px; border-size:0.1px; border-color:#f4f4f4 ; border-style: solid; width: 400px; float: left; margin: 20px; padding: 10px 7px;">
+				<%= wicked_pdf_image_tag('shining-kids.jpg', size:'100')%><div style="float:right;"><h2>亮亮儿童图书管</h2></div><br>
 				<% b = User.find_by(member_id: x) %>
-				<%= b.name %>
-			</p>
-			<p><% barcode = Barby::Code128B.new(x) %>
-			<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
-			<%= x %></p>
+				<div style="font-size:25px; margin-top:10px;"><%= b.name %></div>
+				<div style="margin-bottom:10px;"><%= x %></div>
+				<% barcode = Barby::Code128B.new(x) %>
+				<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
 			</div>
 		</div>
+
+		
 		<% end %>
 	</div>
-<% end %>
 
     </div>
   </body>
