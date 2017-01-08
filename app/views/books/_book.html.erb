@@ -1,18 +1,15 @@
 <% if current_user == nil || !current_user.is_admin?%>
-  <div class="thumbnail">
-    <%= image_tag('shining-kids.jpg', size:'250')%>
-    <div class="caption">
-    <center>
-    <h4><%= book.name %></h4>
+
+   <div class="book_items"><%= link_to book.name, book_path(book) %>
         <%if book.loans.count > 0 %>
         <span class="label label-danger">Loaned</span>
         <% else %>
         <span class="label label-primary">Available</span>
         <% end %>
-    <p><%= link_to 'Show', book_path(book) , :class => 'btn btn-default' %></p>    
-    </center>
-    </div>
-  </div>
+   </div>    
+
+
+
 
 <% elsif current_user.is_admin? %>
   <tr class="list_book">
