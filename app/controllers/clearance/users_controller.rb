@@ -63,6 +63,12 @@ class Clearance::UsersController < Clearance::BaseController
       user.member_id = user_params[:member_id]
       user.phone = user_params[:phone]
       user.birthday = user_params[:birthday]
+      user.line1 = user_params[:line1]
+      user.line2 = user_params[:line2]
+      user.line3 = user_params[:line3]
+      user.postcode = user_params[:postcode]
+      user.city = user_params[:city]
+      user.state = user_params[:state]
 
     end
   end
@@ -72,7 +78,7 @@ class Clearance::UsersController < Clearance::BaseController
      Hash.new
     else
     # params[Clearance.configuration.user_parameter]
-    params.require(:user).permit(:name, :ic, :phone, :email, :birthday, :member_id, :password)
+    params.require(:user).permit(:name, :ic, :phone, :email, :birthday, :member_id, :password, :user_type, :chinese_name, :line1, :line2, :line3, :postcode, :city, :state)
     end
   end
 end

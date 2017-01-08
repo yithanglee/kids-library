@@ -19,12 +19,15 @@
 		
 		<div style="border-radius:5px; border-size:0.1px; border-color: grey; border-style: dotted; width: 460px; float: left; margin: 5px; padding: 15px 15px;">
 			<div style="border-radius:5px; border-size:0.1px; border-color:#f4f4f4 ; border-style: solid; width: 400px; float: left; margin: 20px; padding: 10px 7px;">
-				<%= wicked_pdf_image_tag('shining-kids.jpg', size:'100')%><div style="float:right;"><h2>亮亮儿童图书馆</h2></div><br>
-				<% User.find_by(member_id: x).nil? ? b = User.find_by(member_id: x).nil? : b = User.first %>
-				<div style="font-size:25px; margin-top:10px;"><%= b.name %></div>
-				<div style="margin-bottom:10px;"><%= x %></div>
+				<%= wicked_pdf_image_tag('shining-kids.jpg', size:'100')%><div style="float:right; margin-right:50px;"><h2>亮亮儿童图书馆</h2></div><br>
+				<% User.find_by(member_id: x).nil? ? b = User.first : b = User.find_by(member_id: x) %>
 				<% barcode = Barby::Code128B.new(x) %>
 				<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
+				<div style="margin-bottom:10px;"><%= x %></div>
+				<div style="font-size:15px; margin-top:10px;"><%= b.name %></div>
+				<div style="font-size:15px; margin-top:10px;"><%= b.chinese_name %></div>
+				<div style="font-size:10px; margin-top:10px;"><%= b.ic %></div>
+				<div style="font-size:10px; margin-top:10px;"><%= b.created_at.in_time_zone("Kuala Lumpur")  %></div>
 			</div>
 		</div>
 
