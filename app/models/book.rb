@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   has_many :users, through: :loans
   has_many :loans, dependent: :destroy
 
+  validates :name, uniqueness: true
 
 
 def self.quick_search(search)
