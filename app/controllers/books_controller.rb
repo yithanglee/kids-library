@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 
   def index
 
-    @books = Book.all.order('name ASC').paginate(:page => params[:page], :per_page => 60)
+    @books = Book.all.order('name ASC').paginate(:page => params[:page], :per_page => 40)
     @categories = Category.all
     @book = Book.new
 

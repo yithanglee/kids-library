@@ -7,7 +7,7 @@
 		  				<div class="panel-body">
 		  					<%= render @books %>
 						</div>
-							<div class="container-fluid"><%= will_paginate @books %></div>
+							<div class="pagination_light"><%= will_paginate @books, inner_window: 0, outer_window: 0 %></div>
 					</div>
 			</div>
 
