@@ -1,7 +1,7 @@
 <% if current_user == nil || !current_user.is_admin?%>
 
    <div class="book_items">
-   <%= link_to book.name, book_path(book) %>
+   <%= link_to book.name, book_path(book) %>, <%= book.barcode%>
         <%if book.loans.count > 0 %>
         <span class="label label-danger" style="float:left; margin-right:5px;">Loaned</span>
         <% else %>

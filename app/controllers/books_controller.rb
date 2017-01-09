@@ -123,6 +123,18 @@ class BooksController < ApplicationController
         end
   end
 
+  def list_by_category
+        @books = Category.find(params[:category]).books
+        if @books.blank?
+          redirect_to books_path, flash:{alert: "no successful search result"}
+        else
+          @books = @books.order('barcode ASC').paginate(:page => params[:page], :per_page => 40)
+          @categories = Category.all
+          @book = Book.new
+          render :index
+        end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_books

@@ -57,7 +57,8 @@ p, ol, ul, td {
 	float: left;
 	padding: 10px;
 	width: 700px;
-	height: 30px;
+	height: 35px;
+	font-size: 20px;
 }
 
 .pagination_light a {
@@ -77,5 +78,5 @@ a:hover, a:focus {
 	color: #fff;
 	background-color: #337ab7;
 	border-radius: 5px;
-	padding: 5px;
+	padding: 6px 12px;
 }

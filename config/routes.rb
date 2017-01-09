@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'quick_loan'
+      get 'list_by_category'
     end
   end
   
