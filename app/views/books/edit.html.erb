@@ -5,12 +5,19 @@
 		  <div class="panel-heading"><div class="container-fluid"><h1><%= @book.name %></h1></div></div>
 		  	
 		  		<div class="panel-body">
-		  					<b>Author:</b> <%= @book.author_1%><br>		
-		  					<b>Series:</b> <%= @book.series%><br>			  							
-								<b>Publisher:</b> <%= @book.publisher%><br>
-							  <b>Isbn:</b> <%= @book.isbn %><br>
-							  <b>Barcode:</b> <%= @book.barcode %>
-								
+						<%= render 'form' %>							
+
+								<%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
+					</div>
+
+		  </div>	
+	</div>
+
+	  <div class="col-lg-6">
+			<div class="panel panel-default">
+		  <div class="panel-heading"><h1>Editing book</h1></div>
+		  	<div class="panel-body">
+		  		
 		  					<% if current_user == nil || !current_user.is_admin? %>
 									<% if @book.loans.empty? %>
 										<p>This book is <span class="label label-primary">available</span> for loan.</p>
@@ -26,18 +33,7 @@
 										<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
 										<% end %>
 									</div>
-								<% end %>
-								<%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
-					</div>
-
-		  </div>	
-	</div>
-
-	  <div class="col-lg-6">
-			<div class="panel panel-default">
-		  <div class="panel-heading"><h1>Editing book</h1></div>
-		  	<div class="panel-body">
-		  		<%= render 'form' %>
+								<% end %>		  		
 				</div>
 			</div>
 		</div>

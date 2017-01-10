@@ -77,17 +77,21 @@ class BooksController < ApplicationController
   def update
     if @book.update_attributes(book_params)
       # the old - new category will remain the latest categories, so the old category need to remove the book, and insert the book into the category.
-      old_categories = @book.categories.all
-      old_categories.each do |x|
-        x.books.destroy(@book)
-      end
-         
-      @categories = params["book"]["categories"]
-        # create new category if didn't exist.
-        @categories.each do |x|
-          a = Category.find_by(name: x)
-          a.books << @book
-        end
+      # old_categories = @book.categories.all
+      # old_categories.each do |x|
+      #   x.books.destroy(@book)
+      # end
+      
+      # if !params["book"]["categories"].nil?
+      # @categories = params["book"]["categories"]
+      #   # create new category if didn't exist.
+      #   @categories.each do |x|
+      #     a = Category.find_by(name: x)
+      #     a.books << @book
+      #   end
+        
+      # end
+
 
 
       redirect_to book_path, notice: 'Book was successfully updated.'
@@ -161,6 +165,6 @@ class BooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def book_params
-      params.require(:book).permit(:name, :isbn, :barcode, :series, :volume, :publisher, :price, :author_1, :author_2, :author_3 )
+      params.require(:book).permit(:name, :isbn, :barcode, :series, :volume, :publisher, :price, :author_1, :author_2, :author_3, :image_url )
     end
 end

@@ -12,86 +12,103 @@
     </div>
   <% end %>
 
- <div class="form-group">
-    <%= f.label :name, :class => "col-lg-2 control-label" %>
-    <div class="col-lg-10">   
-      <%= f.text_field :name, :class => "form-control" %>
-    </div>
-  </div>
+  <% if !current_user.nil? and current_user.is_admin? %>
+
+       <div class="form-group">
+          <%= f.label :name, :class => "col-lg-2 control-label" %>
+          <div class="col-lg-10">   
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :series, :class => "col-lg-2 control-label"  %>
+          <div class="col-lg-6">  
+            <%= f.text_field :series, :class => "form-control"  %>
+          </div>
+
+          <%= f.label :volume, :class => "col-lg-2 control-label"  %>
+          <div class="col-lg-2">  
+            <%= f.text_field :volume, :class => "form-control"  %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :isbn, :class => "col-lg-2 control-label"  %>
+          <div class="col-lg-4">  
+            <%= f.text_field :isbn, :class => "form-control"  %>
+          </div>
+
+          <%= f.label :barcode, :class => "col-lg-2 control-label"  %>
+          <div class="col-lg-4">  
+          <%= f.text_field :barcode, :class => "form-control"  %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :publisher, :class => "col-lg-2 control-label"  %>
+          <div class="col-lg-5">  
+            <%= f.text_field :publisher, :class => "form-control"  %>
+          </div>
+
+          <%= f.label :price, :class => "col-lg-2 control-label"  %>
+              <div class="col-lg-3">  
+                <%= f.text_field :price, :class => "form-control"  %>
+          </div>
+        </div>  
+
+        <div class="form-group">
+          <%= f.label :author_1, :class => "col-lg-2 control-label"  %>
+            <div class="col-lg-10">  
+              <%= f.text_field :author_1, :class => "form-control"  %>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :author_2, :class => "col-lg-2 control-label"  %>
+          <div class="col-lg-10">  
+              <%= f.text_field :author_2, :class => "form-control"  %>
+          </div>
+        </div>  
+        
+        <div class="form-group">
+          <%= f.label :author_3, :class => "col-lg-2 control-label"  %>
+              <div class="col-lg-10">  
+                <%= f.text_field :author_3, :class => "form-control" %>
+          </div>
+        </div> 
+
+        <div class="form-group">
+       <%= f.label :Category, :class => "col-lg-2 control-label"  %>
+         <div style="width:100%; float:right;">
+            <% Category.all.each do |x| %>
+             <label class="checkbox-inline"> 
+                  <% if @book.categories.all.pluck(:name).include?(x.name) %>
+                    <%= check_box("book", "categories", {:multiple =>true, :checked => true }, x.name, nil) %>
+                  <% else %>
+                    <%= check_box("book", "categories", {:multiple =>true }, x.name, nil) %>
+                  <% end %>
+                  <%= x.name %> 
+             </label> 
+            <% end %> 
+         </div>
+        </div>
+
+
+  <% end %>
 
   <div class="form-group">
-    <%= f.label :series, :class => "col-lg-2 control-label"  %>
-    <div class="col-lg-6">  
-      <%= f.text_field :series, :class => "form-control"  %>
-    </div>
-
-    <%= f.label :volume, :class => "col-lg-2 control-label"  %>
-    <div class="col-lg-2">  
-      <%= f.text_field :volume, :class => "form-control"  %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :isbn, :class => "col-lg-2 control-label"  %>
-    <div class="col-lg-4">  
-      <%= f.text_field :isbn, :class => "form-control"  %>
-    </div>
-
-    <%= f.label :barcode, :class => "col-lg-2 control-label"  %>
-    <div class="col-lg-4">  
-    <%= f.text_field :barcode, :class => "form-control"  %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :publisher, :class => "col-lg-2 control-label"  %>
-    <div class="col-lg-5">  
-      <%= f.text_field :publisher, :class => "form-control"  %>
-    </div>
-
-    <%= f.label :price, :class => "col-lg-2 control-label"  %>
-        <div class="col-lg-3">  
-          <%= f.text_field :price, :class => "form-control"  %>
-    </div>
-  </div>  
-
-  <div class="form-group">
-    <%= f.label :author_1, :class => "col-lg-2 control-label"  %>
-      <div class="col-lg-10">  
-        <%= f.text_field :author_1, :class => "form-control"  %>
-      </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :author_2, :class => "col-lg-2 control-label"  %>
-    <div class="col-lg-10">  
-        <%= f.text_field :author_2, :class => "form-control"  %>
-    </div>
-  </div>  
-  
-  <div class="form-group">
-    <%= f.label :author_3, :class => "col-lg-2 control-label"  %>
+    <%= f.label :image_url, :class => "col-lg-2 control-label"  %>
         <div class="col-lg-10">  
-          <%= f.text_field :author_3, :class => "form-control" %>
+          <%= f.url_field :image_url, :class => "form-control" %>
     </div>
-  </div>  
+  </div>   
 
-  <div class="form-group">
- 
-    <% Category.all.each do |x| %>
-     <label class="checkbox-inline"> 
-          <% if @book.categories.all.pluck(:name).include?(x.name) %>
-            <%= check_box("book", "categories", {:multiple =>true, :checked => true }, x.name, nil) %>
-          <% else %>
-            <%= check_box("book", "categories", {:multiple =>true }, x.name, nil) %>
-          <% end %>
-          <%= x.name %> 
-     </label> 
-    <% end %> 
-  </div>
 
   <%= f.submit 'Save book', :class => "btn btn-default"%>
+  <% if !current_user.nil? and current_user.is_admin? %>
   <%= link_to 'Destroy',book_path(@book), data: {confirm: 'Are you sure?'} ,:method => :delete, :class => "btn btn-default"%>
+  <% end %>
 <% end %>
 
 

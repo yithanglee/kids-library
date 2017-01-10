@@ -75,8 +75,8 @@ p, ol, ul, td {
 }
 
 a:hover, a:focus {
-	color: #fff;
-	background-color: #337ab7;
+	color: #6c6c6c;
+	background-color: rgba(255, 255, 255, 0);
 	border-radius: 5px;
 }
 
@@ -114,4 +114,14 @@ body {
 	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 	-o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+
+.background {
+	position: absolute;
+	opacity: 0.2;
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	width: 100%;
 }

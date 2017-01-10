@@ -1,18 +1,37 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-lg-8">
+		<div class="col-lg-6">
 			<div class="panel panel-default">
-
 					<div class="panel-heading">
 						<h1><%= @book.name %></h1>by <%= @book.author_1%>
 					</div>
 		  		<div class="panel-body">
+<div style="float:left;">
+<% if @book.image_url == nil or @book.image_url == ''%>
+<%= image_tag('shining-kids.jpg')%>
+<% else %>
+<%= image_tag(@book.image_url, width: '320')%>
+<% end %>
+</div>
+<div style="float: left; width: 500px; padding: 20px;">
 		  					<b>Author:</b> <%= @book.author_1%><br>		
 		  					<b>Series:</b> <%= @book.series%><br>			  							
 								<b>Publisher:</b> <%= @book.publisher%><br>
 							  <b>Isbn:</b> <%= @book.isbn %><br>
-							  <b>Barcode:</b> <%= @book.barcode %>
+							  <b>Barcode:</b> <%= @book.barcode %><br>
+							  <b>Image_url:</b> <%= @book.image_url %><br>
+</div>
 
+					</div>
+
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1>Loan Details</h1>
+					</div>
+		  		<div class="panel-body">
 		  					<% if current_user == nil || !current_user.is_admin? %>
 									<% if @book.loans.empty? %>
 										<p>This book is <span class="label label-primary">available</span> for loan.</p>
@@ -24,17 +43,19 @@
 							    <div class="panel-body" style="border-style:dotted; border-width: 1px; margin-top:5px; margin-bottom:5px;">	
 				  					<% if @book.loans.empty? %>
 										<%= render 'loans/form_quick' %>
-										<%= link_to 'Edit', edit_book_path(@book) , :class => 'btn btn-default' %>
 										<% else %>
 										<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
 										<% end %>
 									</div>
-								<% end %>
+								<% end %>				
+							  
+
 					</div>
 
 			</div>
 		</div>	
 	</div>
+<%= link_to 'Edit', edit_book_path(@book) , :class => 'btn btn-default' %>
 <%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
 </div>
 			

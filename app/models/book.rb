@@ -9,9 +9,28 @@ class Book < ApplicationRecord
   validates :name, uniqueness: true
 
   after_create :categorize
-
+  after_update :categorize_update
 
 def categorize
+  case self.barcode[0]
+  when "E"
+    self.categories << Category.find_by(name:'English')
+  when "P"
+    self.categories << Category.find_by(name:'Picture')
+  when "R"
+    self.categories << Category.find_by(name:'Religion')
+  when "T"
+    self.categories << Category.find_by(name:'Teaching')
+  when "O"
+    self.categories << Category.find_by(name:'Other')           
+  end
+end
+
+def categorize_update
+  old_categories = self.categories.all
+  old_categories.each do |x|
+    x.books.destroy(self)
+  end
   case self.barcode[0]
   when "E"
     self.categories << Category.find_by(name:'English')
