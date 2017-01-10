@@ -12,21 +12,18 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :member_id, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :member_id, :class => "form-control" %></div>
-  </div>
 
-<% if current_user == nil %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => "col-lg-1 control-label"  %>
+    <div class="col-lg-6"> <%= f.text_field :name, :class => "form-control" %></div>
+  </div>
+<% if current_user == nil or current_user.is_admin? %>
   <div class="form-group">
     <%= f.label :password, :class => "col-lg-1 control-label"  %>
     <div class="col-lg-6"> <%= f.text_field :password, :class => "form-control" %></div>
   </div>
 <% end %>
-  <div class="form-group">
-    <%= f.label :name, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :name, :class => "form-control" %></div>
-  </div>
 
   <div class="form-group">
     <%= f.label :chinese_name, :class => "col-lg-1 control-label"  %>
@@ -76,11 +73,16 @@
     <div class="col-lg-6"> <%= f.date_select :birthday, :start_year =>  Date.today.year - 50, :end_year => Date.today.year + 0 %></div>
   </div>
 
+<% if !current_user.nil? and current_user.is_admin? %>
   <div class="form-group">
     <%= f.label :user_type, :class => "col-lg-1 control-label"  %>
     <div class="col-lg-6"> <%= f.select(:user_type, [['Parents', 'parents'],['Children', 'children'],['Admin', 'admin']])%></div>
   </div>
-
+  <div class="form-group">
+    <%= f.label :memberid, :class => "col-lg-1 control-label"  %>
+    <div class="col-lg-6"> <%= f.text_field :member_id, :class => "form-control" %></div>
+  </div>
+<% end %>
   <div class="actions">
     <%= f.submit 'Submit', :class => "btn btn-default" %>
   </div>
