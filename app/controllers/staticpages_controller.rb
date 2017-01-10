@@ -29,6 +29,7 @@ class StaticpagesController < ApplicationController
 		end
 
 		n = @lines.count
+
 		header = @lines[0].chop.split(",")
 		validate = ["TITLE", "AUTHOR", "COAUTHORS", "PUBLISHER", "SERIES", "VOLUME", "EDITION", "ISBN", "BARCODE", "PRICE"]
 		@book_saved = 0
@@ -41,7 +42,7 @@ class StaticpagesController < ApplicationController
 		CSV.open( file, 'w' ) do |writer|
 			writer << validate
 			for i in (1..n-1)
-			row = @lines[i].chop.split("\t")
+			row = @lines[i].chop.split(",")
 				@book = Book.new(
 				name: row[0],
 				author_1: row[1],
