@@ -90,7 +90,7 @@ class BooksController < ApplicationController
         end
 
 
-      redirect_to books_path, notice: 'Book was successfully updated.'
+      redirect_to book_path, notice: 'Book was successfully updated.'
     else
       render action: 'edit'
     end

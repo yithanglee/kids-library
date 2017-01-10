@@ -2,39 +2,39 @@
 	<div class="row">
 		<div class="col-lg-8">
 			<div class="panel panel-default">
-			<div class="panel-heading"><div class="container-fluid"><h1><%= @book.name %></h1>by <%= @book.author_1%></div></div>
-  				<div class="panel-body">
-  					<p>
-						<b>Publisher:</b>
-						<%= @book.publisher%>
-						</br>
-					  	<b>Isbn:</b>
-					  	<%= @book.isbn %>
-					  	</br>
-					  	<b>Barcode:</b>
-					  	<%= @book.barcode %>
-					</p>				  				
-  					<% if current_user == nil || !current_user.is_admin? %>
-						<% if @book.loans.empty? %>
-							<p>This book is <span class="label label-primary">available</span> for loan.</p>
-						<% else %>
-							<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
-						<% end %>
 
-					<% elsif current_user.is_admin? %>
-					    <div class="panel-body">
-		  					<% if @book.loans.empty? %>
-								<%= render 'loans/form_quick' %>
-								<%= link_to 'Edit', edit_book_path(@book) , :class => 'btn btn-default' %>
-							<% else %>
-								<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
-							<% end %>
-						</div>
-					<% end %>
-				</div>
+					<div class="panel-heading">
+						<h1><%= @book.name %></h1>by <%= @book.author_1%>
+					</div>
+		  		<div class="panel-body">
+		  					<b>Author:</b> <%= @book.author_1%><br>		
+		  					<b>Series:</b> <%= @book.series%><br>			  							
+								<b>Publisher:</b> <%= @book.publisher%><br>
+							  <b>Isbn:</b> <%= @book.isbn %><br>
+							  <b>Barcode:</b> <%= @book.barcode %>
+
+		  					<% if current_user == nil || !current_user.is_admin? %>
+									<% if @book.loans.empty? %>
+										<p>This book is <span class="label label-primary">available</span> for loan.</p>
+									<% else %>
+										<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
+									<% end %>
+
+								<% elsif current_user.is_admin? %>
+							    <div class="panel-body" style="border-style:dotted; border-width: 1px; margin-top:5px; margin-bottom:5px;">	
+				  					<% if @book.loans.empty? %>
+										<%= render 'loans/form_quick' %>
+										<%= link_to 'Edit', edit_book_path(@book) , :class => 'btn btn-default' %>
+										<% else %>
+										<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
+										<% end %>
+									</div>
+								<% end %>
+					</div>
+
 			</div>
 		</div>	
 	</div>
+<%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
 </div>
 			
-<%= link_to 'Back', books_path, :class => 'btn btn-default' %>
