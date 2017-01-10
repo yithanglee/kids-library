@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   match '/staticpages/print_book_barcodes', to: "staticpages#print_book_barcodes", via: 'get'
   match '/staticpages/print_member_cards', to: "staticpages#print_member_cards", via: 'post', as: 'print_member'
   match '/staticpages/print_member_cards', to: "staticpages#print_member_cards", via: 'get'
+  match '/staticpages/import_books', to: "staticpages#import_books", via: 'post', as: 'import_books'  
   root 'staticpages#home'
 
   get 'staticpages/help' => 'staticpages#help', as: 'help'

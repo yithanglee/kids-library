@@ -1,26 +1,67 @@
-<div class="container-fluid">
-	
-	This is a box for you to key in so that it generates the barcode.
 
-	<%= form_tag("/staticpages/print_book_barcodes", method: "post") do %>
-	  <%= label_tag(:q, "Labels") %><br>
-	  <%= text_area_tag :q, nil, size: "25x10" %><br>
-	  <%= submit_tag("Generate") %>
-	<select name="format">
-	    <option name="pdf">pdf</option>
-	    <option name="html">html</option>
-	</select>
-	<% end %>
+	<div class="container-fluid">
+			<div class="row">
+
+				<div class="col-lg-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Generate Barcode</h3>
+						</div>
+					<div class="panel-body">
+						This is a box for you to key in so that it generates the barcode.
+
+						<%= form_tag("/staticpages/print_book_barcodes", method: "post") do %>
+						  <%= label_tag(:q, "Labels") %><br>
+						  <%= text_area_tag :q, nil, size: "25x10" %><br>
+						  <%= submit_tag("Generate") %>
+						<select name="format">
+						    <option name="pdf">pdf</option>
+						    <option name="html">html</option>
+						</select>
+						<% end %>
+					</div>
+						
+					</div>
+				</div>
 
 
-	<%= form_tag("/staticpages/print_member_cards", method: "post") do %>
-	  <%= label_tag(:q, "Member IDs") %><br>
-	  <%= text_area_tag :q, nil, size: "25x10" %><br>
-	  <%= submit_tag("Generate") %>
-	<select name="format">
-	    <option name="pdf">pdf</option>
-	    <option name="html">html</option>
-	</select>
-	<% end %>
+				<div class="col-lg-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Generate Member Card</h3>
+						</div>					
+					<div class="panel-body">
+						<%= form_tag("/staticpages/print_member_cards", method: "post") do %>
+						  <%= label_tag(:q, "Member IDs") %><br>
+						  <%= text_area_tag :q, nil, size: "25x10" %><br>
+						  <%= submit_tag("Generate") %>
+						<select name="format">
+						    <option name="pdf">pdf</option>
+						    <option name="html">html</option>
+						</select>
+						<% end %>
+					</div>
+					</div>
+				</div>
 
-</div>
+				<div class="col-lg-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">File Upload</h3>
+						</div>					
+					<div class="panel-body">
+						<%= form_tag({action: :import_books}, multipart: true) do %>
+							<%= label_tag('upload_file') %><br>
+						  <%= file_field_tag 'upload_file' %>
+						  <%= submit_tag('upload')%>
+						<% end %>
+					</div>
+					</div>
+				</div>
+			</div>
+
+	</div>
+
+
+
+
