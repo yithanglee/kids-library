@@ -29,7 +29,6 @@ class StaticpagesController < ApplicationController
 		end
 
 		n = @lines.count
-				byebug
 		header = @lines[0].chop.split(",")
 		validate = ["TITLE", "AUTHOR", "COAUTHORS", "PUBLISHER", "SERIES", "VOLUME", "EDITION", "ISBN", "BARCODE", "PRICE"]
 		@book_saved = 0
