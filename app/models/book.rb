@@ -8,6 +8,23 @@ class Book < ApplicationRecord
 
   validates :name, uniqueness: true
 
+  after_create :categorize
+
+
+def categorize
+  case self.barcode[0]
+  when "E"
+    self.categories << Category.find_by(name:'English')
+  when "P"
+    self.categories << Category.find_by(name:'Picture')
+  when "R"
+    self.categories << Category.find_by(name:'Religion')
+  when "T"
+    self.categories << Category.find_by(name:'Teaching')
+  when "O"
+    self.categories << Category.find_by(name:'Other')           
+  end
+end
 
 def self.quick_search(search)
 

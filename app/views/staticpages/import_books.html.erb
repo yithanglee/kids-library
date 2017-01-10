@@ -1,23 +1,42 @@
-saved: <%= @book_save %><br>
+saved: <%= @book_saved %><br>
 failed: <%= @book_not_save %><br>
-
+<%= link_to "Raw blast output", "/data.csv" %><br>
 <table class="table">
-	<% @lines.each do |line| %>
-		<%row = line.chop.split("\t")%>
+	<% @unsaved.each do |line| %>
+		
 	<tr>
-			<td><%=row[0]%></td>
-			<td><%=row[1]%></td>
-			<td><%=row[2]%></td>
-			<td><%=row[3]%></td>
-			<td><%=row[4]%></td>
-			<td><%=row[5]%></td>
-			<td><%=row[6]%></td>
-			<td><%=row[7]%></td>
-			<td><%=row[8]%></td>
-			<td><%=row[9]%></td>
+			<td><%=line.name%></td>
+			<td><%=line.author_1%></td>
+			<td><%=line.author_2%></td>
+			<td><%=line.publisher%></td>
+			<td><%=line.series%></td>
+			<td><%=line.volume%></td>
+			<td><%=line.isbn%></td>
+			<td><%=line.barcode%></td>
+			<td><%=line.price%></td>
 	</tr>
 	<% end%>
 
 </table>
+
+<table class="table">
+	<% @saved.each do |line| %>
+		
+	<tr>
+			<td><%=line.name%></td>
+			<td><%=line.author_1%></td>
+			<td><%=line.author_2%></td>
+			<td><%=line.publisher%></td>
+			<td><%=line.series%></td>
+			<td><%=line.volume%></td>
+			<td><%=line.isbn%></td>
+			<td><%=line.barcode%></td>
+			<td><%=line.price%></td>
+	</tr>
+	<% end%>
+
+</table>
+
+
 
 <%= link_to "Home", root_path, :class => "btn btn-default"%>
