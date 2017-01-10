@@ -42,13 +42,6 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-
-       @categories = params["book"]["categories"]
-        # create new category if didn't exist.
-        @categories.each do |x|
-          a = Category.find_by(name: x)
-          a.books << @book
-        end
              
       redirect_to( @book, notice: 'Book was successfully created.')
     else

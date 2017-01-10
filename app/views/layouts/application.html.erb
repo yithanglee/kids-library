@@ -27,8 +27,8 @@
             </ul>
        </li>
        <li> <%= link_to "loans", loans_url %></li>
-       <li> <%= link_to "help", '/staticpages/help' %></li>
        <% if !current_user.nil? and current_user.is_admin? %>  
+       <li> <%= link_to "help", '/staticpages/help' %></li>
          <li>
           <%= form_for Book.new, :url => url_for(:controller => '/books', :action => 'quick_loan'), :method => 'get', html: { class: "navbar-form navbar-left"} do |f| %>
             <%= text_field_tag :user, params[:user], placeholder: "Member ID", :onkeyup => 'countMemberId(this)' %>
@@ -65,10 +65,35 @@
             <%end %>
         <% end %>
       </div>
-    </div>
     </center>
+    </div>
+    <div class="container-fluid" style="min-height: 650px;">
     <%= yield %>
-    <footer>
+    </div>
+    <footer class="footer">
+      <div class="container-fluid" style="padding:20px; color:grey;">
+        <div class="row">
+          <div class="col-lg-4">
+            <h2>图书馆开放时间：</h2>
+              <div>星期六 早上10点至下午1点 & 下午2点至下午5点</div>
+              <div>星期日 早上10点至早上10点半 & 下午12点至下午1点</div>
+              <div>公共假期休息</div>
+          </div>
+          <div class="col-lg-4">
+            <h2>亮亮亲子共读会：</h2>
+            <div>每个月第三个星期六</div>
+            <div>早上10点半至中午12点半</div>
+          </div>
+          <div class="col-lg-4">
+          <h2>地址：</h2>
+            <div>20A, JLN PSK8, </div>
+            <div>PUSAT PERDAGANGAN SERI KEMBANGAN, </div>
+            <div>43300 S.K. </div>
+            <div>联络人：翠美 017-622 1415</div>
+          </div>
+        </div>
+      </div>
+
 
      </footer>
   </body>
