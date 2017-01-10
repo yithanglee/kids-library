@@ -4,8 +4,14 @@ class BooksController < ApplicationController
 
 
   def index
-
-    @books = Book.all.order('name ASC').paginate(:page => params[:page], :per_page => 40)
+    if current_user.nil?
+      show_item = 40
+    elsif current_user.is_admin?
+      show_item = 10
+    else
+      show_item = 40
+    end
+    @books = Book.all.order('name ASC').paginate(:page => params[:page], :per_page => show_item)
     @categories = Category.all
     @book = Book.new
 
@@ -129,7 +135,14 @@ class BooksController < ApplicationController
         if @books.blank?
           redirect_to books_path, flash:{alert: "no successful search result"}
         else
-          @books = @books.order('barcode ASC').paginate(:page => params[:page], :per_page => 40)
+          if current_user.nil?
+            show_item = 40
+          elsif current_user.is_admin?
+            show_item = 10
+          else
+            show_item = 40
+          end
+          @books = @books.order('barcode ASC').paginate(:page => params[:page], :per_page => show_item)
           @categories = Category.all
           @book = Book.new
           render :index

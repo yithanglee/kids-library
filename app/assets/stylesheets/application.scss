@@ -78,5 +78,15 @@ a:hover, a:focus {
 	color: #fff;
 	background-color: #337ab7;
 	border-radius: 5px;
-	padding: 6px 12px;
+}
+
+.navbar input {
+	width: 180px;
+	font-size: 16px !important;
+}
+
+.navbar #submit {
+	width: 100px;
+	padding: 2px;
+	text-transform: capitalize;
 }
