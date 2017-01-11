@@ -57,7 +57,7 @@
           <%= current_user.email %>
           <%= button_to "Sign out", sign_out_path, method: :delete %>
           <% else %>
-          <%= link_to "Sign in", sign_in_path %>
+          <%= link_to "Sign in", sign_in_path, :class => 'btn btn-default'%>
         <% end %></li>
       </ul>
       </div>
@@ -83,7 +83,7 @@
     <%= yield %>
     </div>
     <footer class="footer">
-      <div class="container-fluid" style="padding:20px; color:grey;">
+      <div class="container-fluid" style="padding:20px; color:black;">
         <div class="row">
           <div class="col-lg-4">
             <h2>图书馆开放时间：</h2>

@@ -159,6 +159,23 @@ body {
 	min-height: 650px; position:relative;
 }
 
+.navbar-default .navbar-nav > li > a {
+	color: #000;
+}
+
+.navbar-default .navbar-brand {
+	color: #000;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+	color: #000;
+	background-color: transparent;
+}
+
+.nav .btn.btn-default {
+	padding: 0px 30px;
+	margin-top: 8px;
+}
+
 @media (min-width: 360px) and (max-width: 768px) {
 
 .overlay {
@@ -179,28 +196,71 @@ body {
 }
 
 .container-fluid h1 {
-	font-size:30px;
+	font-size:40px;
+}
+.container-fluid h2 {
+	font-size: 30px;
 }
 
 .container-fluid h3 {
-	font-size:20px;
+	font-size:25px;
 }
 
 .container-fluid p {
-	font-size: 10px;
-	line-height: 15px;
-}
-
-.container-fluid h2 {
 	font-size: 20px;
+	line-height: 22px;
 }
 
 .container-fluid div {
-	font-size: 10px;
+	font-size: 20px;
 }
 
 #homepage {
-	min-height: 500px; position:relative;
+	min-height: 800px; position:relative;
+}
+
+.panel-body p {
+	font-size: 20px;
+	color: black;
+}
+
+p, ol, ul, td {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 18px;
+	line-height: 18px;
+	margin: 20px;
+}
+
+.pagination_light a {
+	border-style: solid;
+	padding: 5px;
+	border-radius: 5px;
+	border-width: 1px;
+	line-height: 3;
+}
+
+.navbar-default .navbar-brand {
+	color: #777;
+	width: 200px;
+	height: 60px;
+}
+
+.navbar-form {
+	margin-left: -15px;
+	margin-right: -15px;
+	padding: 10px 30px;
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.navbar input {
+	width: 300px;
+	font-size: 16px !important;
+	margin: 5px;
 }
 
 }
@@ -241,4 +301,10 @@ body {
     .collapsing {
         overflow: hidden!important;
     }
+
+    .navbar-collapse .btn.btn-default {
+	width: 100px;
+	float: left;
+	margin:15px;
+}
 }
