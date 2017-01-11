@@ -159,7 +159,7 @@ body {
 	min-height: 650px; position:relative;
 }
 
-@media only screen and (max-width: 360px) {
+@media (min-width: 360px) and (max-width: 768px) {
 
 .overlay {
 	background-color: black;
@@ -205,7 +205,7 @@ body {
 
 }
 
-@media (max-width: 360px) {
+@media (min-width: 360px) and (max-width: 768px) {
     .navbar-header {
         float: none;
     }
