@@ -176,7 +176,7 @@ body {
 	margin-top: 8px;
 }
 
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
 
 .overlay {
 	background-color: black;
@@ -216,7 +216,7 @@ body {
 }
 
 #homepage {
-	min-height: 800px; position:relative;
+	min-height: 900px; position:relative;
 }
 
 .panel-body p {
@@ -245,6 +245,15 @@ p, ol, ul, td {
 	height: 60px;
 }
 
+.navbar-brand {
+	float: left;
+	padding: 15px 15px;
+	font-size: 18px;
+	line-height: 20px;
+	height: 60px;
+	width: 200px;
+}
+
 .navbar-form {
 	margin-left: -15px;
 	margin-right: -15px;
@@ -258,14 +267,14 @@ p, ol, ul, td {
 }
 
 .navbar input {
-	width: 300px;
+	width: 270px;
 	font-size: 16px !important;
 	margin: 5px;
 }
 
 }
 
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
     .navbar-header {
         float: none;
     }
