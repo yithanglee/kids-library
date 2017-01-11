@@ -131,10 +131,13 @@ body {
 	padding-top: 30px;
 	padding-bottom: 30px;
 	margin-bottom: 30px;
-	background-image: asset-data-url("splash.jpg");
-	height: 600px;
-	background-size: 100%;
-}
+	background-image: asset-url("splash.jpg");
+	background-repeat: no-repeat;
+	background-size: 3000px;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	}
 
 .jumbotron p {
 	margin-bottom: 15px;
@@ -143,3 +146,61 @@ body {
 	line-height: 25px;
 }
 
+.jumbotron h1, h3, p {
+	color: white;
+}
+
+.content {
+	z-index: 100;
+	position: absolute;
+}
+
+#homepage {
+	min-height: 650px; position:relative;
+}
+
+@media only screen and (max-width: 768px) {
+
+.overlay {
+	background-color: black;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+	position: absolute;
+	bottom: 0;
+	opacity: 0.5;
+	left: 0;
+}
+
+.content {
+	z-index: 100;
+	position: absolute;
+	width: 80%;
+}
+
+.container-fluid h1 {
+	font-size:100px;
+}
+
+.container-fluid h3 {
+	font-size:80px;
+}
+
+.container-fluid p {
+	font-size: 40px;
+	line-height: 45px;
+}
+
+.container-fluid h2 {
+	font-size: 90px;
+}
+
+.container-fluid div {
+	font-size: 40px;
+}
+
+#homepage {
+	min-height: 1700px; position:relative;
+}
+
+}
