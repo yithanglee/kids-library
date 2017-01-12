@@ -15,76 +15,77 @@
 
 
   <div class="form-group">
-    <%= f.label :name, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :name, :class => "form-control" %></div>
+    <%= f.label :name, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :name, :class => "form-control" %></div>
   </div>
 <% if current_user == nil or current_user.is_admin? %>
   <div class="form-group">
-    <%= f.label :password, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :password, :class => "form-control" %></div>
+    <%= f.label :password, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :password, :class => "form-control" %></div>
   </div>
 <% end %>
 
   <div class="form-group">
-    <%= f.label :chinese_name, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :chinese_name, :class => "form-control" %></div>
+    <%= f.label :chinese_name, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :chinese_name, :class => "form-control" %></div>
   </div>
 
   <div class="form-group">
-    <%= f.label :ic, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :ic, :class => "form-control" %></div>
+    <%= f.label :ic, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :ic, :class => "form-control" %></div>
   </div>
 
   <div class="form-group">
-    <%= f.label :email, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :email, :class => "form-control" %></div>
+    <%= f.label :email, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :email, :class => "form-control" %></div>
   </div>
   <div class="form-group">
-    <%= f.label :phone, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :phone, :class => "form-control" %></div>
+    <%= f.label :phone, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :phone, :class => "form-control" %></div>
   </div>
 
 
 
   <div class="form-group">
-    <%= f.label :line1, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :line1, :class => "form-control" %></div>
+    <%= f.label :line1, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :line1, :class => "form-control" %></div>
   </div>
   <div class="form-group">
-    <%= f.label :line2, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :line2, :class => "form-control" %></div>
+    <%= f.label :line2, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :line2, :class => "form-control" %></div>
   </div>    
   <div class="form-group">
-    <%= f.label :postcode, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :postcode, :class => "form-control" %></div>
+    <%= f.label :postcode, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :postcode, :class => "form-control" %></div>
   </div>
   <div class="form-group">
-    <%= f.label :city, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :city, :class => "form-control" %></div>
+    <%= f.label :city, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :city, :class => "form-control" %></div>
   </div>
   <div class="form-group">
-    <%= f.label :state, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :state, :class => "form-control" %></div>
+    <%= f.label :state, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :state, :class => "form-control" %></div>
   </div>
 
 
   <div class="form-group">
-    <%= f.label :birthday, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.date_select :birthday, :start_year =>  Date.today.year - 50, :end_year => Date.today.year + 0 %></div>
+    <%= f.label :birthday, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.date_select :birthday, :start_year =>  Date.today.year - 50, :end_year => Date.today.year + 0 %></div>
   </div>
 
 <% if !current_user.nil? and current_user.is_admin? %>
   <div class="form-group">
-    <%= f.label :user_type, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.select(:user_type, [['Parents', 'parents'],['Children', 'children'],['Admin', 'admin']])%></div>
+    <%= f.label :user_type, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.select(:user_type, [['Parents', 'parents'],['Children', 'children'],['Admin', 'admin']])%></div>
   </div>
   <div class="form-group">
-    <%= f.label :memberid, :class => "col-lg-1 control-label"  %>
-    <div class="col-lg-6"> <%= f.text_field :member_id, :class => "form-control" %></div>
+    <%= f.label :memberid, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :member_id, :class => "form-control" %></div>
   </div>
 <% end %>
   <div class="actions">
     <%= f.submit 'Submit', :class => "btn btn-default" %>
+    <%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
   </div>
 <% end %>
 </div>

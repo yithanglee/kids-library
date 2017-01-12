@@ -12,18 +12,22 @@ class Book < ApplicationRecord
   after_update :categorize_update
 
 def categorize
-  case self.barcode[0]
-  when "E"
-    self.categories << Category.find_by(name:'English')
-  when "P"
-    self.categories << Category.find_by(name:'Picture')
-  when "R"
-    self.categories << Category.find_by(name:'Religion')
-  when "T"
-    self.categories << Category.find_by(name:'Teaching')
-  when "O"
-    self.categories << Category.find_by(name:'Other')           
+
+  if self.barcode != nil
+    case self.barcode[0]
+    when "E"
+      self.categories << Category.find_by(name:'English')
+    when "P"
+      self.categories << Category.find_by(name:'Picture')
+    when "R"
+      self.categories << Category.find_by(name:'Religion')
+    when "T"
+      self.categories << Category.find_by(name:'Teaching')
+    when "O"
+      self.categories << Category.find_by(name:'Other')
+    end
   end
+
 end
 
 def categorize_update

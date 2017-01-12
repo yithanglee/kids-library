@@ -7,7 +7,7 @@ class LoansController < ApplicationController
     if current_user == nil
       require_login
     elsif current_user.is_admin?
-      @loans = Loan.all
+      @loans = Loan.all.order('return_date ASC')
     elsif !current_user.is_admin?
       @loans = Loan.where(user_id: current_user.id)
     end

@@ -10,10 +10,10 @@
   </div>
 
   <div class="submit-field">
-    <%= form.submit %>
+    <%= form.submit 'Sign In', :class => 'btn btn-default' %>
+  <%= link_to 'Register', sign_up_path, :class => 'btn btn-default' %>
   </div>
 
   <div class="other-links">
-  <%= link_to 'Register', sign_up_path %>
   </div>
 <% end %>

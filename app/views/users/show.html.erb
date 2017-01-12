@@ -1,28 +1,65 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>MemberID:</strong>
-  <%= @user.member_id %>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class="row">
+      <div class="col-lg-4">
+        <div class="panel panel-primary">
+        <div class="panel-heading"><Strong>Profile</strong></div>
+          <div class="panel-body">
+            <strong>MemberID:</strong>
+            <%= @user.member_id %><br>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+            <strong>Name:</strong>
+            <%= @user.name %><br>
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @user.birthday %>
-</p>
+            <strong>Chinese Name:</strong>
+            <%= @user.chinese_name %><br>
 
-<p>
-  <strong>Type:</strong>
-  <%= @user.user_type %>
-</p>
+            <strong>Email:</strong>
+            <%= @user.email %><br>
 
+            <strong>Birthday:</strong>
+            <%= @user.birthday %><br>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+            <strong>Type:</strong>
+            <%= @user.user_type %><br>
+
+          <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-default' %>
+          <%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
+          </div>
+
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="panel panel-primary">
+    <div class="panel-heading"><Strong>Loan Details</strong></div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Loan date</th>
+            <th>Return date</th>
+            <th>Book</th>
+            <th>Image</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @loans.each do |loan| %>
+            <tr>
+              <td><%= loan.loan_date %></td>
+              <td><%= loan.return_date %></td>
+              <td><%= loan.book.name %></td>
+              <td>
+<% if loan.book.image_url == nil or loan.book.image_url == ''%>
+<%= image_tag('shining-kids.jpg', width: '160')%>
+<% else %>             
+              <%= image_tag(loan.book.image_url, width: '160')%>
+ <% end %>               
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>

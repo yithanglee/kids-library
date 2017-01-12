@@ -1,24 +1,28 @@
-<p id="notice"><%= notice %></p>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+				
+				  <strong>Loan date:</strong>
+				  <%= @loan.loan_date %><br>
+				
 
-<p>
-  <strong>Loan date:</strong>
-  <%= @loan.loan_date %>
-</p>
+				
+				  <strong>Return date:</strong>
+				  <%= @loan.return_date %><br>
+				
 
-<p>
-  <strong>Return date:</strong>
-  <%= @loan.return_date %>
-</p>
+				
+				  <strong>Book:</strong>
+				  <%= @loan.book_id %><br>
+				
+				  <strong>User:</strong>
+				  <%= @loan.user_id %><br>
+				
 
-<p>
-  <strong>Book:</strong>
-  <%= @loan.book_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @loan.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_loan_path(@loan) %> |
-<%= link_to 'Back', loans_path %>
+				<%= link_to 'Edit', edit_loan_path(@loan) %> |
+				<%= link_to 'Back', loans_path %>
+				</div>
+		</div>	
+	</div>
+</div>

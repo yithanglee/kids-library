@@ -4,7 +4,7 @@
 					<div class="panel panel-default">
 					<div class="panel-heading" style="font-size:30px;">List of <%= params[:category].nil? ? "all" : Category.find(params[:category]).name %> books 
 					</div>
-					<div class="panel-heading" style="font-size:15px; float:right; text-transform: underline;">
+					<div class="panel-heading" style="font-size:15px; text-transform: underline;">
 												
 						<%= link_to 'Picture Books', :action => 'list_by_category', :controller => '/books', :category => '1' %> |
             <%= link_to 'English Books', :action => 'list_by_category', :controller => '/books', :category => '2' %> |
@@ -21,7 +21,7 @@
 			</div>
 
 		<% elsif current_user.is_admin?  %>
-				<div class="col-lg-8">
+				<div class="col-md-12">
 					<div class="panel panel-default">
 					  <div class="panel-heading"><h1>List of books</h1></div>
 		  				<div class="panel-body">
@@ -42,7 +42,7 @@
 					</div>
 				</div>
 
-				<div class="col-lg-4">
+				<div class="col-md-12">
 					<div class="panel panel-default">
 					<div class="panel-heading"><h1>New book</h1></div>
 		  			<div class="panel-body">

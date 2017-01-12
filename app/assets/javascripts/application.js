@@ -33,7 +33,7 @@ function countChar(val) {
 
 function countMemberId(val) {
   var len = val.value.length;
-  if (len >= 9) {
+  if (len >= 8) {
      $("#isbn").focus();
   } else {
     $('#charNum').text(len);

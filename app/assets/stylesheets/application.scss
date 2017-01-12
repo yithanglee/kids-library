@@ -31,9 +31,9 @@ p, ol, ul, td {
 }
 
 .navbar-nav > li > a {
-	padding-top: 10px;
+	padding-top: 13px;
 	padding-bottom: 10px;
-	line-height: 28px;
+	line-height: 24px;
 	text-transform: capitalize;
 }
 
@@ -56,9 +56,9 @@ p, ol, ul, td {
 .book_items {
 	float: left;
 	padding: 10px;
-	width: 700px;
-	height: 35px;
-	font-size: 20px;
+	width: 45%;
+	height: 20px;
+	font-size: 15px;
 }
 
 .pagination_light a {
@@ -81,7 +81,7 @@ a:hover, a:focus {
 }
 
 .navbar input {
-	width: 180px;
+	width: 150px;
 	font-size: 16px !important;
 }
 
@@ -173,7 +173,22 @@ body {
 
 .nav .btn.btn-default {
 	padding: 0px 30px;
-	margin-top: 8px;
+	margin-top: 11px;
+}
+
+#loan_details p {
+	color: black;
+}
+
+.navbar-form {
+	width: auto;
+	border: 0;
+	margin-left: 0;
+	margin-right: 0;
+	padding-top: 3px;
+	padding-bottom: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
@@ -254,6 +269,7 @@ p, ol, ul, td {
 	width: 200px;
 }
 
+
 .navbar-form {
 	margin-left: -15px;
 	margin-right: -15px;
@@ -266,10 +282,18 @@ p, ol, ul, td {
 	margin-bottom: 8px;
 }
 
+
 .navbar input {
 	width: 270px;
 	font-size: 16px !important;
 	margin: 5px;
+}
+
+.book_items {
+	float: left;
+	padding: 10px;
+	width: 100%;
+	font-size: 15px;
 }
 
 }
