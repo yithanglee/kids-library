@@ -53,12 +53,9 @@ p, ol, ul, td {
 	width: 220px;
 }
 
-.book_items {
-	float: left;
-	padding: 10px;
+.panel-body a {
+	display: inline-flex;
 	width: 45%;
-	height: 30px;
-	font-size: 15px;
 }
 
 .pagination_light a {
@@ -238,6 +235,12 @@ body {
 	font-size: 20px;
 	color: black;
 }
+
+.panel-body a {
+	display: inline-flex;
+	width: 100%;
+}
+
 
 p, ol, ul, td {
 	font-family: verdana, arial, helvetica, sans-serif;

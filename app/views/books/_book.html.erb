@@ -1,14 +1,15 @@
 <% if current_user == nil || !current_user.is_admin?%>
 
-   <div class="book_items">
-   <%= link_to book.name, book_path(book) %>, <%= book.barcode%>
+
+<a href="<%=book_path(book)%>">
         <%if book.loans.count > 0 %>
         <span class="label label-danger" style="float:left; margin-right:5px;">L</span>
         <% else %>
         <span class="label label-primary" style="float:left; margin-right:5px;">A</span>
         <% end %>
-   </div>    
-
+<%= book.name%>, <%= book.barcode%>
+  
+</a>
 
 
 <% elsif current_user.is_admin? %>
