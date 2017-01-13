@@ -76,8 +76,6 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   Searchkick.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
-
-  RAILS_ENV=production bundle exec rake assets:precompile
   
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
