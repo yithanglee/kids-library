@@ -19,7 +19,10 @@
 
 $( document ).ready(function() {
   $( "#user" ).focus();
+  $("#flash").delay(2000).fadeOut('slow');
+
 });
+
 
 function countChar(val) {
   var len = val.value.length;

@@ -25,12 +25,11 @@ Rails.application.routes.draw do
 
   post '/books/quick_create', to: 'books#quick_create', as: 'quick_create_book'
 
-  resources :loans
-
+  resources :loans 
   resources :categories
 
   resources :publishers 
-
+  match '/loans/:id/return_date_extend', to: "loans#return_date_extend", via: 'get', as: 'return_date_extend'
   match '/search', to: "staticpages#search", via: 'post'
   match '/staticpages/print_book_barcodes', to: "staticpages#print_book_barcodes", via: 'post', as: 'print_barcode'
   match '/staticpages/print_book_barcodes', to: "staticpages#print_book_barcodes", via: 'get'

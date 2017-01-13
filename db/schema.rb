@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110070106) do
+ActiveRecord::Schema.define(version: 20170112061518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(version: 20170110070106) do
     t.integer  "book_id"
     t.date     "loan_date"
     t.date     "return_date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "is_extended", default: false
     t.index ["book_id"], name: "index_loans_on_book_id", using: :btree
     t.index ["user_id"], name: "index_loans_on_user_id", using: :btree
   end

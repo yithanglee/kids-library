@@ -7,6 +7,15 @@ class Loan < ApplicationRecord
 	validates :book, uniqueness: {}
 	validates :user, presence: true
 
+	def return_date_extend
+		if self.is_extended == false
+		a = self.return_date
+		self.update(return_date: a+14 , is_extended: true)
+		else
+			# errors.add(:is_extended, "This loan already extended") 
+			self.errors.messages[:is_extended] = "This loan is extended."
+		end
+	end
 
 	private
 
@@ -19,7 +28,7 @@ class Loan < ApplicationRecord
 	def assign_dates
 		if self.return_date == nil
 	  a = Time.zone.today
-		self.update(loan_date: a, return_date: a+7) 
+		self.update(loan_date: a, return_date: a+14) 
 		end
 	end
 

@@ -19,7 +19,7 @@
             <%= @user.birthday %><br>
 
             <strong>Type:</strong>
-            <%= @user.user_type %><br>
+            <%= @user.user_type %><br>  
 
           <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-default' %>
           <%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
@@ -46,14 +46,18 @@
           <% @loans.each do |loan| %>
             <tr>
               <td><%= loan.loan_date %></td>
-              <td><%= loan.return_date %></td>
+              <td>
+                <%= loan.return_date %>
+                , <%= loan.is_extended%>
+                <%= link_to 'Extend', return_date_extend_path(:id => loan.id) %>
+              </td>
               <td><%= loan.book.name %></td>
               <td>
-<% if loan.book.image_url == nil or loan.book.image_url == ''%>
-<%= image_tag('shining-kids.jpg', width: '160')%>
-<% else %>             
-              <%= image_tag(loan.book.image_url, width: '160')%>
- <% end %>               
+                <% if loan.book.image_url == nil or loan.book.image_url == ''%>
+                <%= image_tag('shining-kids.jpg', width: '160')%>
+                <% else %>             
+                <%= image_tag(loan.book.image_url, width: '160')%>
+                <% end %>               
               </td>
             </tr>
           <% end %>

@@ -73,8 +73,10 @@
     <%= image_tag('background.jpg', :class => "background")%>
     <div class="container">
     <center>
-      
-      <div id="flash">
+      <script type="text/javascript">
+        $("#flash").delay(2000).fadeOut('slow');
+      </script>
+      <div id="flash" style="width: 30%; margin-right: auto; margin-left: auto;">
         <% flash.each do |key, value| %>
             <% if key = notice %>
               <div class="alert alert-success" role="alert"><div class="flash <%= key %>"><%= value %></div></div>
