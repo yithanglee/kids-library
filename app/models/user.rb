@@ -13,5 +13,6 @@ has_many :loans
 			return false
 		end
 	end
-	
+
+
 end

@@ -247,8 +247,7 @@ body {
 }
 
 .panel-body a {
-	display: inline-flex;
-	width: 100%;
+	display: inline-flex;	
 }
 
 
@@ -307,6 +306,11 @@ p, ol, ul, td {
 	padding: 10px;
 	width: 100%;
 	font-size: 15px;
+}
+
+#book-items a {
+	display: inline-flex;
+	width: 95%;
 }
 
 }
