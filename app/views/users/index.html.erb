@@ -9,13 +9,14 @@
                   <tr>
                     <th>MemberID</th>
                     <th>Name</th>
+                    <th>名字</th>
                     <th>IC</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Birthday</th>
                     <th></th>
                     <th></th>
-                    <th></th>
+
                   </tr>
 
 
@@ -28,17 +29,14 @@
                     <td><%= user.member_id %></td>
                     <%end%>
                       <td><%= user.name %></td>
+                      <td><%= user.chinese_name%></td>
                       <td><%= user.ic %></td>
                       <td><%= user.email %></td>
                       <td><%= user.phone %></td>
                       <td><%= user.birthday %></td>
                       <td><%= link_to 'Show', user , :class => 'btn btn-default' %></td>
                       <td><%= link_to 'Edit', edit_user_path(user) , :class => 'btn btn-default'%></td>
-                      <td>
-                      <% if current_user.is_admin? %>
-                      <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default' %>
-                      <% end %>  
-                      </td>
+
                     </tr>
                   <% end %>
 

@@ -8,14 +8,15 @@ class UsersController < ApplicationController
     if !current_user.is_admin?
     @users = User.where(id: current_user.id)
     else
-    @users = User.all
+    @users = User.all.order("member_id asc")
     end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @loans = current_user.loans
+    @loans = current_user.loans.where(has_returned: false).order("return_date ASC" )
+    @loans_returned = current_user.loans.where(has_returned: true)
   end
 
   # GET /users/new

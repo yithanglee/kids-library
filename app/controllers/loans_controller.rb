@@ -1,5 +1,5 @@
 class LoansController < ApplicationController
-  before_action :set_loan, only: [:show, :edit, :update, :destroy, :return_date_extend]
+  before_action :set_loan, only: [:show, :edit, :update, :destroy, :return_date_extend, :book_return]
 
   # GET /loans
   # GET /loans.json
@@ -76,6 +76,25 @@ class LoansController < ApplicationController
     end   
   end
 
+
+  def book_return
+
+    @loan.book_return
+    if @loan.errors.messages.first.nil?
+      @message = "Return was succcessful."
+     respond_to do |format|
+      format.html { redirect_to loans_path, notice: @message }
+      format.json { head :no_content }
+    end
+    else
+      @message = @loan.errors.messages.first[1]
+     respond_to do |format|
+      format.html { redirect_to loans_path, alert: @message }
+      format.json { head :no_content }
+    end
+    end
+    
+  end
 
   # DELETE /loans/1
   # DELETE /loans/1.json

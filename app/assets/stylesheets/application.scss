@@ -198,6 +198,15 @@ body {
     src: asset-url('sims.otf');
 }
 
+#past div {
+	padding: 20px;
+	max-width: 300px;
+}
+
+#past {
+	display: inline-flex;
+}
+
 @media (min-width: 320px) and (max-width: 768px) {
 
 .overlay {
@@ -311,6 +320,10 @@ p, ol, ul, td {
 #book-items a {
 	display: inline-flex;
 	width: 95%;
+}
+
+#past {
+	display: inline-block;
 }
 
 }

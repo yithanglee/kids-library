@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :categories
 
   resources :publishers 
+  match '/loans/:id/book_return', to: "loans#book_return", via: 'get', as: 'book_return'
   match '/loans/:id/return_date_extend', to: "loans#return_date_extend", via: 'get', as: 'return_date_extend'
   match '/search', to: "staticpages#search", via: 'post'
   match '/staticpages/print_book_barcodes', to: "staticpages#print_book_barcodes", via: 'post', as: 'print_barcode'

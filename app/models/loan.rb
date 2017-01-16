@@ -2,10 +2,18 @@ class Loan < ApplicationRecord
 	belongs_to :book
 	belongs_to :user
 	
-
+	before_create :book_physically_available
 	after_create :delete_empty, :assign_dates, :record_history
-	validates :book, uniqueness: {}
 	validates :user, presence: true
+
+
+	def book_physically_available
+		if Loan.where(book_id: self.book.id).last.has_returned == true or Loan.where(book_id: self.book.id) == nil
+		else
+			self.errors.messages[:has_returned] = "This book isn't returned yet."
+		end
+		
+	end
 
 	def return_date_extend
 		if self.is_extended == false
@@ -15,6 +23,17 @@ class Loan < ApplicationRecord
 			# errors.add(:is_extended, "This loan already extended") 
 			self.errors.messages[:is_extended] = "This loan is extended."
 		end
+	end
+
+	def book_return
+		if self.has_returned == false
+			self.update(has_returned: true, actual_return_date: Time.zone.today)
+		end
+		
+	end
+
+	def returned?
+		self.has_returned == true
 	end
 
 	private
