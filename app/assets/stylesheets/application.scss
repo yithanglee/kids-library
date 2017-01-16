@@ -192,6 +192,12 @@ body {
 	width: 85px;
 }
 
+
+@font-face {
+    font-family: 'Sims';
+    src: asset-url('sims.otf');
+}
+
 @media (min-width: 320px) and (max-width: 768px) {
 
 .overlay {

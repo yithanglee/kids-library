@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Sims';
+    src: asset-url('sims.otf');
+}
+
+	body {
+		font-family: Arial, Sims;
+	}
+
+	table.barby-barcode { 
+		border-spacing: 0; 
+	}
+
+	tr.barby-row {}
+
+	td.barby-cell { 
+		width: 0.01em; 
+		height: 50px; 
+	}
+
+	td.barby-cell.on { 
+		background: #000; 
+	}

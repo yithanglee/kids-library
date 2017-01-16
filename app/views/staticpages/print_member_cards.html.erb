@@ -2,39 +2,46 @@
 <html>
   <head>
     <meta charset='utf-8' />
-    <%= wicked_pdf_stylesheet_link_tag "pdf" -%>
+
     <style type="text/css">
 
+	body {font-family: Sims;}
 	table.barby-barcode { border-spacing: 0; }
 	tr.barby-row {}
-	td.barby-cell { width: 0.5px; height: 20px; }
+	td.barby-cell { width: 0.01em; height: 50px; }
 	td.barby-cell.on { background: #000; }
 
 	</style>
   </head>
   <body onload='number_pages'>
-    <div id="header">
-    <h1>Shining Kids Library</h1>
-    </div>
     <div id="content">
-      <p>Barcode labels</p>
-
-
 	<div class="container-fluid">
 		<% @a.each do |x| %>
-		<div class="row">
-			<div class="col-lg-9">
-			<div style="border-color: black; border-style: solid; width: 400px; float: left; margin: 25px; padding: 50px 30px;">
-				<%= image_tag('shining-kids.jpg', size:'50')%>亮亮儿童图书管<br>
-				<% b = User.find_by(member_id: x) %>
-				<%= b.name %><br>
-				<%= x %><br>
-				<% barcode = Barby::Code128B.new(x) %>
-				<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
-				
+					<% User.find_by(member_id: x).nil? ? b = User.first : b = User.find_by(member_id: x) %>
+		
+
+			<div style="border-radius:5px; border-size:0.1px; border-color:grey ; border-style: solid; width: 500px; float: left; margin: 40px; padding: 50px 60px;">
+				<%= wicked_pdf_image_tag('shining-kids.jpg', size:'120')%>
+				<div style="float:right;">
+				  <center>
+				  <div style="font-size:30px;">亮亮儿童图书馆</div>
+				  <div style="font-size:20px;">Shining Kids Library</div>
+				  <div style="font-size:20px;">会员证</div><br>
+					<% barcode = Barby::Code128B.new(x) %>
+					<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
+					<div style="margin-bottom:10px;"><%= x %></div>
+				  </center>
+				</div>
+				<div style="font-size:25px; margin-top:60px;">  
+					<div>姓名: <%= b.chinese_name %></div>
+					<div>Name: <%= b.name %></div>
+					<div>IC: <%= b.ic %></div>
+					<div>加入日期: <%= b.created_at.in_time_zone("Kuala Lumpur").strftime('%Y-%m-%d')  %></div>
+				</div>
 			</div>
-			</div>
-		</div>
+	
+
+		
 		<% end %>
 	</div>
 
