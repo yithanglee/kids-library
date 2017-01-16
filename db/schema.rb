@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 20170112061518) do
     t.string   "postcode"
     t.string   "city"
     t.string   "state"
-    t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 

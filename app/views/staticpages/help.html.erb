@@ -55,5 +55,19 @@
 						<% end %>
 					</div>
 					</div>
+
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Member Upload</h3>
+						</div>					
+					<div class="panel-body">
+						<%= form_tag({action: :import_members}, multipart: true) do %>
+							<%= label_tag('upload_file') %><br>
+						  <%= file_field_tag 'upload_file' %>
+						  <%= submit_tag('upload')%>
+						<% end %>
+					</div>
+					</div>
+
 				</div>
 			</div>

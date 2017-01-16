@@ -13,7 +13,7 @@
             <%= link_to 'Other Books', :action => 'list_by_category', :controller => '/books', :category => '5' %>
 				
 					</div>
-		  				<div class="panel-body">
+		  				<div class="panel-body" id="book-items">
 		  					<%= render @books %>
 						</div>
 							<div class="pagination_light"><%= will_paginate @books%></div>
@@ -26,7 +26,7 @@
 					  <div class="panel-heading"><h1>List of books</h1></div>
 		  				<div class="panel-body">
 							<table class="table" style="font-size:18px;">
-							  <col width="250">
+							  <col width="35%">
 							  <tr>
 							    <th>Name</th>
 							    <th>Barcode</th>
@@ -37,8 +37,8 @@
 							  </tr>
 							<%= render @books %>
 							</table>
-							<%= will_paginate @books %>
 						</div>
+							<div class="pagination_light"><%= will_paginate @books %></div>
 					</div>
 				</div>
 

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'wkhtmltopdf-heroku'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 gem 'will_paginate'

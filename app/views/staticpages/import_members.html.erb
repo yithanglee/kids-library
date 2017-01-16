@@ -1,0 +1,46 @@
+saved: <%= @member_saved %><br>
+failed: <%= @member_not_save %><br>
+<%= link_to "Raw blast output", "/data.csv" %><br>
+<table class="table">
+	<% @unsaved.each do |line| %>
+		
+	<tr>
+			<td><%=line.member_id%></td>
+			<td><%=line.name%></td>
+			<td><%=line.chinese_name%></td>
+			<td><%=line.ic%></td>
+			<td><%=line.email%></td>
+			<td><%=line.phone%></td>
+			<td><%=line.line1%></td>
+			<td><%=line.line2%></td>
+			<td><%=line.city%></td>
+			<td><%=line.state%></td>
+			<td><%=line.postcode%></td>
+	</tr>
+	<% end%>
+
+</table>
+
+<table class="table">
+	<% @saved.each do |line| %>
+		
+	<tr>
+			<td><%=line.member_id%></td>
+			<td><%=line.name%></td>
+			<td><%=line.chinese_name%></td>
+			<td><%=line.ic%></td>
+			<td><%=line.email%></td>
+			<td><%=line.phone%></td>
+			<td><%=line.line1%></td>
+			<td><%=line.line2%></td>
+			<td><%=line.city%></td>
+			<td><%=line.state%></td>
+			<td><%=line.postcode%></td>
+	</tr>
+	<% end%>
+
+</table>
+
+
+
+<%= link_to "Home", root_path, :class => "btn btn-default"%>
