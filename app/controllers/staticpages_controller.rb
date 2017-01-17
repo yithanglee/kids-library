@@ -85,7 +85,7 @@ def print_book_barcodes
 	respond_to do |format|
 	  format.html
 	  format.pdf do
-		render pdf: "print_book_barcodes"   # Excluding ".pdf" extension.
+		render pdf: "print_book_barcodes", :page_width => '16.54in', :page_height => '23.38in'
 	  end
 	end
 # pdf = WickedPdf.new.pdf_from_html_file('/staticpages/print_book_barcodes')
@@ -178,7 +178,7 @@ def print_member_cards
 	respond_to do |format|
 	  format.html
 	  format.pdf do
-		render pdf: "print_member_cards", :page_width => '16.54in', :page_height => '23.38in',:encoding => "utf8"
+		render pdf: "print_member_cards", :page_width => '16.54in', :page_height => '23.38in'
 	  end
 	end
 end

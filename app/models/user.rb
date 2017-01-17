@@ -4,6 +4,8 @@ class User < ApplicationRecord
 has_many :books, through: :loans
 has_many :loans, dependent: :destroy
 
+validates :member_id, uniqueness: :true 
+
 
   def email_optional?
     true
