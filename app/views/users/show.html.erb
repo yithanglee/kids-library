@@ -51,7 +51,7 @@
            
           <%end %>
     </div>
-      <div class="panel-heading"><strong>Loan Returned</strong></div>
+      <div class="panel-heading"><strong>Reading History</strong> (<%= current_user.loans.all.count%>)</div>
         <div class="panel-body" id="book-items">
         <% @loans_returned.each do |returned| %>
           <a href="<%=book_path(returned.book)%>">

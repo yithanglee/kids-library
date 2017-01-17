@@ -7,7 +7,7 @@ class LoansController < ApplicationController
     if current_user == nil
       require_login
     elsif current_user.is_admin?
-      @loans = Loan.all.order('return_date ASC')
+      @loans = Loan.all.where(has_returned: false).order('return_date ASC')
     elsif !current_user.is_admin?
       @loans = Loan.where(user_id: current_user.id)
     end
@@ -94,6 +94,14 @@ class LoansController < ApplicationController
     end
     end
     
+  end
+
+  def history
+    if current_user == nil
+      require_login
+    elsif current_user.is_admin?
+      @loans = Loan.all.where(has_returned: true).order('loan_date DESC')
+    end
   end
 
   # DELETE /loans/1

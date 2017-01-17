@@ -1,17 +1,19 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="panel panel-default">
-    <div class="panel-heading" style="font-size:30px;">Loans</div>
+    <div class="panel-heading" style="font-size:30px;">Loans history</div>
       <div class="panel-body">
       <table class="table">
         <thead>
           <tr>
             <th>Loan date</th>
             <th>Return date</th>
+            <th>Actual return date</th>
+            <th>Fined</th>
             <th>Book</th>
             <th>User</th>
-            <th colspan="2"></th>
-            <th>Estimate fine</th>
+
+
 
           </tr>
         </thead>
@@ -21,25 +23,21 @@
             <tr>
               <td><%= loan.loan_date %></td>
               <td><%= loan.return_date %></td>
+              <td><%= loan.actual_return_date %></td>
+              <td>RM <%= ('%.2f' % loan.fine_amount) %></td>
               <td><%= loan.book.name %></td>
               <td><%= loan.user.name %></td>
-              <% if current_user.is_admin? %>
-              <td><%= link_to 'Edit', edit_loan_path(loan), :class => 'btn btn-info' %></td>
-              <td>
-              <% if loan.has_returned == false%>
-              <%= link_to 'Return', book_return_path(:id => loan.id), :class => 'btn btn-success' %>
-              <% end %>
-              </td>
-              <td>RM <%= ('%.2f' % loan.estimate_fine) %></td>
 
-              <% end %>
+
+
+
             </tr>
           <% end %>
         </tbody>
       </table>
 
       <br>
-<%= link_to 'History', loan_history_path, :class => 'btn btn-default'%>
+
       </div>
     </div>
   </div>  
