@@ -115,7 +115,7 @@ class BooksController < ApplicationController
   end
 
   def search
-        search_params = params.permit(:book_name, :author)
+        search_params = params.permit(:book_name, :author, :barcode)
         @books = Book.search(search_params)
         if @books.blank?
           redirect_to books_path, flash:{alert: "no successful search result"}

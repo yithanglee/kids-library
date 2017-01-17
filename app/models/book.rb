@@ -58,15 +58,43 @@ def self.quick_search(search)
   end
 end
 
-def self.search(search)
+  def self.search(search)
 
-  if !search[:book_name].empty?
-    where("name like ?", "%#{search[:book_name]}%")
-  elsif !search[:author].empty?
-    where(author_1: search[:author])      
-  else
-    
+  # case
+  #   when search[:book_name] != ''
+  #     where("name like ?", "%#{search[:book_name]}%")
+  #   when search[:author] != ''
+  #     where("author_1 like ?", "%#{search[:author]}%")
+  #   when search[:barcode] != ''
+  #     where("barcode like ?", "%#{search[:barcode]}%")
+  #   when (search[:book_name] != '' and search[:author] != '')
+  #     where("name like ? and author_1 like ?", "%#{search[:book_name]}%", "%#{search[:author]}%")
+  # end
+
+    if search[:book_name] != ''
+      if search[:author] != ''
+        where("name like ? and author_1 like ?", "%#{search[:book_name]}%", "%#{search[:author]}%")
+      else
+        where("name like ?", "%#{search[:book_name]}%")
+      end
+    elsif search[:author] != ''
+      if search[:barcode] != ''
+        where("author_1 like ? and barcode like ?", "%#{search[:author]}%", "%#{search[:barcode]}%")
+      else
+        where("author_1 like ?", "%#{search[:author]}%")
+      end
+
+    elsif search[:barcode] != ''
+      if search[:book_name] != ''
+        where("barcode like ? and name like ?", "%#{search[:barcode]}%", "%#{search[:book_name]}%")
+      else
+        where("barcode like ?", "%#{search[:barcode]}%")
+      end
+      
+      
+    end
+
+
   end
-end
 
 end

@@ -53,8 +53,8 @@
         <li><%= form_for Book.new, :url => url_for(:controller => '/books', :action => 'search'), :method => 'get', html: { class: "navbar-form navbar-left"} do |f| %>
           <%= text_field_tag :book_name, params[:book_name], placeholder:"Book name" %>
           <%= text_field_tag :author, params[:author], placeholder:"Author name" %>        
-         
-          <%= button_tag(type: "submit", class: "btn btn-primary", name: "commit", id: 'submit') do %>
+          <%= text_field_tag :barcode, params[:barcode], placeholder:"Barcode" %> 
+          <%= button_tag(type: "submit", class: "btn btn-primary", id: 'submit') do %>
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
           <% end %>
         <% end %></li>
