@@ -133,7 +133,7 @@ body {
 	background-size: 3000px;
 	position: absolute;
 	height: 100%;
-	width: 100%;
+	width: 98%;
 	}
 
 .jumbotron p {
@@ -324,6 +324,18 @@ p, ol, ul, td {
 
 #past {
 	display: inline-block;
+}
+
+.jumbotron {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+	background-image: url(/assets/splash-3388b4736796d235b33abe91ef2340267eebc09fb34ff6a1ba3cad80e03fd0d2.jpg);
+	background-repeat: no-repeat;
+	background-size: 3000px;
+	position: absolute;
+	height: 100%;
+	width: 330px;
 }
 
 }

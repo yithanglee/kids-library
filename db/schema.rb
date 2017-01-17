@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116065200) do
+ActiveRecord::Schema.define(version: 20170117024422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170116065200) do
     t.boolean  "is_extended",        default: false
     t.boolean  "has_returned",       default: false
     t.date     "actual_return_date"
+    t.string   "fine_amount"
     t.index ["book_id"], name: "index_loans_on_book_id", using: :btree
     t.index ["user_id"], name: "index_loans_on_user_id", using: :btree
   end

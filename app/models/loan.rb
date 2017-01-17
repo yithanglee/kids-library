@@ -7,6 +7,23 @@ class Loan < ApplicationRecord
 	validates :user, presence: true
 
 
+	# calculate how much fine based on working weeks, 
+	# need to find out which week was the book returned date. 
+	# if 1/14 is the 2nd week, checks todays date is in which week
+	# get the difference of the week and calculate the fine.
+	def estimate_fine
+		cur_week = Time.now.strftime("%U").to_i
+		return_week = self.return_date.strftime("%U").to_i
+		late = cur_week - return_week
+		if late > 0
+		fine = late * 0.50
+		else
+		fine = 0.00
+		end
+		fine
+	end
+
+
 	def book_physically_available
 		if Loan.where(book_id: self.book.id).last == nil or Loan.where(book_id: self.book.id).last.has_returned == true
 		else
@@ -27,7 +44,7 @@ class Loan < ApplicationRecord
 
 	def book_return
 		if self.has_returned == false
-			self.update(has_returned: true, actual_return_date: Time.zone.today)
+			self.update(has_returned: true, actual_return_date: Time.zone.today, fine_amount: self.estimate_fine)
 		end
 		
 	end

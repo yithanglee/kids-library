@@ -9,10 +9,11 @@
             <th>Loan date</th>
             <th>Return date</th>
             <th>Actual return date</th>
+            <th>Fined</th>
             <th>Book</th>
             <th>User</th>
-            <th>Returned?</th>
             <th colspan="2"></th>
+            <th>Estimate fine</th>
 
           </tr>
         </thead>
@@ -23,16 +24,17 @@
               <td><%= loan.loan_date %></td>
               <td><%= loan.return_date %></td>
               <td><%= loan.actual_return_date %></td>
+              <td><%= loan.fine_amount %></td>
               <td><%= loan.book.name %></td>
               <td><%= loan.user.name %></td>
-              <td><%= loan.has_returned%></td>
               <% if current_user.is_admin? %>
-              <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
+              <td><%= link_to 'Edit', edit_loan_path(loan), :class => 'btn btn-info' %></td>
               <td>
               <% if loan.has_returned == false%>
-              <%= link_to 'Return', book_return_path(:id => loan.id) %>
+              <%= link_to 'Return', book_return_path(:id => loan.id), :class => 'btn btn-success' %>
               <% end %>
               </td>
+              <td>RM <%= ('%.2f' % loan.estimate_fine) %></td>
 
               <% end %>
             </tr>

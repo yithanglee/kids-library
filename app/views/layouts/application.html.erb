@@ -60,7 +60,7 @@
         <% end %></li>
         <% if signed_in? %>
           <li>
-          <a href="<%= user_path(current_user)%>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.email%></a></li>
+          <a href="<%= user_path(current_user)%>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.chinese_name %></a></li>
           <li><%= link_to "Sign out", sign_out_path, method: :delete, :class => 'btn btn-default' %></li>
           <% else %>
           <li><%= link_to "Sign in", sign_in_path, :class => 'btn btn-default'%></li>
@@ -109,7 +109,6 @@
             <div>20A, JLN PSK8, </div>
             <div>PUSAT PERDAGANGAN SERI KEMBANGAN, </div>
             <div>43300 S.K. </div>
-            <div>联络人：翠美 017-622 1415</div>
           </div>
         </div>
       </div>
