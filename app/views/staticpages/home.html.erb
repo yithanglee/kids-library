@@ -1,19 +1,38 @@
-<div class="jumbotron">
-	<div class="content">
-	  <h1>亮亮儿童图书馆 Shining Kid's Library</h1>
-	  <h3><i>推广阅读风气，打造有高素质的社区文化使命.</i></h3>
-		<p>“书中自有黄金屋”“书中自有颜如玉”。古人赵恒早已领悟书中所隐藏着的包库。亮亮儿童图书馆坚信书籍可开阔孩童的视野，使心眼明亮；前途光亮，指引他们走向亮丽的前程。</p>
-		<p>亮亮儿童图书馆是前身为沙登卫理公会儿童主日学图书馆。本着推广阅读风气，打造有高素质的社区文化使命，亮亮儿童图书馆因此而诞生了。盼望图书馆资源可以与社区居民共用。所见未来异象是孩童能从小沉浸在书香世界里，享受书本所带来的乐趣与真理。</p>
-		<p>亮亮儿童图书馆里有启蒙书籍，绘本书籍，圣经故事，信仰书籍，教导书籍等......</p>
-		
-	</div>
-		<div class="overlay">
-			
-		</div>
-</div>
+<div class="row">
+		<div class="jumbotron">
+			<div class="col-lg-8">
+					<div class="content">
+					  <h1>亮亮儿童图书馆 Shining Kid's Library</h1>
+					  <h3><i>推广阅读风气，打造有高素质的社区文化使命.</i></h3>
+						<p>“书中自有黄金屋”“书中自有颜如玉”。古人赵恒早已领悟书中所隐藏着的包库。亮亮儿童图书馆坚信书籍可开阔孩童的视野，使心眼明亮；前途光亮，指引他们走向亮丽的前程。</p>
+						<p>亮亮儿童图书馆是前身为沙登卫理公会儿童主日学图书馆。本着推广阅读风气，打造有高素质的社区文化使命，亮亮儿童图书馆因此而诞生了。盼望图书馆资源可以与社区居民共用。所见未来异象是孩童能从小沉浸在书香世界里，享受书本所带来的乐趣与真理。</p>
+						<p>亮亮儿童图书馆里有启蒙书籍，绘本书籍，圣经故事，信仰书籍，教导书籍等......</p>
+						
+					</div>
+			</div>
 
-<div class="intro">
-	
+			<div class="col-lg-4">
+
+				<div class="categories" style="display: inline-block;">
+				<script type="text/javascript">
+					$(".categories div").click(function() {
+					  window.location = $(this).find("a").attr("href"); 
+					  return false;
+					});
+				</script>
+				  <div><%= link_to 'Picture Books ', :action => 'list_by_category', :controller => '/books', :category => '1' %></div>
+				  <div><%= link_to 'English Books', :action => 'list_by_category', :controller => '/books', :category => '2' %></div>
+				  <div><%= link_to 'Teaching Books', :action => 'list_by_category', :controller => '/books', :category => '3' %></div>
+				  <div><%= link_to 'Religion Books', :action => 'list_by_category', :controller => '/books', :category => '4' %></div>
+				  <div><%= link_to 'Other Books', :action => 'list_by_category', :controller => '/books', :category => '5' %></div>
+				</div>
+				
+			</div>
+				<div class="overlay">
+					
+				</div>
+		</div>
+		
 </div>
 
 

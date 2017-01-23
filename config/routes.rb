@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'loans/top_reader'
+
   resources :books do
     collection do
       get 'search'

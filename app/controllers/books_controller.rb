@@ -120,7 +120,7 @@ class BooksController < ApplicationController
         if @books.blank?
           redirect_to books_path, flash:{alert: "no successful search result"}
         else
-          @books = @books.order('created_at ASC').paginate(:page => params[:page], :per_page => 10)
+          @books = @books.order('created_at ASC').paginate(:page => params[:page], :per_page => 20)
           @categories = Category.all
           @book = Book.new
           render :index
