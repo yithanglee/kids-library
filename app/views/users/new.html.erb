@@ -1,9 +1,25 @@
 
   <div class="row">
-      <div class="col-lg-9">  
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            Registration Rules:
+            <ul>
+              <li>You need to visit the library and sign the guest book 4 times.</li>
+              <li>Membership for life is RM 50.00</li>
+              <li>Each member card can borrow 2 books.</li>
+              <li>Books must be returned after 2 weeks, unless the loan was extended.</li>
+              <li>Late fines are RM 0.50 by per book per week.</li>
+              <li>CD loan requires RM 1.00.</li>
+              <li>Librarian will </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">  
         <div class="panel panel-default">
           <div class="panel-heading"><h1>New User</h1></div>
-            <div class="panel-body">
+            <div class="panel-body" style="font-size:14px;">
                 <%= render '/users/form', user: @user %>
 
                     <div class="other-links">

@@ -23,11 +23,22 @@
 	border-top: 1px solid #ddd;
 }
 
+.form-horizontal .control-label {
+	text-align: right;
+	margin-bottom: 0;
+}
+
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 0;
+}
+
 p, ol, ul, td {
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-size: 18px;
-	line-height: 18px;
-	margin: 33px;
+	line-height: 24px;
+	margin: 20px;
 }
 
 .navbar-nav > li > a {
@@ -98,7 +109,7 @@ body {
 .form-control {
 	display: block;
 	width: 100%;
-	height: 38px;
+	height: 30px;
 	padding: 6px 12px;
 	font-size: 18px;
 	color: #555555;
@@ -228,7 +239,15 @@ body {
 	font-size: 14px;
 }
 
+
+
+
 @media (min-width: 320px) and (max-width: 768px) {
+
+.form-horizontal .control-label {
+	text-align: right;
+	margin-bottom: 0;
+}
 
 .overlay {
 	background-color: black;
@@ -413,4 +432,11 @@ p, ol, ul, td {
 	float: left;
 	margin:15px;
 }
+}
+
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+    text-align: right;
+    margin-bottom: 0;
+  }
 }
