@@ -86,7 +86,9 @@
   <div class="actions">
     <%= f.submit 'Submit', :class => "btn btn-default" %>
     <%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
+    <%if @user.nil? %>
     <%= link_to 'Destroy',user_path(@user), data: {confirm: 'Are you sure?'} ,:method => :delete, :class => "btn btn-default"%>
+    <%end %>
   </div>
 <% end %>
 </div>

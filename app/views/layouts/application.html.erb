@@ -25,7 +25,7 @@
         <% if !current_user.nil? and current_user.is_admin? %>
           <li> <%= link_to "Members", users_url, :class => "btn btn-default" %></li>
           <li> <%= link_to "Loans", loans_url, :class => "btn btn-default" %></li>  
-          <li> <%= link_to "行政功能", '/staticpages/help', :class => "btn btn-default" %></li>
+          <li> <%= link_to "Tools", '/staticpages/help', :class => "btn btn-default" %></li>
           <li>
           <%= form_for Book.new, :url => url_for(:controller => '/books', :action => 'quick_loan'), :method => 'get', html: { class: "navbar-form navbar-left"} do |f| %>
           <%= text_field_tag :user, params[:user], placeholder: "Member ID", :onkeyup => 'countMemberId(this)' %>
