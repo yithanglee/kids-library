@@ -1,14 +1,33 @@
-
   <div class="row">
       <div class="col-lg-12">  
         <div class="panel panel-default">
-          <div class="panel-heading"><h1>Users</h1></div>
+          <div class="panel-heading">Members
+          <%= form_for User.new, :url => url_for(:controller => '/users', :action => 'search'), :method => 'get', html: { class: "form-group", style: "font-size:16px;"} do |f| %>
+          <%= text_field_tag :search_term, params[:search_term], placeholder:"Member details" %>
+          <%= f.submit 'Search', class: 'btn btn-default', id: 'submit' %>
+          <% end %> 
+
+
+          </div>
             <div class="panel-body">
-              <table class="table">
+              <table class="table" id="members">
 
                   <tr>
-                    <th>MemberID</th>
-                    <th>Name</th>
+                    <col width="100">
+                    <th>
+                    <% if !params[:sort_by].nil? and params[:order]=="asc"%>
+                    <%= link_to 'Member ID', users_path(:order => "desc", :sort_by => "member_id" ) %>
+                      <% else %>
+                    <%= link_to 'Member ID', users_path(:order => "asc", :sort_by => "member_id") %>
+                      <% end %>
+                    </th>
+                    <th>
+                    <% if !params[:sort_by].nil? and params[:order]=="asc"%>
+                    <%= link_to 'Name', users_path(:order => "desc", :sort_by => "name" ) %>
+                      <% else %>
+                    <%= link_to 'Name', users_path(:order => "asc", :sort_by => "name") %>
+                      <% end %>
+                    </th>
                     <th>名字</th>
                     <th>IC</th>
                     <th>Email</th>
@@ -41,7 +60,7 @@
                   <% end %>
 
               </table>
-
+<div class="pagination_light"><%= will_paginate @books %></div>
               <br>
               <% if current_user.is_admin? %>
               <div class="container-fluid">

@@ -6,6 +6,21 @@ has_many :loans, dependent: :destroy
 
 validates :member_id, uniqueness: :true 
 
+after_create :capitalize_name
+
+
+	def self.search(params)
+		where("name like ? or email like ? or chinese_name like ? or phone like ? or ic like ? or member_id like ?", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%")
+	end
+
+	def capitalize_name
+		self.update(name: name.upcase )
+		return
+	end
+
+	def full_address
+		self.line1 + self.line2 + " " + self.postcode + " " + self.city + " " + self.state
+	end
 
   def email_optional?
     true

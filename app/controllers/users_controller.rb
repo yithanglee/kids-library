@@ -4,11 +4,19 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    if params[:sort_by].nil?
+       sort = "member_id desc"
+    elsif params[:sort_by]=="member_id"
+      sort = "member_id "+ params[:order]
+    elsif params[:sort_by]=="name"
+      sort = "name "+ params[:order]
+      
+    end 
 
     if !current_user.is_admin?
     @users = User.where(id: current_user.id)
     else
-    @users = User.all.order("member_id desc")
+    @users = User.all.order(sort).paginate(:page => params[:page], :per_page => 15)
     end
   end
 
@@ -66,6 +74,18 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    search_params = params.permit(:search_term)
+    @users = User.search(search_params)
+    if @users.blank?
+      redirect_to users_path, flash:{alert: "no successful search result"}
+    else
+      @users = @users.order('member_id desc').paginate(:page => params[:page], :per_page => 20)
+      render :index
+    end
+    
   end
 
   private
