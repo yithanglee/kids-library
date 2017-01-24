@@ -21,14 +21,24 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
       <ul class="nav navbar-nav navbar-left">
+        <% if !current_user.nil? and current_user.is_admin? %>
+          <li> <%= link_to "Members", users_url %></li>
+          <li> <%= link_to "Loans", loans_url %></li>  
+          <li> <%= link_to "行政功能", '/staticpages/help' %></li>
+          <li>
+          <%= form_for Book.new, :url => url_for(:controller => '/books', :action => 'quick_loan'), :method => 'get', html: { class: "navbar-form navbar-left"} do |f| %>
+          <%= text_field_tag :user, params[:user], placeholder: "Member ID", :onkeyup => 'countMemberId(this)' %>
+          <%= text_field_tag :term, params[:term], placeholder:"ISBN quick find", :onkeyup => 'countChar(this)', id: 'isbn' %>
+          <%= f.submit 'Quick loan', class: 'btn btn-warning', id: 'submit' %>
+          <% end %>         
+          </li>
+        <% end %> 
+        
+      </ul>
       
-       <li><a href="<%= root_url%>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-       <% if !current_user.nil? and current_user.is_admin?%>
-       <li> <%= link_to "Members", users_url %></li>
-       <li> <%= link_to "Loans", loans_url %></li>
-       <% end %>
+      <ul class="nav navbar-nav navbar-left">
+
        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Books 
           <span class="caret"></span></a>
@@ -40,32 +50,25 @@
             <li><%= link_to '其他 Other Books', :action => 'list_by_category', :controller => '/books', :category => '5' %></li>
             </ul>
        </li>
-       <% if !current_user.nil? and current_user.is_admin? %>  
-       <li> <%= link_to "行政功能", '/staticpages/help' %></li>
-         <li>
-          <%= form_for Book.new, :url => url_for(:controller => '/books', :action => 'quick_loan'), :method => 'get', html: { class: "navbar-form navbar-left"} do |f| %>
-            <%= text_field_tag :user, params[:user], placeholder: "Member ID", :onkeyup => 'countMemberId(this)' %>
-            <%= text_field_tag :term, params[:term], placeholder:"ISBN quick find", :onkeyup => 'countChar(this)', id: 'isbn' %>
-            <%= f.submit 'Quick loan', class: 'btn btn-warning', id: 'submit' %>
-          <% end %>         
-         </li>
-        <% end %> 
-        <li><%= form_for Book.new, :url => url_for(:controller => '/books', :action => 'search'), :method => 'get', html: { class: "navbar-form navbar-left"} do |f| %>
+       <li>
+          <%= form_for Book.new, :url => url_for(:controller => '/books', :action => 'search'), :method => 'get', html: { class: "navbar-form navbar-left"} do |f| %>
           <%= text_field_tag :book_name, params[:book_name], placeholder:"Book name" %>
           <%= text_field_tag :author, params[:author], placeholder:"Author name" %>        
           <%= text_field_tag :barcode, params[:barcode], placeholder:"Barcode" %> 
-          <%= button_tag(type: "submit", class: "btn btn-primary", id: 'submit') do %>
-          <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+            <%= button_tag(type: "submit", class: "btn btn-primary", id: 'submit') do %>
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+            <% end %>
           <% end %>
-        <% end %></li>
-        <% if signed_in? %>
+       </li>
+       <% if signed_in? %>
           <li>
           <a href="<%= user_path(current_user)%>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.chinese_name %></a></li>
           <li><%= link_to "Sign out", sign_out_path, method: :delete, :class => 'btn btn-default' %></li>
           <% else %>
           <li><%= link_to "Sign in", sign_in_path, :class => 'btn btn-default'%></li>
-        <% end %>
+       <% end %>
       </ul>
+
       </div>
   </div>
 </nav>

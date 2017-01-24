@@ -138,7 +138,7 @@ body {
 
 .jumbotron p {
 	margin-bottom: 15px;
-	font-size: 21px;
+	font-size: 15px;
 	font-weight: 200;
 	line-height: 25px;
 }
@@ -207,21 +207,9 @@ body {
 	display: inline-flex;
 }
 
-.categories div {
-	padding: 10px;
-	background-color: white;
-	margin: 10px;
-	width: 130px;
-	align-content: center;
-	height: 80px;
-	border-radius: 20px;
-	text-align: center;
-	cursor: pointer;
-}
-
 .homepage {
 	position: relative;
-	height: 600px;
+	height: 800px;
 }
 
 .list-homepage {
@@ -230,6 +218,7 @@ body {
 	margin: 10px;
 	padding: 10px 20px;
 	text-align: center;
+	border-radius: 5px;
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
@@ -361,12 +350,16 @@ p, ol, ul, td {
 	background-size: 3000px;
 	position: absolute;
 	height: 100%;
-	width: 330px;
+	width: 100%;
 }
 
 .homepage {
 	position: relative;
-	height: 1300px;
+	height: 1400px;
+}
+
+#facebook {
+	display: none;
 }
 
 }
