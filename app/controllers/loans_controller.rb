@@ -4,8 +4,6 @@ class LoansController < ApplicationController
   # GET /loans
   # GET /loans.json
   def index
-
-    @top_readers = Loan.group(:user_id).count
     
     if current_user == nil
       require_login

@@ -63,35 +63,43 @@
 			float: left; 
 			margin: 35px 0px;
 			padding: 2%;">
-				<%= wicked_pdf_image_tag('shining-kids.jpg', width:'25%')%>
-
+			<div style="
+				position: relative;
+				float:left;
+				font-size: 25px;
+				margin: 0px 2%; 
+				width:1%; ">
+				持 卡 者 须 知
+				</div>
 			<div style="
 				position: relative;
 				float:right;
 				font-size: 15px;
 				margin: 0px 2%; 
-				width:70%; ">
+				width:90%; ">
 					<ul>
 						<li>此卡只限于借两本书籍。</li>
-						<li>每本所借的书需要在两个星期内退还，除非重借。</li>
-						<li>每一本迟还一个星期的书的罚款是RM 0.50。 </li>
-						<br>
-						<li>此卡不得涂改或变造。</li>
-						<li>倘若遗失，可以向图书馆申请补发。</li>
+						<li>借书期限为两个星期。</li>
+						<li>逾期还书罚款为RM0.50 /星期。 </li>
+						<li>倘若遗失，可申请补发，手续费为RM10.00。</li>
+						<li>捡到此卡者，请归还于：</li>
 					</ul>
+					<div style="font-size:12px; margin-left:40px">
+					20A, JLN PSK8,<br>
+					PUSAT PERDAGANGAN SERI KEMBANGAN,<br>
+					43300 SERI KEMBANGAN
+					</div>
 				</div>
 
-
+<ul>
 				<div style="
 				position: absolute;
-				float:left;
 				width:30%;
-				margin-top:100px;
-				margin-left:40px;
-				font-size:20px;">
+				margin-top:200px;
+				font-size:20px;"><center>
 					<% barcode = Barby::Code128B.new(x) %>
 					<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
-
+					<%= x%></center>
 				</div>
 			</div>
 		

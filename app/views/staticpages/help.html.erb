@@ -31,7 +31,7 @@
 					<div class="panel-body">
 						<%= form_tag("/staticpages/print_member_cards", method: "post") do %>
 						  <%= label_tag(:q, "Member IDs") %><br>
-						  <%= text_area_tag :q, nil, size: "20x10" %><br>
+						  <%= text_area_tag :q, "201507-002\r201507-002\r201507-002\r201507-002\r201507-002", size: "20x10" %><br>
 						  <%= submit_tag("Generate") %>
 						<select name="format">
 						    <option name="pdf">pdf</option>

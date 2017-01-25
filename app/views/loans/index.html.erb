@@ -46,8 +46,8 @@
   </div>  
   <div class="col-lg-3">
 <b>Read count</b>
-<% @top_readers.sort_by{|x,y| y}.reverse.each do |x,y| %>
-<div><%=User.find(x).chinese_name%>, <%= y%></div>
-<% end %>
+<% Loan.group(:user_id).count.sort_by{|x,y| y}.reverse.each do |x,y| %>
+<div><%= link_to User.find(x).chinese_name, user_path(User.find(x))%>, <%= y%></div>
+<% end %>  
   </div>
 </div>
