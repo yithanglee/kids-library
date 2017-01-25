@@ -24,9 +24,7 @@
 				<%= wicked_pdf_image_tag('shining-kids.jpg', size:'120')%>
 				<div style="float:right;">
 				  <center>
-				  <div style="font-size:30px;">亮亮儿童图书馆</div>
-				  <div style="font-size:20px;">Shining Kids Library</div>
-				  <div style="font-size:20px;">会员证</div><br>
+				  <%= wicked_pdf_image_tag('branding.png', height:'120')%>
 					<% barcode = Barby::Code128B.new(x) %>
 					<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
 					<div style="margin-bottom:10px;"><%= x %></div>
