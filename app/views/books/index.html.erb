@@ -23,7 +23,7 @@
 		<% elsif current_user.is_admin?  %>
 				<div class="col-md-12">
 					<div class="panel panel-default">
-					  <div class="panel-heading"><h1>List of books</h1></div>
+					  <div class="panel-heading"><h1>List of books</h1> <%= link_to 'New Book', new_book_path(Book.new), :class => 'btn btn-default' %></div>
 		  				<div class="panel-body">
 							<table class="table" style="font-size:18px;">
 							  <col width="35%">
@@ -42,14 +42,6 @@
 					</div>
 				</div>
 
-				<div class="col-md-12">
-					<div class="panel panel-default">
-					<div class="panel-heading"><h1>New book</h1></div>
-		  			<div class="panel-body">
-							<%= render partial: 'books/form_q'%> 
-						</div>
-					</div>
-				</div>
 
 		<% end %>
 

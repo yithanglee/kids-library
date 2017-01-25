@@ -42,7 +42,7 @@
 				  					<% if @book.loans.last == nil or @book.loans.last.returned? %>
 										<%= render 'loans/form_quick' %>
 										<% else %>
-										<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
+										<p style="color:black;">This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
 										<% end %>
 									</div>
 								<% end %>				

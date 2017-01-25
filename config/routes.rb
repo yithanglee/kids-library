@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'loans/top_reader'
 
   resources :books do
     collection do
@@ -34,7 +33,6 @@ Rails.application.routes.draw do
 
   resources :loans 
   resources :categories
-
   resources :publishers 
 
   match '/history/loans', to: "loans#history", via: 'get', as: 'loan_history'

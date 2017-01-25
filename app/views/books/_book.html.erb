@@ -17,7 +17,11 @@
     <td><%= book.barcode %></td>
     <td><%= book.author_1 %>, <%= book.author_2 %></td>
     <%if book.loans.count > 0 %>
+      <% if book.loans.last.returned?%>
+      <td> No </td>
+      <% else %>
       <td> Yes (<%=book.loans.last.user.name%>)</td>
+      <% end %>
     <% else %>
       <td> No </td>
     <% end %>

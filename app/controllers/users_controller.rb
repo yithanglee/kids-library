@@ -22,14 +22,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    if current_user.is_admin?
+
     @loans = @user.loans.where(has_returned: false).order("return_date ASC" )
     @loans_returned = @user.loans.where(has_returned: true)
-    else
-    @loans = current_user.loans.where(has_returned: false).order("return_date ASC" )
-    @loans_returned = current_user.loans.where(has_returned: true)
-      
-    end
+
   end
 
   # GET /users/new

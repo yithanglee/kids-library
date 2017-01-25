@@ -49,44 +49,9 @@ class BooksController < ApplicationController
     end
   end
 
-   def quick_create
-
-    @book = Book.new(book_params)
-
-    if @book.save 
-      @categories = params["book"]["categories"]
-        # create new category if didn't exist.
-        @categories.each do |x|
-          a = Category.find_by(name: x)
-          a.books << @book
-        end
-      redirect_to( books_url , notice: 'Book was successfully created.')
-    else
-      render action: 'new'
-    end
-  end
-
 
   def update
     if @book.update_attributes(book_params)
-      # the old - new category will remain the latest categories, so the old category need to remove the book, and insert the book into the category.
-      # old_categories = @book.categories.all
-      # old_categories.each do |x|
-      #   x.books.destroy(@book)
-      # end
-      
-      # if !params["book"]["categories"].nil?
-      # @categories = params["book"]["categories"]
-      #   # create new category if didn't exist.
-      #   @categories.each do |x|
-      #     a = Category.find_by(name: x)
-      #     a.books << @book
-      #   end
-        
-      # end
-
-
-
       redirect_to book_path, notice: 'Book was successfully updated.'
     else
       render action: 'edit'
@@ -95,7 +60,6 @@ class BooksController < ApplicationController
 
 
   def destroy
-    
     @book.destroy
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
