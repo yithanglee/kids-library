@@ -169,6 +169,7 @@ def import_members
 	end
 
 def print_member_cards
+	# encoding: utf-8
 	require 'barby'
 	require 'barby/barcode/code_128'
 	require 'barby/outputter/html_outputter'
@@ -178,7 +179,7 @@ def print_member_cards
 	respond_to do |format|
 	  format.html
 	  format.pdf do
-		render pdf: "print_member_cards", :page_width => '16.54in', :page_height => '23.38in', :encoding => 'UTF-8'
+		render pdf: "print_member_cards", :page_width => '16.54in', :page_height => '23.38in', :encoding => 'UTF-8', print_media_type: true 
 	  end
 	end
 end
