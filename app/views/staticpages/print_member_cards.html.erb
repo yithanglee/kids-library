@@ -2,27 +2,31 @@
 <html>
   <head>
     <meta charset='utf-8' />
-
-    <style type="text/css">
-
-	body {font-family: Sims;}
-	table.barby-barcode { border-spacing: 0; }
-	tr.barby-row {}
-	td.barby-cell { width: 0.01em; height: 50px; }
-	td.barby-cell.on { background: #000; }
-
-	</style>
+    <%= wicked_pdf_stylesheet_link_tag('application') %>
   </head>
   <body onload='number_pages'>
     <div id="content">
-	<div class="container-fluid">
+	<div>
 		<% @a.each do |x| %>
 					<% User.find_by(member_id: x).nil? ? b = User.first : b = User.find_by(member_id: x) %>
 		
 
-			<div style="border-radius:5px; border-size:0.1px; border-color:grey ; border-style: solid; width: 500px; float: left; margin: 40px; padding: 50px 60px;">
-				<%= wicked_pdf_image_tag('shining-kids.jpg', size:'120')%>
-				<div style="float:right;">
+			<div style="
+			border-radius:5px; 
+			border-size:0.1px; 
+			border-color:grey ; 
+			border-style: solid; 
+			width: 50%; 
+			float: left; 
+			margin: 40px; 
+			padding: 50px 60px;">
+
+				<%= image_tag('shining-kids.jpg', width:'30%')%>
+
+				<div style="
+				float:right;
+				margin: 0px 2%; 
+				width:60%;">
 				  <center>
 				  <div style="font-size:30px;">亮亮儿童图书馆</div>
 				  <div style="font-size:20px;">Shining Kids Library</div>
@@ -32,12 +36,18 @@
 					<div style="margin-bottom:10px;"><%= x %></div>
 				  </center>
 				</div>
-				<div style="font-size:25px; margin-top:60px;">  
+
+
+				<div style="
+				font-size:25px; 
+				margin-top:60px;">  
 					<div>姓名: <%= b.chinese_name %></div>
 					<div>Name: <%= b.name %></div>
 					<div>IC: <%= b.ic %></div>
 					<div>加入日期: <%= b.created_at.in_time_zone("Kuala Lumpur").strftime('%Y-%m-%d')  %></div>
 				</div>
+
+
 			</div>
 	
 

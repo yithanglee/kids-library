@@ -1,45 +1,99 @@
 <!doctype html>
 <html>
   <head>
-   <meta content="text/html; charset=utf-8">
-
-<%= wicked_pdf_stylesheet_link_tag('application') %>
-    <style type="text/css">
-
-	body {font-family: Sims;}
-	table.barby-barcode { border-spacing: 0; }
-	tr.barby-row {}
-	td.barby-cell { width: 0.01em; height: 50px; }
-	td.barby-cell.on { background: #000; }
-
-	</style>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag('application') %>
   </head>
   <body onload='number_pages'>
     <div id="content">
-	<div class="container-fluid">
+	<div>
 		<% @a.each do |x| %>
 					<% User.find_by(member_id: x).nil? ? b = User.first : b = User.find_by(member_id: x) %>
 		
 
-			<div style="border-radius:5px; border-size:0.1px; border-color:grey ; border-style: solid; width: 500px; float: left; margin: 40px; padding: 50px 60px;">
-				<%= wicked_pdf_image_tag('shining-kids.jpg', size:'120')%>
-				<div style="float:right;">
+			<div style="
+			position: relative;
+			border-radius:5px; 
+			border-size:0.1px; 
+			border-color:grey ; 
+			border-style: solid; 
+			width: 40%;
+			min-height: 350px; 
+			float: left; 
+			margin: 35px 0px;
+			padding: 2%;">
+
+				<%= wicked_pdf_image_tag('shining-kids.jpg', width:'25%')%>
+
+				<div style="
+				position: relative;
+				float:right;
+				margin: 0px 2%; 
+				width:60%; ">
 				  <center>
-				  <%= wicked_pdf_image_tag('branding.png', height:'120')%>
-					<% barcode = Barby::Code128B.new(x) %>
-					<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
-					<div style="margin-bottom:10px;"><%= x %></div>
+				  <div style="font-size:30px;">亮亮儿童图书馆</div>
+				  <div style="font-size:20px;">Shining Kids Library</div><br>
+				  <div style="font-size:25px; font-weight: bolder;">会员证</div>
 				  </center>
 				</div>
-				<div style="font-size:25px; margin-top:60px;">  
+
+
+				<div style="
+				position: absolute;
+				float:left;
+				margin-top:10px;
+				width:80%;
+				font-size:20px;">
+					<div>会员编号: <%= x%></div>
 					<div>姓名: <%= b.chinese_name %></div>
 					<div>Name: <%= b.name %></div>
 					<div>IC: <%= b.ic %></div>
-					<div>加入日期: <%= b.created_at.in_time_zone("Kuala Lumpur").strftime('%Y-%m-%d')  %></div>
 				</div>
+
+
 			</div>
 	
+			<div style="
+			border-radius:5px; 
+			border-size:0.1px; 
+			border-color:grey ; 
+			border-style: solid; 
+			width: 40%; 
+			min-height: 350px;
+			float: left; 
+			margin: 35px 0px;
+			padding: 2%;">
+				<%= wicked_pdf_image_tag('shining-kids.jpg', width:'25%')%>
 
+			<div style="
+				position: relative;
+				float:right;
+				font-size: 15px;
+				margin: 0px 2%; 
+				width:70%; ">
+					<ul>
+						<li>此卡只限借两本书籍。</li>
+						<li>每本所借的书需要在两个星期内还，除非重借。</li>
+						<li>每一本迟还一个星期的书的罚款是RM 0.50。 </li>
+						<br>
+						<li>此卡不得涂该或变造。</li>
+						<li>倘诺遗失，可以向图书馆申请补发。</li>
+					</ul>
+				</div>
+
+
+				<div style="
+				position: absolute;
+				float:left;
+				width:30%;
+				margin-top:100px;
+				margin-left:40px;
+				font-size:20px;">
+					<% barcode = Barby::Code128B.new(x) %>
+					<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
+
+				</div>
+			</div>
 		
 		<% end %>
 	</div>

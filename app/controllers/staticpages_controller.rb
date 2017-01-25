@@ -179,7 +179,7 @@ def print_member_cards
 	respond_to do |format|
 	  format.html
 	  format.pdf do
-		render pdf: "print_member_cards", :page_width => '16.54in', :page_height => '23.38in', :encoding => 'UTF-8', print_media_type: true 
+		render pdf: "print_member_cards", :page_width => '16.54in', :page_height => '23.38in', :encoding => 'UTF-8' 
 	  end
 	end
 end
