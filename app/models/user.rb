@@ -8,6 +8,9 @@ validates :member_id, uniqueness: :true
 
 after_create :capitalize_name
 
+	def read_count
+		self.loans.all.count
+	end
 
 	def self.search(params)
 		where("name like ? or email like ? or chinese_name like ? or phone like ? or ic like ? or member_id like ?", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%")
@@ -15,6 +18,7 @@ after_create :capitalize_name
 
 	def capitalize_name
 		self.update(name: name.upcase )
+		self.update(member_id: 'Pending')
 		return
 	end
 

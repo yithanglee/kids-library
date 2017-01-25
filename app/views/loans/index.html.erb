@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-9">
     <div class="panel panel-default">
     <div class="panel-heading" style="font-size:30px;">Loans</div>
       <div class="panel-body">
@@ -38,9 +38,16 @@
         </tbody>
       </table>
 
+
       <br>
 <%= link_to 'History', loan_history_path, :class => 'btn btn-default'%>
       </div>
     </div>
   </div>  
+  <div class="col-lg-3">
+<b>Read count</b>
+<% @top_readers.sort_by{|x,y| y}.reverse.each do |x,y| %>
+<div><%=User.find(x).chinese_name%>, <%= y%></div>
+<% end %>
+  </div>
 </div>

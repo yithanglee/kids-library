@@ -17,10 +17,10 @@
 @import "bootstrap";
 
 .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
-	padding: 8px;
-	line-height: 1.42857143;
+	padding: 4px;
 	vertical-align: middle;
 	border-top: 1px solid #ddd;
+	font-size: 14px;
 }
 
 .form-horizontal .control-label {
@@ -84,6 +84,7 @@ a:hover, a:focus {
 
 .navbar input {
 	width: 150px;
+	height: 25px;
 	font-size: 16px !important;
 }
 
@@ -247,12 +248,7 @@ td.barby-cell.on {
 	border-radius: 5px;
 }
 
-.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
-	padding: 4px;
-	vertical-align: middle;
-	border-top: 1px solid #ddd;
-	font-size: 14px;
-}
+
 
 @media (min-width: 320px) and (max-width: 768px) {
 
@@ -391,7 +387,7 @@ p, ol, ul, td {
 	height: 1400px;
 }
 
-#facebook {
+div#facebook {
 	display: none;
 }
 
