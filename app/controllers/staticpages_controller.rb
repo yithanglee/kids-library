@@ -5,12 +5,7 @@ class StaticpagesController < ApplicationController
   end
 
   def help
-	respond_to do |format|
-	  format.html
-	  format.pdf do
-		render pdf: "help"   # Excluding ".pdf" extension.
-	  end
-	end
+
   end
 
 	def import_books

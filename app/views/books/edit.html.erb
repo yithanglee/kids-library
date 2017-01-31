@@ -24,12 +24,16 @@
 									<% end %>
 
 								<% elsif current_user.is_admin? %>
-							    <div class="panel-body" style="border-style:dotted; border-width: 1px; margin-top:5px; margin-bottom:5px;">
+							    <div class="panel-body" style="margin-top:5px; margin-bottom:5px;">
+							    <% if @book.loans.count > 0%>
 				  					<% if @book.loans.last.returned? %>
 										<%= render 'loans/form_quick' %>
 										<% else %>
 										<p style="color:black;">This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
 										<% end %>
+									<% else %>
+									<%= render 'loans/form_quick' %>
+									<% end %>
 									</div>
 								<% end %>		  		
 				</div>

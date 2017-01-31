@@ -89,6 +89,25 @@ class UsersController < ApplicationController
     
   end
 
+  def print_member_info
+
+    # encoding: utf-8
+    require 'barby'
+    require 'barby/barcode/code_128'
+    require 'barby/outputter/html_outputter'
+
+    if params[:user_id]
+    @a = params[:user_id]
+    end  
+    respond_to do |format|
+      format.html
+      format.pdf do
+      render pdf: "print_member_info", :page_width => '16.54in', :page_height => '23.38in', :encoding => 'UTF-8' 
+      end
+    end
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

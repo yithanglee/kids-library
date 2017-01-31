@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :publishers 
 
+  match '/users/:user_id/print_member_info', to: "users#print_member_info", via: 'post', as: 'print_member_info'
   match '/history/loans', to: "loans#history", via: 'get', as: 'loan_history'
   match '/loans/:id/book_return', to: "loans#book_return", via: 'get', as: 'book_return'
   match '/loans/:id/return_date_extend', to: "loans#return_date_extend", via: 'get', as: 'return_date_extend'

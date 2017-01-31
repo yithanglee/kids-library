@@ -25,6 +25,7 @@
             <%= @user.user_type %><br>  
           <% if current_user.is_admin? %>  
           <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-default' %>
+          <%= button_to 'Print Member Info', print_member_info_path(@user, :format => 'pdf')  %>
           <% end %>
           <%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
           </div>

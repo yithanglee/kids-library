@@ -7,8 +7,46 @@
   <body onload='number_pages'>
     <div id="content">
 	<div>
-		<% @a.each do |x| %>
-					<% User.find_by(member_id: x).nil? ? b = User.first : b = User.find_by(member_id: x) %>
+		<% x = User.find(@a) %>
+
+			<div style="
+			position: relative;
+			border-radius:5px; 
+			border-size:0.1px; 
+			border-color:grey ; 
+			border-style: solid; 
+			width: 100%;
+			min-height: 600px;
+			padding: 2%;">
+
+				<div style="
+				position: relative;
+				margin: 0px 2%; 
+				width:100%; ">
+				  <center>
+				<%= wicked_pdf_image_tag('shining-kids.jpg', width:'10%')%>
+				  <div style="font-size:30px;">亮亮儿童图书馆</div>
+				  <div style="font-size:20px;">Shining Kids Library</div><br>
+				  <div style="font-size:25px; font-weight: bolder;">会员资料</div>
+				  </center>
+				</div>
+				<div class="member_info" style="margin-top: 20px; position: relative; float: left;">
+					<div>Name: </div><%= x.name %><br>
+					<div>Chinese Name: </div><%= x.chinese_name %><br>
+					<div>IC: </div><%= x.ic%><br>
+					<div>Phone: </div><%= x.phone%><br>
+					<div>Email: </div><%= x.email%><br>
+					<div>Address: </div><%= x.full_address%><br>
+					
+					
+				</div>
+
+	</div>
+
+    </div>
+
+	<div>
+
 		
 
 			<div style="
@@ -44,10 +82,10 @@
 				margin-top:10px;
 				width:80%;
 				font-size:20px;">
-					<div style="width:100px; float: left;">会员编号</div><div>: <%= x%></div>
-					<div><div style="width:100px; float: left;">姓名</div>: <%= b.chinese_name %></div>
-					<div><div style="width:100px; float: left;">Name</div>: <%= b.name %></div>
-					<div><div style="width:100px; float: left;">IC</div>: <%= b.ic %></div>
+					<div style="width:100px; float: left;">会员编号</div><div>: <%= x.member_id%></div>
+					<div><div style="width:100px; float: left;">姓名</div>: <%= x.chinese_name %></div>
+					<div><div style="width:100px; float: left;">Name</div>: <%= x.name %></div>
+					<div><div style="width:100px; float: left;">IC</div>: <%= x.ic %></div>
 				</div>
 
 
@@ -97,16 +135,15 @@
 				margin-top:230px;
 				margin-left: 40px;
 				font-size:20px;"><center>
-					<% barcode = Barby::Code128B.new(x) %>
+					<% barcode = Barby::Code128B.new(x.member_id) %>
 					<%= barcode.to_html(:class_name => 'confirmation-barcode').html_safe %>
-					<%= x%></center>
+					<%= x.member_id%></center>
 				</div>
 			</div>
 		
-		<% end %>
+
 	</div>
 
-    </div>
   </body>
 </html>
 
