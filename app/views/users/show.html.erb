@@ -2,32 +2,38 @@
       <div class="col-lg-4">
         <div class="panel panel-primary">
         <div class="panel-heading"><strong>Profile</strong></div>
-          <div class="panel-body">
-            <strong>MemberID:</strong>
-            <%= @user.member_id %><br>
+          <div class="panel-body" style="color:black;">
+            <p><strong>MemberID:</strong><br>
+            <%= @user.member_id %></p>
 
-            <strong>Name:</strong>
-            <%= @user.name %><br>
+            <p><strong>Name:</strong><br>
+            <%= @user.name %></p>
 
-            <strong>Chinese Name:</strong>
-            <%= @user.chinese_name %><br>
+            <p><strong>Chinese Name:</strong><br>
+            <%= @user.chinese_name %></p>
 
-            <strong>Email:</strong>
-            <%= @user.email %><br>
+            <p><strong>Email:</strong><br>
+            <%= @user.email %></p>
 
-            <strong>Birthday:</strong>
-            <%= @user.birthday %><br>
+            <p><strong>Phone:</strong><br>
+            <%= @user.phone %></p>
 
-            <strong>Address:</strong>
-            <%= @user.full_address %><br>
+            <p><strong>Birthday:</strong><br>
+            <%= @user.birthday %></p>
 
-            <strong>Type:</strong>
-            <%= @user.user_type %><br>  
-          <% if current_user.is_admin? %>  
-          <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-default' %>
-          <%= button_to 'Print Member Info', print_member_info_path(@user, :format => 'pdf')  %>
-          <% end %>
+            <p><strong>Address:</strong><br>
+            <%= @user.full_address %></p>
+
+            <p><strong>Type:</strong>
+            <%= @user.user_type %></p>  
+            <div class="group" style="display: inline-flex;">
+              <% if current_user.is_admin? %>  
+              <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-default' %>
+              <%= button_to 'Print Member Info', print_member_info_path(@user, :format => 'pdf'), :class => 'btn btn-default'  %>
+              <% end %>
+              
           <%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
+            </div>
           </div>
     </div>
   </div>

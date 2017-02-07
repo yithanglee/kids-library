@@ -16,6 +16,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+#session_member_id {
+	width: 100%;
+}
+
+#session_password {
+	width: 100%;
+}
+
 .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
 	padding: 4px;
 	vertical-align: middle;
@@ -149,7 +157,7 @@ body {
 	line-height: 25px;
 }
 
-.jumbotron h1, h3, p {
+.jumbotron {
 	color: white;
 }
 

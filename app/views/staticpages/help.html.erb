@@ -14,7 +14,15 @@
 						  <%= submit_tag("Generate") %>
 						<select name="format">
 						    <option name="pdf">pdf</option>
-						    <option name="html">html</option>
+						    <option name="html"><!DOCTYPE html>
+						    <html>
+						    <head>
+						    	<title></title>
+						    </head>
+						    <body>
+						    
+						    </body>
+						    </html></option>
 						</select>
 						<% end %>
 					</div>
@@ -48,6 +56,7 @@
 							<h3 class="panel-title">File Upload</h3>
 						</div>					
 					<div class="panel-body">
+						<p><small>The header must follow "TITLE", "AUTHOR", "COAUTHORS", "PUBLISHER", "SERIES", "VOLUME", "EDITION", "ISBN", "BARCODE", "PRICE"</small></p>
 						<%= form_tag({action: :import_books}, multipart: true) do %>
 							<%= label_tag('upload_file') %> .tsv(tab seperated values)<br>
 						  <%= file_field_tag 'upload_file', accept: '.tsv' %>
@@ -61,6 +70,7 @@
 							<h3 class="panel-title">Member Upload</h3>
 						</div>					
 					<div class="panel-body">
+					<p><small>The header must follow "MEMBER ID", "ENGLISH NAME", "CHINESE NAME", "MEMBER IC", "EMAIL", "MOBILE", "MAILING ADDRESS", "ADDRESS2", "CITY", "STATE", "ZIP_POSTAL", "TYPE"</small></p>
 						<%= form_tag({action: :import_members}, multipart: true) do %>
 							<%= label_tag('upload_file') %> .tsv(tab seperated values)<br>
 						  <%= file_field_tag 'upload_file' %>
