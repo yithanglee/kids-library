@@ -18,6 +18,11 @@
 								<b>Publisher:</b> <%= @book.publisher%><br>
 							  <b>Isbn:</b> <%= @book.isbn %><br>
 							  <b>Barcode:</b> <%= @book.barcode %><br>
+							  <br>
+							  <%if !current_user.nil? and current_user.is_admin?%>
+								<%= link_to 'Edit', edit_book_path(@book) , :class => 'btn btn-default' %>
+								<%end%>
+<%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
 </div>
 
 					</div>
@@ -53,7 +58,6 @@
 			</div>
 		</div>	
 	</div>
-<%= link_to 'Edit', edit_book_path(@book) , :class => 'btn btn-default' %>
-<%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
+
 
 			

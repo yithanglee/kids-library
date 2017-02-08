@@ -25,8 +25,7 @@ class Loan < ApplicationRecord
 
 
 	def book_physically_available
-		if Loan.where(book_id: self.book.id).last == nil or Loan.where(book_id: self.book.id).last.has_returned == true
-		else
+		if self.book == nil
 			self.errors.messages[:has_returned] = "This book isn't returned yet."
 		end
 		

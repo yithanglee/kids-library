@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'users/:user_id/reset_password' => 'users#reset_password', as: 'reset_password'
 
   resources :books do
     collection do
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
 
   match '/users/:user_id/print_member_info', to: "users#print_member_info", via: 'post', as: 'print_member_info'
   match '/history/loans', to: "loans#history", via: 'get', as: 'loan_history'
+  match '/loans/search_book', to: "loans#search_book", via: 'post', as: 'search_book'
   match '/loans/:id/book_return', to: "loans#book_return", via: 'get', as: 'book_return'
   match '/loans/:id/return_date_extend', to: "loans#return_date_extend", via: 'get', as: 'return_date_extend'
   match '/search', to: "staticpages#search", via: 'post'

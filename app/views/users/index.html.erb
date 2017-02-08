@@ -1,7 +1,7 @@
   <div class="row">
       <div class="col-lg-12">  
         <div class="panel panel-default">
-          <div class="panel-heading">Members
+          <div class="panel-heading">Members <small>Total</small> <span class="badge"><%= User.all.count%></span>
           <%= form_for User.new, :url => url_for(:controller => '/users', :action => 'search'), :method => 'get', html: { class: "form-group", style: "font-size:16px;"} do |f| %>
           <%= text_field_tag :search_term, params[:search_term], placeholder:"Member details" %>
           <%= f.submit 'Search', class: 'btn btn-default', id: 'submit' %>

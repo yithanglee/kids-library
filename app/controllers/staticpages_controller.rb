@@ -1,7 +1,11 @@
 class StaticpagesController < ApplicationController
 
-  def home    
-
+  def home
+  	if !current_user.nil?
+  	@user = current_user
+  	@loans = current_user.loans.where(has_returned: false).order("return_date ASC" )
+  	@loans_returned = @user.loans.where(has_returned: true)
+  	end
   end
 
   def help

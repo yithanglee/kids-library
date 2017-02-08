@@ -10,8 +10,9 @@
               <li>Each member card can borrow 2 books.</li>
               <li>Books must be returned after 2 weeks, unless the loan was extended.</li>
               <li>Late fines are RM 0.50 by per book per week.</li>
-              <li>CD loan requires RM 1.00.</li>
-              <li>Librarian will </li>
+              <li>CD loan requires RM 0.50 per CD.</li>
+              <li>Librarian will issue you the member ID after payment.</li>
+              <li>If you have any other issues, kindly visit our library.</li>
             </ul>
           </div>
         </div>
@@ -25,8 +26,9 @@
                     <div class="other-links">
                       <%= link_to t(".sign_in"), sign_in_path %>
                     </div>
-
+                <% if !current_user.nil? and current_user.is_admin? %>
                 <%= link_to 'Back', users_path %>
+                <% end %>
             </div>
         </div>
       </div>

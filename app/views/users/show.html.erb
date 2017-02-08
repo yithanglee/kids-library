@@ -1,6 +1,6 @@
 <div class="row">
-      <div class="col-lg-4">
-        <div class="panel panel-primary">
+      <div class="col-lg-8">
+        <div class="panel panel-default">
         <div class="panel-heading"><strong>Profile</strong></div>
           <div class="panel-body" style="color:black;">
             <p><strong>MemberID:</strong><br>
@@ -13,8 +13,11 @@
             <%= @user.chinese_name %></p>
 
             <p><strong>Email:</strong><br>
+            <%if @user.email.empty? %>
+            <p style="color: red;">Kindly update your email.</p>
+            <% else %>
             <%= @user.email %></p>
-
+            <% end %>
             <p><strong>Phone:</strong><br>
             <%= @user.phone %></p>
 
@@ -27,51 +30,17 @@
             <p><strong>Type:</strong>
             <%= @user.user_type %></p>  
             <div class="group" style="display: inline-flex;">
-              <% if current_user.is_admin? %>  
               <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-default' %>
+              <% if current_user.is_admin? %>  
               <%= button_to 'Print Member Info', print_member_info_path(@user, :format => 'pdf'), :class => 'btn btn-default'  %>
               <% end %>
               
-          <%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
+          <%= link_to 'Back', root_path, :class => 'btn btn-default' %>
+          <%= link_to 'Reset Password', reset_password_path(params[:id]), :class => 'btn btn-warning' %>
             </div>
           </div>
     </div>
   </div>
-  <div class="col-lg-8">
-    <div class="panel panel-primary">
-    <div class="panel-heading"><strong>Loan Details</strong></div>
-    <div class="panel-body" id="past">
-
-          <% @loans.each do |loan| %>
-           <div>
-              <% if loan.book.image_url == nil or loan.book.image_url == ''%>
-              <%= image_tag('shining-kids.jpg', width: '160')%>
-              <% else %>             
-              <%= image_tag(loan.book.image_url, width: '160')%>
-              <% end %>               
-              
-              <br><strong><%= loan.book.name %></strong>
-            
-              <br>Loan: <%= loan.loan_date %>
-              <br>Return: <%= loan.return_date %>
-              <% if loan.is_extended == false %>
-              | <%= link_to 'Extend', return_date_extend_path(:id => loan.id), :class => 'btn btn-success' %>
-              <% end %>  
-       
-              </div>
-           
-          <%end %>
-    </div>
-      <div class="panel-heading"><strong>Reading History</strong> (<%= @user.loans.all.count%>)</div>
-        <div class="panel-body" id="book-items">
-        <% @loans_returned.each do |returned| %>
-          <a href="<%=book_path(returned.book)%>">
-                  <%= returned.book.name%>, <%= returned.book.barcode%>, <%= returned.actual_return_date%>
-          </a>
-          <% end %>
-        </div>
-    </div>
-      </div>
 
 
 

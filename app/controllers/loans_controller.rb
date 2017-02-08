@@ -23,6 +23,8 @@ class LoansController < ApplicationController
   def new
         a = Time.zone.today
     @loan = Loan.new(loan_date: a, return_date: a+7)
+    user = User.find_by(member_id: params[:user])
+    @loans = user.loans.where(has_returned: false).order('return_date ASC')
   end
 
   # GET /loans/1/edit
@@ -33,10 +35,9 @@ class LoansController < ApplicationController
   # POST /loans.json
   def create
     @loan = Loan.new(loan_params)
-
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to loans_path, notice: 'Loan was successfully created.' }
+        format.html { redirect_to new_loan_path(:user => @loan.user.member_id) , notice: 'Loan was successfully created.' }
         format.json { render :show, status: :created, location: @loan }
       else
         format.html { redirect_to books_path, alert: @loan.errors.full_messages.join }
@@ -81,10 +82,11 @@ class LoansController < ApplicationController
   def book_return
 
     @loan.book_return
+
     if @loan.errors.messages.first.nil?
       @message = "Return was succcessful."
      respond_to do |format|
-      format.html { redirect_to loans_path, notice: @message }
+      format.html { redirect_to new_loan_path(user: @loan.user.member_id), notice: @message }
       format.json { head :no_content }
     end
     else
@@ -105,6 +107,18 @@ class LoansController < ApplicationController
     end
   end
 
+  def search_book
+      @user = User.find_by(member_id: params[:user])
+      @book = Book.find_by(isbn: params[:book])
+    respond_to do |format|
+      format.html { render 'new' }
+      format.js
+    end  
+
+  end
+
+
+
   # DELETE /loans/1
   # DELETE /loans/1.json
   def destroy
@@ -123,8 +137,8 @@ class LoansController < ApplicationController
 
 
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet, only allow the white list throu gh.
     def loan_params
-      params.require(:loan).permit(:loan_date, :return_date, :book_id, :user_id)
+      params.require(:loan).permit(:loan_date, :return_date, :book_id, :user_id, :user)
     end
 end

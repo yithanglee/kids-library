@@ -13,7 +13,7 @@ after_create :capitalize_name
 	end
 
 	def self.search(params)
-		where("name like ? or email like ? or chinese_name like ? or phone like ? or ic like ? or member_id like ?", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%")
+		where("name like ? or email like ? or chinese_name like ? or phone like ? or ic like ? or member_id like ?", "%#{params[:search_term].upcase}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%")
 	end
 
 	def capitalize_name

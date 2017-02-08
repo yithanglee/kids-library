@@ -56,15 +56,20 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+      if params[:user][:password] != params[:password] 
+        redirect_to @user, alert: 'Password does not match.' 
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          if @user.update(user_params)
+            format.html { redirect_to @user, notice: 'User was successfully updated.' }
+            format.json { render :show, status: :ok, location: @user }
+          else
+            format.html { render :edit }
+            format.json { render json: @user.errors, status: :unprocessable_entity }
+          end
+        end
+        
       end
-    end
   end
 
   # DELETE /users/1
@@ -106,6 +111,11 @@ class UsersController < ApplicationController
       end
     end
     
+  end
+
+  def reset_password
+      @user = User.find(params[:user_id])
+      params.permit(:user_id)
   end
 
   private
