@@ -72,6 +72,7 @@
         </thead>
 
         <tbody>
+        <% if !@loans.nil? %>
           <% @loans.each do |loan| %>
             <tr>
               <td><%= loan.loan_date %></td>
@@ -90,6 +91,7 @@
               <% end %>
             </tr>
           <% end %>
+        <% end %>  
         </tbody>
       </table>
 

@@ -117,5 +117,29 @@
 
 
      </footer>
+     <script type="text/javascript">
+   
+
+  function countChar(val) {
+    var len = val.value.length;
+    if (len >= 13) {
+       $("#search").focus();
+        $("#search").click();
+    } else {
+      $('#charNum').text(len);
+    }
+  }
+
+  function countMemberId(val) {
+    var len = val.value.length;
+    if (len >= 10) {
+       $("#book").focus();
+       $("#submit").focus();
+        $("#submit").click();
+    } else {
+      $('#charNum').text(len);
+    }
+  }
+     </script>
   </body>
 </html>

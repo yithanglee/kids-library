@@ -14,32 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require bootstrap-sprockets
 
 
 $(document).ready(function() {
-  $( "#user" ).focus();
+  $( "#book" ).focus();
   $("#flash").delay(2000).fadeOut('slow');
-
-  function countChar(val) {
-    var len = val.value.length;
-    if (len >= 13) {
-       $("#submit").focus();
-        $("#submit").click();
-    } else {
-      $('#charNum').text(len);
-    }
-  }
-
-  function countMemberId(val) {
-    var len = val.value.length;
-    if (len >= 8) {
-       $("#isbn").focus();
-    } else {
-      $('#charNum').text(len);
-    }
-  }
-
 
 });
 

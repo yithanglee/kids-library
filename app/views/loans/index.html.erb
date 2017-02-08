@@ -29,6 +29,9 @@
               <% if loan.has_returned == false%>
               <%= link_to 'Return', book_return_path(:id => loan.id), :class => 'btn btn-success' %>
               <% end %>
+              <% if loan.is_extended == false%>
+              <%= link_to 'Extend', return_date_extend_path(:id => loan.id), :class => 'btn btn-primary' %>
+              <% end %>
               </td>
               <td>RM <%= ('%.2f' % loan.estimate_fine) %></td>
 

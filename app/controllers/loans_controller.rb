@@ -24,7 +24,10 @@ class LoansController < ApplicationController
         a = Time.zone.today
     @loan = Loan.new(loan_date: a, return_date: a+7)
     user = User.find_by(member_id: params[:user])
+    if user.nil?
+    else
     @loans = user.loans.where(has_returned: false).order('return_date ASC')
+    end
   end
 
   # GET /loans/1/edit
@@ -63,19 +66,35 @@ class LoansController < ApplicationController
   def return_date_extend
 
     @loan.return_date_extend
-    if @loan.errors.messages.first.nil?
-      @message = "Loan extension was succcessful."
-     respond_to do |format|
-      format.html { redirect_to user_path(current_user), notice: @message }
-      format.json { head :no_content }
-    end
+    if current_user.is_admin?
+      if @loan.errors.messages.first.nil?
+        @message = "Loan extension was succcessful."
+       respond_to do |format|
+        format.html { redirect_to loans_path, notice: @message }
+        format.json { head :no_content }
+        end
+      else
+        @message = @loan.errors.messages.first[1]
+       respond_to do |format|
+        format.html { redirect_to loans_path, alert: @message }
+        format.json { head :no_content }
+        end
+      end 
     else
-      @message = @loan.errors.messages.first[1]
-     respond_to do |format|
-      format.html { redirect_to user_path(current_user), alert: @message }
-      format.json { head :no_content }
+      if @loan.errors.messages.first.nil?
+        @message = "Loan extension was succcessful."
+       respond_to do |format|
+        format.html { redirect_to user_path(current_user), notice: @message }
+        format.json { head :no_content }
+        end
+      else
+        @message = @loan.errors.messages.first[1]
+       respond_to do |format|
+        format.html { redirect_to user_path(current_user), alert: @message }
+        format.json { head :no_content }
+        end
+      end   
     end
-    end   
   end
 
 
