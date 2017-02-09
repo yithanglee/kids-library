@@ -36,7 +36,7 @@ class Clearance::UsersController < Clearance::BaseController
   end
 
   def redirect_signed_in_users
-    if signed_in?
+    if signed_in? and !current_user.is_admin?
       redirect_to Clearance.configuration.redirect_url
     end
   end

@@ -22,6 +22,9 @@ class Clearance::SessionsController < Clearance::BaseController
     if @user == nil
       flash.now.alert = "Please key in a valid member id."
       render template: "sessions/new"
+    elsif @user.member_id == 'Pending'
+      flash.now.alert = "Your account requires librarian to approve."
+      render template: "sessions/new"
     else
       if @user.authenticated?(params[:session][:password])
         sign_in(@user) do |status|

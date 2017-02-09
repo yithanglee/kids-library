@@ -12,6 +12,23 @@ class StaticpagesController < ApplicationController
 
   end
 
+  def set_new_password
+  		@user = User.find_by(remember_token: params[:confirmation_token])
+  end
+
+  def public_password_submit
+  	user = User.find_by(member_id: params[:MID])
+  	PasswordMailer.reset_email(user).deliver_now
+  	redirect_to sign_in_path, :notice => 'Reset email sent.'
+  end
+
+  def public_password_reset
+  	respond_to do |format|
+  		format.html { render 'sessions/new'}
+  		format.js
+  	end
+  end
+
 	def import_books
 		require'csv'
 

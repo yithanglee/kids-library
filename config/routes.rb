@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  get 'staticpages/set_new_password/:confirmation_token' => 'staticpages#set_new_password', as: 'set_new_password'
+  post 'staticpages/public_password_submit' => 'staticpages#public_password_submit', as: 'public_password_submit'
+  get 'staticpages/public_password_reset' => 'staticpages#public_password_reset', as: 'public_password_reset'
   get 'users/:user_id/reset_password' => 'users#reset_password', as: 'reset_password'
 
   resources :books do
@@ -10,15 +12,8 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :passwords, controller: "clearance/passwords", only: [:create, :new]
+
   resource :session, controller: "clearance/sessions", only: [:create]
-
-  resources :users, controller: "clearance/users", only: [:create] do
-    resource :password,
-      controller: "clearance/passwords",
-      only: [:create, :edit, :update]
-
-  end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -35,7 +30,7 @@ Rails.application.routes.draw do
   resources :loans 
   resources :categories
   resources :publishers 
-
+  
   match '/users/:user_id/print_member_info', to: "users#print_member_info", via: 'post', as: 'print_member_info'
   match '/history/loans', to: "loans#history", via: 'get', as: 'loan_history'
   match '/loans/search_book', to: "loans#search_book", via: 'post', as: 'search_book'

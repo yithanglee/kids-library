@@ -18,7 +18,7 @@
     <%= f.label :name, :class => "col-lg-2 control-label"  %>
     <div class="col-lg-8"> <%= f.text_field :name, :class => "form-control" %></div>
   </div>
-<% if current_user == nil or current_user.is_admin? %>
+<% if current_user == nil %>
   <div class="form-group">
     <%= f.label :password, :class => "col-lg-2 control-label"  %>
     <div class="col-lg-8"> <%= f.text_field :password, :class => "form-control" %></div>

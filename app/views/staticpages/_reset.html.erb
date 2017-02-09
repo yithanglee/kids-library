@@ -1,0 +1,16 @@
+
+<div class="col-lg-8">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="well">
+				Please key in your member ID.
+			</div>
+<%= form_tag('/staticpages/public_password_submit') do -%>
+	<%= text_field_tag 'MID', nil, placeholder:'ie. 201501-001'%>
+  <%= submit_tag 'Send' %>
+<% end -%>
+			
+		</div>
+	</div>
+	
+</div>

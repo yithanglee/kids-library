@@ -21,8 +21,102 @@
         <div class="panel panel-default">
           <div class="panel-heading"><h1>New User</h1></div>
             <div class="panel-body" style="font-size:14px;">
-                <%= render '/users/form', user: @user %>
+<!-- form starts here -->
+<div class="container-fluid">
+<%= form_for(@user, :html => {:class => 'form-horizontal'}) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="form-group">
+    <%= f.label :name, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :name, :class => "form-control" %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :password, :class => "form-control" %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :chinese_name, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :chinese_name, :class => "form-control" %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :ic, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :ic, :class => "form-control" %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :email, :required => 'true', :class => "form-control" %></div>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :phone, :class => "form-control" %></div>
+  </div>
+
+
+
+  <div class="form-group">
+    <%= f.label 'Address line 1', :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :line1, :class => "form-control" %></div>
+  </div>
+  <div class="form-group">
+    <%= f.label 'Address line 2', :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :line2, :class => "form-control" %></div>
+  </div>    
+  <div class="form-group">
+    <%= f.label :postcode, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :postcode, :class => "form-control" %></div>
+  </div>
+  <div class="form-group">
+    <%= f.label :city, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :city, :class => "form-control" %></div>
+  </div>
+  <div class="form-group">
+    <%= f.label :state, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :state, :class => "form-control" %></div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :birthday, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.date_select :birthday, :start_year =>  Date.today.year - 50, :end_year => Date.today.year + 0 %></div>
+  </div>
+
+<% if !current_user.nil? and current_user.is_admin? %>
+  <div class="form-group">
+    <%= f.label :user_type, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.select(:user_type, [['Parents', 'parents'],['Children', 'children'],['Admin', 'admin']])%></div>
+  </div>
+  <div class="form-group">
+    <%= f.label :memberid, :class => "col-lg-2 control-label"  %>
+    <div class="col-lg-8"> <%= f.text_field :member_id, :class => "form-control" %></div>
+  </div>
+<% end %>
+  <div class="actions">
+    <%= f.submit 'Submit', :class => "btn btn-default" %>
+    <%= link_to 'Back', 'javascript:history.go(-1);', :class => 'btn btn-default' %>
+    <%if @user.nil? %>
+    <%= link_to 'Destroy',user_path(@user), data: {confirm: 'Are you sure?'} ,:method => :delete, :class => "btn btn-default"%>
+    <%end %>
+  </div>
+<% end %>
+</div>
+
+<!-- form ends here -->
                     <div class="other-links">
                       <%= link_to t(".sign_in"), sign_in_path %>
                     </div>

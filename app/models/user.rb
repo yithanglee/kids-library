@@ -4,9 +4,17 @@ class User < ApplicationRecord
 has_many :books, through: :loans
 has_many :loans, dependent: :destroy
 
-validates :member_id, uniqueness: :true 
+validates :member_id, uniqueness: :true, unless: :is_pending?
 
 after_create :capitalize_name
+
+	def is_pending?
+		self.member_id == 'Pending'
+	end
+
+	def member_id_pending
+		self.update(member_id: 'Pending')
+	end
 
 	def read_count
 		self.loans.all.count

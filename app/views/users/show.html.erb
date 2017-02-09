@@ -31,7 +31,7 @@
             <%= @user.user_type %></p>  
             <div class="group" style="display: inline-flex;">
               <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-default' %>
-              <% if current_user.is_admin? %>  
+              <% if !current_user.nil? and current_user.is_admin? %>  
               <%= button_to 'Print Member Info', print_member_info_path(@user, :format => 'pdf'), :class => 'btn btn-default'  %>
               <% end %>
               
