@@ -1,5 +1,5 @@
 <%= form_tag('/loans/search_book', remote: true) do -%>
-<%= text_field_tag :book, params[:barcode], :onkeyup => 'countChar(this)' %>
+<%= text_field_tag :book, params[:barcode], placeholder: 'ISBN or barcode', :onkeyup => 'countChar(this)' %>
 <%= hidden_field_tag :user, params[:user] %>
 <%= submit_tag 'Search', :id => 'search' %>
 <% end -%>

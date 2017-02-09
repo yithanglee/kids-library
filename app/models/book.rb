@@ -58,6 +58,11 @@ def self.quick_search(search)
   end
 end
 
+
+  def self.super_search(params)
+    where("isbn like ? or barcode like ? ", "%#{params[:book]}%", "%#{params[:book]}%")
+  end
+
   def self.search(search)
 
   # case

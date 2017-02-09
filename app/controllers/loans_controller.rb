@@ -128,7 +128,7 @@ class LoansController < ApplicationController
 
   def search_book
       @user = User.find_by(member_id: params[:user])
-      @book = Book.find_by(isbn: params[:book])
+      @book = Book.super_search(params).first
     respond_to do |format|
       format.html { render 'new' }
       format.js
