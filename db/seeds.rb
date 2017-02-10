@@ -16,21 +16,15 @@ Category.create(name:'Religion')
 
 Category.create(name:'Other')
 
-Category.create(name:'Soft Cover')
+Category.create(name:'Multimedia')
 
-Category.create(name:'Hard Cover')
-
-Category.create(name:'Tall')
-
-Category.create(name:'Short')
 
 Book.create(name:'Weapons: Helmet of Salvation', isbn:'1230000100',barcode:'P10001')
-
 
 Book.create(name:'Weapons: Sword of Truth', isbn:'1230000101',barcode:'P10002')
 
 Book.create(name:'Weapons: Breastplate of Confidence', isbn:'1230000102',barcode:'P10003')
 
-User.create(email:'123@1.com', member_id:'201610123', password:'123')
+User.create(email:'123@1.com', member_id:'201610123', password:'123', type: 'Admin')
 User.create(email:'123@2.com', member_id:'201610124', password:'123')
 User.create(email:'123@3.com', member_id:'201610125', password:'123')

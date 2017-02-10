@@ -25,6 +25,8 @@ def categorize
       self.categories << Category.find_by(name:'Teaching')
     when "O"
       self.categories << Category.find_by(name:'Other')
+    when "M"
+    self.categories << Category.find_by(name:'Multimedia')
     end
   end
 
@@ -45,7 +47,9 @@ def categorize_update
   when "T"
     self.categories << Category.find_by(name:'Teaching')
   when "O"
-    self.categories << Category.find_by(name:'Other')           
+    self.categories << Category.find_by(name:'Other')
+  when "M"
+    self.categories << Category.find_by(name:'Multimedia')         
   end
 end
 

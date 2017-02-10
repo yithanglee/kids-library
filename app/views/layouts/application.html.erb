@@ -47,6 +47,7 @@
             <li><%= link_to '教导书籍 Teaching Books', :action => 'list_by_category', :controller => '/books', :category => '3' %></li>
             <li><%= link_to '信仰书籍 Religion Books', :action => 'list_by_category', :controller => '/books', :category => '4' %></li>
             <li><%= link_to '其他 Other Books', :action => 'list_by_category', :controller => '/books', :category => '5' %></li>
+            <li><%= link_to '多媒体 Multimedia', :action => 'list_by_category', :controller => '/books', :category => Category.find_by(name:'Multimedia').id %></li>
             </ul>
        </li>
        <li>

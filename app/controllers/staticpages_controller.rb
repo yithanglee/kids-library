@@ -18,8 +18,14 @@ class StaticpagesController < ApplicationController
 
   def public_password_submit
   	user = User.find_by(member_id: params[:MID])
+  	if user.nil? 
+  		redirect_to sign_in_path, :alert => 'There is no such member. Please key in a valid member ID.'
+  	elsif user.email.empty?
+  		redirect_to sign_in_path, :alert => 'There is no email, kindly proceed to counter.'
+  	else
   	PasswordMailer.reset_email(user).deliver_now
   	redirect_to sign_in_path, :notice => 'Reset email sent.'
+  	end
   end
 
   def public_password_reset
