@@ -13,6 +13,15 @@
             <%= link_to 'Other Books', :action => 'list_by_category', :controller => '/books', :category => '5' %>
 				
 					</div>
+
+							  <ul style="list-style: none">
+							  	<li style="color: white; background-color: rgb(51, 122, 183); padding: 5px; border-radius: 5px; width: 150px; text-align: -moz-center; margin-bottom: 5px;">
+							  		A - Available
+							  	</li>
+							  	<li style="color: white; background-color: rgb(192, 76, 76); padding: 5px; border-radius: 5px; width: 150px; text-align: -moz-center; margin-bottom: 5px;">
+							  		L - Loaned
+							  	</li>
+							  </ul>
 		  				<div class="panel-body" id="book-items">
 		  					<%= render @books %>
 						</div>
