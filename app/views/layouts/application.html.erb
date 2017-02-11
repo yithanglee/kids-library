@@ -120,12 +120,12 @@
 
      </footer>
     <script type="text/javascript">
-$('#book').keypress(function(event){
+    $('#comment').keypress(function(event){
 
-    if (event.keyCode === 10 || event.keyCode === 13) 
+    if( event.keyCode == 13 || event.keyCode == 17 || event.keyCode == 74 || event.keyCode == 78)
         event.preventDefault();
 
-  });
+    });
 
       function countChar(val) {
       var len = val.value.length;
