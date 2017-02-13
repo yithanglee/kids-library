@@ -1,6 +1,43 @@
 <h1>Editing Loan</h1>
 
-<%= render 'form', loan: @loan %>
+          <%= form_for @loan do |f| %>
+            
+            <div class="field" id="book_loan">
+              <%= f.label :book_id %>
+              <% if @loan.book == nil %>
+                  <p>No Book Found</p>
+              <% else %>
+
+              <%= f.hidden_field :book_id, :value => @loan.book.id %>
+              <%= @loan.book.name %>
+              <% end %>
+            </div>
+
+            <div class="field">
+              <%= f.label :user_id %>
+              <% if  !@loan.user.nil? %>
+                <%= @loan.user.name %>,  <%= @loan.user.member_id %>
+                <%= f.hidden_field :user_id, :value => @loan.user.id %>
+              <% else %>
+                <p>No User Found</p>
+              <% end %>
+            </div>
+
+            <div class="field">
+              <%= f.label :loan_date %>
+              <%= f.date_select :loan_date %>
+            </div>
+
+            <div class="field">
+              <%= f.label :return_date %>
+              <%= f.date_select :return_date, selected: 14.days.from_now %>
+            </div>
+
+
+            <div class="actions">
+              <%= f.submit 'Submit', :class => 'btn btn-default' %>
+            </div>
+          <% end %>
 
 <%= link_to 'Show', @loan %> |
 <%= link_to 'Back', loans_path %>

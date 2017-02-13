@@ -64,7 +64,7 @@ end
 
 
   def self.super_search(params)
-    where("isbn like ? or barcode like ? ", "%#{params[:book]}%", "%#{params[:book]}%")
+    where("isbn like ? or barcode like ? ", "%#{params[:book]}%", "%#{params[:book].upcase}%")
   end
 
   def self.search(search)
