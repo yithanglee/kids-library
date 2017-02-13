@@ -3,9 +3,9 @@
 
 <a href="<%=book_path(book)%>">
         <%if book.loans.count > 0 %>
-        <span class="label label-danger" style="float:left; margin-right:5px;">L</span>
+        <span class="label label-danger" style="float:left; margin-right:5px; padding-top: 7px">L</span>
         <% else %>
-        <span class="label label-primary" style="float:left; margin-right:5px;">A</span>
+        <span class="label label-primary" style="float:left; margin-right:5px; padding-top: 7px">A</span>
         <% end %>
 <%= book.name%>, <%= book.barcode%>
 </a>

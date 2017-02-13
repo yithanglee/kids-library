@@ -2,8 +2,11 @@
 		<% if current_user == nil || !current_user.is_admin? %>
 			<div class="col-lg-12">
 					<div class="panel panel-default">
-					<div class="panel-heading" style="font-size:30px;">List of <%= params[:category].nil? ? "all" : Category.find(params[:category]).name %> 
-					</div>
+					  <div class="panel-heading">
+					  <h1>List of <%= params[:category].nil? ? "all" : Category.find(params[:category]).name %><medium> <span class='badge'><%= params[:category].nil? ? "all" : Category.find(params[:category]).books.count %></span></medium></h1> 
+
+					  	<%= link_to 'New Book', new_book_path(Book.new), :class => 'btn btn-default' %>
+					  </div>
 					<div class="panel-heading" style="font-size:15px; text-transform: underline;">
 												
 						<%= link_to 'Picture Books', :action => 'list_by_category', :controller => '/books', :category => '1' %> |
@@ -11,17 +14,16 @@
             <%= link_to 'Teaching Books', :action => 'list_by_category', :controller => '/books', :category => '3' %> |
             <%= link_to 'Religion Books', :action => 'list_by_category', :controller => '/books', :category => '4' %> |
             <%= link_to 'Other Books', :action => 'list_by_category', :controller => '/books', :category => '5' %>
-				
+							  	<span style="color: white; background-color: rgb(51, 122, 183); padding: 5px; border-radius: 5px; width: 150px; text-align: -moz-center; margin-bottom: 5px;">
+							  		A - Available
+							  	</span>
+							  	<span style="color: white; background-color: rgb(192, 76, 76); padding: 5px; border-radius: 5px; width: 150px; text-align: -moz-center; margin-bottom: 5px;">
+							  		L - Loaned
+							  	</span>
+
 					</div>
 
-							  <ul style="list-style: none">
-							  	<li style="color: white; background-color: rgb(51, 122, 183); padding: 5px; border-radius: 5px; width: 150px; text-align: -moz-center; margin-bottom: 5px;">
-							  		A - Available
-							  	</li>
-							  	<li style="color: white; background-color: rgb(192, 76, 76); padding: 5px; border-radius: 5px; width: 150px; text-align: -moz-center; margin-bottom: 5px;">
-							  		L - Loaned
-							  	</li>
-							  </ul>
+
 		  				<div class="panel-body" id="book-items">
 		  					<%= render @books %>
 						</div>
@@ -32,7 +34,11 @@
 		<% elsif current_user.is_admin?  %>
 				<div class="col-md-12">
 					<div class="panel panel-default">
-					  <div class="panel-heading"><h1>List of <%= params[:category].nil? ? "all" : Category.find(params[:category]).name %></h1> <%= link_to 'New Book', new_book_path(Book.new), :class => 'btn btn-default' %></div>
+					  <div class="panel-heading">
+					  <h1>List of <%= params[:category].nil? ? "all" : Category.find(params[:category]).name %><medium> <span class='badge'><%= params[:category].nil? ? "all" : Category.find(params[:category]).books.count %></span></medium></h1> 
+
+					  	<%= link_to 'New Book', new_book_path(Book.new), :class => 'btn btn-default' %>
+					  </div>
 		  				<div class="panel-body">
 							<table class="table" style="font-size:18px;">
 							  <col width="35%">

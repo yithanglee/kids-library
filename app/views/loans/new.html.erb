@@ -1,4 +1,4 @@
-<div class="col-lg-6">
+<div class="col-lg-5">
 	<div class="panel panel-default">
 		<div class="panel-heading" style="font-size:30px;">Loans</div>
 		<div class="panel-body">
@@ -53,7 +53,7 @@
 	<%= link_to 'Back', loans_path %>
 	
 </div>
-<div class="col-lg-6">
+<div class="col-lg-7">
 
     <div class="panel panel-default">
     <div class="panel-heading" style="font-size:30px;">Returns</div>
@@ -64,6 +64,7 @@
             <th>Loan date</th>
             <th>Return date</th>
             <th>Book</th>
+            <th>Barcode</th>
             <th>User</th>
             <th colspan="2"></th>
             <th>Estimate fine</th>
@@ -78,9 +79,10 @@
               <td><%= loan.loan_date %></td>
               <td><%= loan.return_date %></td>
               <td><%= loan.book.name %></td>
+              <td><%= loan.book.barcode %></td>
               <td><%= link_to loan.user.name, user_path(loan.user)%></td> 
               <% if current_user.is_admin? %>
-              <td><%= link_to 'Edit', edit_loan_path(loan), :class => 'btn btn-info' %></td>
+              <td><%= link_to 'Edit', edit_loan_path(loan), :class => 'btn btn-default' %></td>
               <td>
               <% if loan.has_returned == false%>
               <%= link_to 'Return', book_return_path(:id => loan.id), :class => 'btn btn-success' %>
