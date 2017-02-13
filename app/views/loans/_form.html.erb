@@ -1,45 +1,39 @@
-      <%= form_for(Loan.new) do |f| %>
-        
+          <%= form_for(Loan.new) do |f| %>
+            
 
-        <div class="field" id="book_loan">
-          <%= f.label :book_id %>
-          <% if @book.loans.empty? %>
-            <%= f.hidden_field :book_id, :value => Book.find(@book).id %>
-            <%= Book.find(@book).name %>, <%= Book.find(@book).isbn %>              
-          <% elsif !@book.loans.last.returned? %>
-            <p style="color: red;"><%= Book.find(@book).name%> has been loaned.</p>
-          <% else %>
-            <%= f.hidden_field :book_id, :value => Book.find(@book).id %>
-            <%= Book.find(@book).name %>
+            <div class="field" id="book_loan">
+              <%= f.label :book_id %>
+              <% if @loan.book == nil %>
+                  <p>No Book Found</p>
+              <% else %>
+
+              <%= f.hidden_field :book_id, :value => @loan.book.id %>
+              <%= @loan.book.name %>
+              <% end %>
+            </div>
+
+            <div class="field">
+              <%= f.label :user_id %>
+              <% if  !@loan.user.nil? %>
+                <%= @loan.user.name %>,  <%= @loan.user.member_id %>
+                <%= f.hidden_field :user_id, :value => @loan.user.id %>
+              <% else %>
+                <p>No User Found</p>
+              <% end %>
+            </div>
+
+            <div class="field">
+              <%= f.label :loan_date %>
+              <%= f.date_select :loan_date %>
+            </div>
+
+            <div class="field">
+              <%= f.label :return_date %>
+              <%= f.date_select :return_date, selected: 14.days.from_now %>
+            </div>
+
+
+            <div class="actions">
+              <%= f.submit 'Submit', :class => 'btn btn-default' %>
+            </div>
           <% end %>
-        </div>
-
-        <div class="field">
-          <%= f.label :user_id %>
-          <% if  !User.find_by(member_id: params[:user]).nil? %>
-            <%= User.find_by(member_id: params[:user]).name %>,  <%= User.find_by(member_id: params[:user]).member_id %>
-            <%= f.hidden_field :user_id, :value => User.find_by(member_id: params[:user]).id %>
-          <% else %>
-            <p>No User Found</p>
-          <% end %>
-        </div>
-
-        <div class="field">
-          <%= f.label :loan_date %>
-          <%= f.date_select :loan_date %>
-        </div>
-
-        <div class="field">
-          <%= f.label :return_date %>
-          <%= f.date_select :return_date, selected: 14.days.from_now %>
-        </div>
-
-
-        <div class="actions">
-        <% if @book.loans.empty? %>
-        <%= f.submit 'Create loan', :class => 'btn btn-default' %>
-        <% elsif @book.loans.last.returned? %>
-          <%= f.submit 'Create loan', :class => 'btn btn-default' %>
-        <% end %>
-        </div>
-      <% end %>
