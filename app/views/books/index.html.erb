@@ -5,7 +5,7 @@
 					  <div class="panel-heading">
 					  <h1>List of <%= params[:category].nil? ? "all" : Category.find(params[:category]).name %><medium> <span class='badge'><%= params[:category].nil? ? "all" : Category.find(params[:category]).books.count %></span></medium></h1> 
 
-					  	<%= link_to 'New Book', new_book_path(Book.new), :class => 'btn btn-default' %>
+					  	
 					  </div>
 					<div class="panel-heading" style="font-size:15px; text-transform: underline;">
 												
