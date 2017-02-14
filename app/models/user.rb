@@ -26,7 +26,9 @@ after_create :capitalize_name
 
 	def capitalize_name
 		self.update(name: name.upcase )
+		if self.member_id == nil
 		self.update(member_id: 'Pending')
+		end
 		return
 	end
 
