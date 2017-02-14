@@ -4,25 +4,25 @@
         <div class="field" id="book_loan">
           <%= f.label :book_id %>
           <% if @book.loans.empty? %>
-            <%= f.hidden_field :book_id, :value => Book.find(@book).id %>
-            <%= Book.find(@book).name %>, <%= Book.find(@book).barcode %>              
+            <%= f.hidden_field :book_id, :value => Book.find(@book.id).id %>
+            <%= Book.find(@book.id).name %>, <%= Book.find(@book.id).barcode %>              
           <% elsif !@book.loans.last.returned? %>
             <p style="color: red;"><%= Book.find(@book).name%> has been loaned.</p>
           <% else %>
-            <%= f.hidden_field :book_id, :value => Book.find(@book).id %>
-            <%= Book.find(@book).name %>
+            <%= f.hidden_field :book_id, :value => Book.find(@book.id).id %>
+            <%= Book.find(@book.id).name %>
           <% end %>
         </div>
 
-        <div class="field">
-          <%= f.label :user_id %>
-          <% if  !User.find_by(member_id: params[:user]).nil? %>
-            <%= User.find_by(member_id: params[:user]).name %>,  <%= User.find_by(member_id: params[:user]).member_id %>
-            <%= f.hidden_field :user_id, :value => User.find_by(member_id: params[:user]).id %>
-          <% else %>
-            <p>No User Found</p>
-          <% end %>
-        </div>
+            <div class="field">
+              
+              <% if  !User.find_by(member_id: params[:user]).nil? %>
+                <h1><%= User.find_by(member_id: params[:user]).chinese_name %> <small><%= User.find_by(member_id: params[:user]).name %></small></h1> <%= User.find_by(member_id: params[:user]).member_id %>
+                <%= f.hidden_field :user_id, :value => User.find_by(member_id: params[:user]).id %>
+              <% else %>
+                <p>No User Found</p>
+              <% end %>
+            </div>
 
         <div class="field">
           <%= f.label :loan_date %>
