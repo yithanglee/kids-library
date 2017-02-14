@@ -78,7 +78,7 @@ class Clearance::UsersController < Clearance::BaseController
      Hash.new
     else
     # params[Clearance.configuration.user_parameter]
-    params.require(:user).permit(:name, :ic, :phone, :email, :birthday, :member_id, :password, :user_type, :chinese_name, :line1, :line2, :line3, :postcode, :city, :state)
+    params.require(:user).permit(:name, :ic, :phone, :email, :birthday, :member_id, :password, :user_type, :chinese_name, :line1, :line2, :line3, :postcode, :city, :state, :member_id)
     end
   end
 end
