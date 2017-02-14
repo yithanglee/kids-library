@@ -15,13 +15,17 @@
 			<div class="panel panel-default">
 		  <div class="panel-heading"><h1>Loan Details</h1></div>
 		  	<div class="panel-body">
-		  		
-		  					
-									<% if @book.loans.empty? %>
-										<p>This book is <span class="label label-primary">available</span> for loan.</p>
-									<% else %>
-										<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
-									<% end %>
+		  							<% if @book.image_url == nil or @book.image_url == ''%>
+										<%= image_tag('shining-kids.jpg')%>
+										<% else %>
+										<%= image_tag(@book.image_url, width: '320')%>
+										<% end %>
+													  					
+										<% if @book.loans.empty? %>
+											<p>This book is <span class="label label-primary">available</span> for loan.</p>
+										<% else %>
+											<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
+										<% end %>
 
 				  		
 				</div>
