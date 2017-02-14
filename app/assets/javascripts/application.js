@@ -19,7 +19,7 @@
 
 $(document).ready(function() {
   $( "#book" ).focus();
-  $("#flash").delay(2000).fadeOut('slow');
+  $("#flash").delay(10000).fadeOut('slow');
 
 });
 

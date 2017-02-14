@@ -13,7 +13,7 @@
             <%= Book.find(@book.id).name %>
           <% end %>
         </div>
-
+        <br>
             <div class="field">
               
               <% if  !User.find_by(member_id: params[:user]).nil? %>
@@ -23,7 +23,8 @@
                 <p>No User Found</p>
               <% end %>
             </div>
-
+            <br>
+            <br>
         <div class="field">
           <%= f.label :loan_date %>
           <%= f.date_select :loan_date %>
