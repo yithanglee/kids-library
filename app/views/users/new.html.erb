@@ -23,7 +23,7 @@
             <div class="panel-body" style="font-size:14px;">
 <!-- form starts here -->
 <div class="container-fluid">
-<%= form_for(@user, :html => {:class => 'form-horizontal'}) do |f| %>
+<%= form_for(@user, :html => {:class => 'form-horizontal'})  do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>

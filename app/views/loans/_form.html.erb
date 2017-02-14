@@ -5,7 +5,7 @@
           <%= f.label :book_id %>
           <% if @book.loans.empty? %>
             <%= f.hidden_field :book_id, :value => Book.find(@book.id).id %>
-            <%= Book.find(@book.id).name %>, <%= Book.find(@book.id).barcode %>              
+            <%= Book.find(@book.id).name %>, <%= Book.find(@book.id).barcode %>, <%= Book.find(@book.id).isbn %>              
           <% elsif !@book.loans.last.returned? %>
             <p style="color: red;"><%= Book.find(@book).name%> has been loaned.</p>
           <% else %>
