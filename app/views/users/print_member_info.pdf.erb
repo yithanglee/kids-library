@@ -16,7 +16,7 @@
 			border-color:grey ; 
 			border-style: solid; 
 			width: 100%;
-			min-height: 600px;
+			min-height: 700px;
 			padding: 2%;">
 
 				<div style="
@@ -31,17 +31,20 @@
 				  </center>
 				</div>
 				<div class="member_info" style="margin-top: 20px; position: relative; float: left;">
+					<div>Member ID: </div><%= x.member_id %><br>
 					<div>Name: </div><%= x.name %><br>
 					<div>Chinese Name: </div><%= x.chinese_name %><br>
 					<div>IC: </div><%= x.ic%><br>
 					<div>Phone: </div><%= x.phone%><br>
 					<div>Email: </div><%= x.email%><br>
 					<div>Address: </div><%= x.full_address%><br>
-					
+					<br>
+					<br>
+					<div>Member's Signature: </div>
 					
 				</div>
 
-	</div>
+			</div>
 
     </div>
 
@@ -86,6 +89,7 @@
 					<div><div style="width:100px; float: left;">姓名</div>: <%= x.chinese_name %></div>
 					<div><div style="width:100px; float: left;">Name</div>: <%= x.name %></div>
 					<div><div style="width:100px; float: left;">IC</div>: <%= x.ic %></div>
+
 				</div>
 
 

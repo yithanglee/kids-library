@@ -16,15 +16,15 @@ def categorize
   if self.barcode != nil
     case self.barcode[0]
     when "E"
-      self.categories << Category.find_by(name:'English')
+      self.categories << Category.find_by(name:'English Books')
     when "P"
-      self.categories << Category.find_by(name:'Picture')
+      self.categories << Category.find_by(name:'Picture Books')
     when "R"
-      self.categories << Category.find_by(name:'Religion')
+      self.categories << Category.find_by(name:'Religion Books')
     when "T"
-      self.categories << Category.find_by(name:'Teaching')
+      self.categories << Category.find_by(name:'Teaching Books')
     when "O"
-      self.categories << Category.find_by(name:'Other')
+      self.categories << Category.find_by(name:'Other Books')
     when "M"
     self.categories << Category.find_by(name:'Multimedia')
     end
@@ -39,15 +39,15 @@ def categorize_update
   end
   case self.barcode[0]
   when "E"
-    self.categories << Category.find_by(name:'English')
+    self.categories << Category.find_by(name:'English Books')
   when "P"
-    self.categories << Category.find_by(name:'Picture')
+    self.categories << Category.find_by(name:'Picture Books')
   when "R"
-    self.categories << Category.find_by(name:'Religion')
+    self.categories << Category.find_by(name:'Religion Books')
   when "T"
-    self.categories << Category.find_by(name:'Teaching')
+    self.categories << Category.find_by(name:'Teaching Books')
   when "O"
-    self.categories << Category.find_by(name:'Other')
+    self.categories << Category.find_by(name:'Other Books')
   when "M"
     self.categories << Category.find_by(name:'Multimedia')         
   end
