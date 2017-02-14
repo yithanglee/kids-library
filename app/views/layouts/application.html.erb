@@ -24,7 +24,7 @@
       <ul class="nav navbar-nav navbar-left">
         <% if !current_user.nil? and current_user.is_admin? %>
           <li> <%= link_to "Members", users_url, :class => "btn btn-default" %></li>
-          <li> <%= link_to "Loans", loans_url, :class => "btn btn-default" %></li>  
+          <li> <%= link_to "Loaned List", loans_url, :class => "btn btn-default" %></li>  
           <li> <%= link_to "Tools", '/staticpages/help', :class => "btn btn-default" %></li>
           <li>
           <%= form_for Loan.new , :url => url_for(:controller => '/loans', :action => 'new') , :method => 'get', html: { class: "navbar-form navbar-left"} do |f| %>
