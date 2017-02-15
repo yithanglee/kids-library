@@ -52,6 +52,13 @@ class Loan < ApplicationRecord
 		self.has_returned == true
 	end
 
+	def assign_dates
+		if self.return_date == nil
+	  a = Time.zone.today
+		self.update(loan_date: a, return_date: a+14) 
+		end
+	end
+	
 	private
 
 	def delete_empty
@@ -60,11 +67,5 @@ class Loan < ApplicationRecord
 		end
 	end
 
-	def assign_dates
-		if self.return_date == nil
-	  a = Time.zone.today
-		self.update(loan_date: a, return_date: a+14) 
-		end
-	end
 
 end

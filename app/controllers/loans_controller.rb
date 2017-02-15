@@ -12,6 +12,7 @@ class LoansController < ApplicationController
     elsif !current_user.is_admin?
       @loans = Loan.where(user_id: current_user.id)
     end
+    
   end
 
   # GET /loans/1
