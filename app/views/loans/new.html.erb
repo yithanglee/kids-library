@@ -31,12 +31,12 @@
 		        <br>
 		        <div class="field">
 		          <%= f.label :loan_date %>
-		          <%= f.date_select :loan_date %>
+		          <%= f.date_select :loan_date, order: [:day, :month, :year] %>
 		        </div>
 
 		        <div class="field">
 		          <%= f.label :return_date %>
-		          <%= f.date_select :return_date, selected: 14.days.from_now %>
+		          <%= f.date_select :return_date, selected: 14.days.from_now, order: [:day, :month, :year] %>
 		        </div>
 
 

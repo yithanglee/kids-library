@@ -1,7 +1,7 @@
 <% if loan.estimate_fine == 0 %>
   <tr>
-    <td><%= loan.loan_date %></td>
-    <td><%= loan.return_date %></td>
+    <td><%= loan.loan_date.strftime('%d-%m-%y') %></td>
+    <td><%= loan.return_date.strftime('%d-%m-%y') %></td>
     <td><%= loan.book.name %></td>
     <td><%= link_to loan.user.name, user_path(loan.user)%></td> 
     <% if current_user.is_admin? %>
@@ -21,8 +21,8 @@
   </tr>
 <% else %>
   <tr style="color:red;">
-    <td><%= loan.loan_date %></td>
-    <td><%= loan.return_date %></td>
+    <td><%= loan.loan_date.strftime('%d-%m-%y') %></td>
+    <td><%= loan.return_date.strftime('%d-%m-%y') %></td>
     <td><%= loan.book.name %></td>
     <td><%= link_to loan.user.name, user_path(loan.user)%></td> 
     <% if current_user.is_admin? %>

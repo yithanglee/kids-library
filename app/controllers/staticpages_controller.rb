@@ -69,12 +69,14 @@ class StaticpagesController < ApplicationController
 				name: row[0],
 				author_1: row[1],
 				author_2: row[2],
-				publisher: row[3],
-				series: row[4],
-				volume: row[5],
-				isbn: row[7],
-				barcode: row[8],
-				price: row[9]
+				illustrator: row[3],
+				translator: row[4],
+				publisher: row[5],
+				series: row[6],
+				volume: row[7],
+				isbn: row[8],
+				barcode: row[9],
+				price: row[10]
 				)
 			
 				if @book.save
@@ -83,7 +85,7 @@ class StaticpagesController < ApplicationController
 				else
 					@book_not_save +=1
 					@unsaved << @book
-					writer << [@book.name, @book.author_1, @book.author_2, @book.publisher, @book.series, @book.volume, @book.isbn, @book.barcode, @book.price]
+					writer << [@book.name, @book.author_1, @book.author_2, @book.illustrator, @book.translator, @book.publisher, @book.series, @book.volume, @book.isbn, @book.barcode, @book.price]
 				end
 
 			end

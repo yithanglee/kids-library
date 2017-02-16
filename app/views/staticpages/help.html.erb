@@ -6,10 +6,10 @@
 							<h3 class="panel-title">Generate ISBN</h3>
 						</div>
 					<div class="panel-body">
-						This is a box for you to key in so that it generates the barcode.
+						This is a box for you to key in so that it generates the ISBN.
 
 						<%= form_tag("/staticpages/print_book_barcodes", method: "post") do %>
-						  <%= label_tag(:q, "Labels") %><br>
+						  <%= label_tag(:q, "ISBN") %><br>
 						  <%= text_area_tag :q, nil, size: "20x10" %><br>
 						  <%= submit_tag("Generate") %>
 						<select name="format">
@@ -56,7 +56,7 @@
 							<h3 class="panel-title">File Upload</h3>
 						</div>					
 					<div class="panel-body">
-						<p><small>The header must follow "TITLE", "AUTHOR", "COAUTHORS", "PUBLISHER", "SERIES", "VOLUME", "EDITION", "ISBN", "BARCODE", "PRICE"</small></p>
+						<p><small>The header must follow "TITLE", "AUTHOR", "COAUTHORS", "ILLUSTRATOR","TRANSLATOR","PUBLISHER", "SERIES", "VOLUME", "EDITION", "ISBN", "BARCODE", "PRICE"</small></p>
 						<%= form_tag({action: :import_books}, multipart: true) do %>
 							<%= label_tag('upload_file') %> .tsv(tab seperated values)<br>
 						  <%= file_field_tag 'upload_file', accept: '.tsv' %>
