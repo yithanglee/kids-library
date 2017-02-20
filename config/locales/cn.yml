@@ -19,8 +19,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+cn:
   hello: "Hello world"
-  my_library: "Shining Kids Library"
-  picture_book: "Picture Book"
-  books: "books"
+  my_library: "亮亮儿童图书馆"
+  picture_book: "绘本"
+  books: "书籍"

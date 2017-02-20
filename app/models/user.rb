@@ -6,7 +6,7 @@ has_many :loans, dependent: :destroy
 
 validates :member_id, uniqueness: :true, unless: :is_pending?
 validates :ic, presence: :true, format: { with: /\d{6}\-\d{2}\-\d{4}/,
-    message: "valid IC format" }
+    message: "Invalid IC format" }
 
 
 after_create :capitalize_name, :fill_up_birthday, :fill_up_gender
