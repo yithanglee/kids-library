@@ -21,9 +21,9 @@
         <tbody>
           <% @loans.each do |loan| %>
             <tr>
-              <td><%= loan.loan_date %></td>
-              <td><%= loan.return_date %></td>
-              <td><%= loan.actual_return_date %></td>
+              <td><%= loan.loan_date.strftime('%d-%m-%y') %></td>
+              <td><%= loan.return_date.strftime('%d-%m-%y') %></td>
+              <td><%= loan.actual_return_date.strftime('%d-%m-%y') %></td>
               <td>RM <%= ('%.2f' % loan.fine_amount) %></td>
               <td><%= loan.book.name %></td>
               <td><%= loan.user.name %></td>

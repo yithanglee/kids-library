@@ -39,7 +39,7 @@
 									<% if  @book.loans.last == nil or @book.loans.last.returned? %>
 										<p>This book is <span class="label label-primary">available</span> for loan.</p>
 									<% else %>
-										<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
+										<p>This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date.strftime('%d-%m-%y') %></strong></p>
 									<% end %>
 
 								<% elsif current_user.is_admin? %>
@@ -47,7 +47,7 @@
 				  					<% if @book.loans.last == nil or @book.loans.last.returned? %>
 										<p>This book is <span class="label label-primary">available</span> for loan.</p>
 										<% else %>
-										<p style="color:black;">This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date %></strong></p>
+										<p style="color:black;">This book has been <span class="label label-danger">loaned</span>, the expected return date is <strong><%=@book.loans.last.return_date.strftime('%d-%m-%y') %></strong></p>
 										<% end %>
 									</div>
 								<% end %>				

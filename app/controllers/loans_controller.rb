@@ -85,13 +85,13 @@ class LoansController < ApplicationController
       if @loan.errors.messages.first.nil?
         @message = "Loan extension was succcessful."
        respond_to do |format|
-        format.html { redirect_to user_path(current_user), notice: @message }
+        format.html { redirect_to root_path, notice: @message }
         format.json { head :no_content }
         end
       else
         @message = @loan.errors.messages.first[1]
        respond_to do |format|
-        format.html { redirect_to user_path(current_user), alert: @message }
+        format.html { redirect_to root_path, alert: @message }
         format.json { head :no_content }
         end
       end   

@@ -56,21 +56,21 @@
     <div class="panel-body" id="past">
 
           <% @loans.each do |loan| %>
-           <div>
+           <div><center>
               <% if loan.book.image_url == nil or loan.book.image_url == ''%>
               <%= image_tag('shining-kids.jpg', width: '160')%>
               <% else %>             
               <%= image_tag(loan.book.image_url, width: '160')%>
               <% end %>               
               
-              <br><strong><%= loan.book.name %></strong>
+              <br><p style="height: 50px"><strong><%= loan.book.name %></strong></p>
             
-              <br>Loan: <%= loan.loan_date %>
-              <br>Return: <%= loan.return_date %>
+              <br>Loan: <strong><%= loan.loan_date.strftime('%d-%m-%y') %></strong>
+              <br>Return: <strong><%= loan.return_date.strftime('%d-%m-%y') %></strong>
               <% if loan.is_extended == false %>
-              | <%= link_to 'Extend', return_date_extend_path(:id => loan.id), :class => 'btn btn-success' %>
+              <br><%= link_to 'Extend', return_date_extend_path(:id => loan.id), :class => 'btn btn-success' %>
               <% end %>  
-       
+              </center>
               </div>
            
           <%end %>

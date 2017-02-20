@@ -89,7 +89,7 @@ $(document).ready(function() {
 
   <div class="form-group">
     <%= f.label :birthday, :class => "col-lg-2 control-label"  %>
-    <div class="col-lg-8"> <%= f.date_select :birthday, :start_year =>  Date.today.year - 50, :end_year => Date.today.year + 0 %></div>
+    <div class="col-lg-8"> <%= f.date_select :birthday, order: [:day, :month, :year], :start_year =>  Date.today.year - 50, :end_year => Date.today.year + 0 %></div>
   </div>
   <div class="form-group">
     <%= f.label :gender, :class => "col-lg-2 control-label"  %>
@@ -104,7 +104,7 @@ $(document).ready(function() {
   </div>
 
   <div class="form-group">
-    <%= f.label :ic, :class => "col-lg-2 control-label", :id => 'my-kids'  %>
+    <%= f.label ('My Kid number'), :class => "col-lg-2 control-label", :id => 'my-kids', :style => 'text-transform: capitalize;'  %>
     <div class="col-lg-8"> <%= f.text_field :ic, :class => "form-control" %></div>
   </div>
 

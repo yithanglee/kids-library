@@ -22,7 +22,7 @@
             <%= @user.phone %></p>
 
             <p><strong>Birthday:</strong><br>
-            <%= @user.birthday %></p>
+            <%= @user.birthday.strftime('%d-%m-%y') %></p>
 
             <p><strong>Address:</strong><br>
             <%= @user.full_address %></p>
