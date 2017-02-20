@@ -16,11 +16,27 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+var $user_type;
 
 $(document).ready(function() {
   $( "#book" ).focus();
   $("#flash").delay(10000).fadeOut('slow');
 
-});
 
+  $("select#user_user_type").change(function(){
+     $user_type = $(this).val();
+     console.log($user_type);
+  	if ($user_type == 'parents') {
+    	$('#my-kids').html('My Kad number')
+    	$('#parents-group').hide();
+		};
+		  	if ($user_type == 'children') {
+    	$('#my-kids').html('My Kid number')
+    	$('#parents-group').show();
+		};
+
+  });
+
+
+});
 

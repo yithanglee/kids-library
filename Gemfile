@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'wkhtmltopdf-heroku'
 gem 'wkhtmltopdf-binary'
-gem 'wicked_pdf'
+gem 'wicked_pdf', '~> 1.1.0'
 gem 'will_paginate'
 gem 'responders'
 gem 'chunky_png'
@@ -42,9 +42,7 @@ gem "clearance"
 gem "figaro"
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
-gem "simple_calendar", "~> 2.0"
-gem 'sidekiq'
-gem 'searchkick'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,10 +50,9 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-puma'
-  gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
   gem 'shoulda-callback-matchers'
   gem 'capybara'
   gem 'selenium-webdriver'

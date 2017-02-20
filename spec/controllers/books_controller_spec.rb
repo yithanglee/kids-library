@@ -1,30 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe BooksController, type: :controller do
+	describe "GET #index" do
+		it 'let visitors see all books' do
+			get :index
+			expect(response).to render_template("index")
+		end
+	end
 
- describe "index" do
-    it "renders the index template" do
-      get :index
-      expect(response).to render_template("index")
-      expect(response.body).to eq ""
-    end
+	describe "GET any Category books" do
 
-    it "renders the book/index template" do
-      get :index
-      expect(response).to render_template("books/index")
-      expect(response.body).to eq ""
-    end
+  before(:each) do
+    @category = Category.create
   end
+  after(:all) do
+  	@category.destroy
+	end
 
+		it 'let visitors see English books' do
 
- describe "new" do
-    it "renders the index template" do
-      controller.prepend_view_path 'app/views'
-      controller.append_view_path 'app/views'
-      get :new
-      expect(response).to render_template("new")
-      expect(response.body).to eq ""
-    end
- end
+			get :list_by_category, {:params => {:category => '1'}}
+			expect(response).to render_template("index")
+		end
+
+	end
 
 end

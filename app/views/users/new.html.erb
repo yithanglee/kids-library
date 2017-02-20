@@ -1,3 +1,29 @@
+ <script type="text/javascript">
+   var $user_type;
+
+$(document).ready(function() {
+
+
+
+  $("select#user_user_type").change(function(){
+     $user_type = $(this).val();
+     console.log($user_type);
+    if ($user_type == 'parents') {
+      $('#my-kids').html('My Kad number')
+      $('#parents-group').hide();
+    };
+        if ($user_type == 'children') {
+      $('#my-kids').html('My Kid number')
+      $('#parents-group').show();
+    };
+
+  });
+
+
+});
+
+
+ </script>
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
@@ -21,6 +47,7 @@
           <div class="panel-heading"><h1>New User</h1></div>
             <div class="panel-body" style="font-size:14px;">
 <!-- form starts here -->
+
 <div class="container-fluid">
 <div class="col-lg-12">
 <%= form_for(User.new, :html => {:class => 'form-horizontal'})  do |f| %>
@@ -77,7 +104,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :ic, :class => "col-lg-2 control-label"  %>
+    <%= f.label :ic, :class => "col-lg-2 control-label", :id => 'my-kids'  %>
     <div class="col-lg-8"> <%= f.text_field :ic, :class => "form-control" %></div>
   </div>
 
@@ -103,7 +130,8 @@
     <div class="col-lg-8"> <%= f.text_field :state, :class => "form-control" %></div>
   </div>
 
-
+<div id='parents-group'>
+  
   <div class="form-group">
     <%= f.label :parent_name, :class => "col-lg-2 control-label"  %>
     <div class="col-lg-3"> <%= f.text_field :parent_name, :class => "form-control" %></div>
@@ -118,6 +146,7 @@
     <%= f.label :parent_phone, :class => "col-lg-2 control-label"  %>
     <div class="col-lg-3"> <%= f.text_field :parent_phone, :class => "form-control" %></div>
   </div>
+</div>
 
 
 
