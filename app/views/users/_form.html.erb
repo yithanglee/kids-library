@@ -1,3 +1,36 @@
+ <script type="text/javascript">
+   var $user_type;
+$(document).ready(function() {
+ if ($("select#user_user_type").val() == 'parents')  {
+  $('#parents-group').hide();
+ }
+  if ($("select#user_user_type").val() == 'children' ) {
+  $('#parents-group').show();
+ }
+ if ($("#user_user_type").val() == 'parents')  {
+  $('#parents-group').hide();
+ }
+  if ($("#user_user_type").val() == 'children' ) {
+  $('#parents-group').show();
+ }
+});
+  $("select#user_user_type").change(function(){
+     $user_type = $(this).val();
+     console.log($user_type);
+    if ($user_type == 'parents') {
+      $('#my-kids').html('My Kad number')
+      $('#parents-group').hide();
+    };
+        if ($user_type == 'children') {
+      $('#my-kids').html('My Kid number')
+      $('#parents-group').show();
+    };
+
+  });
+
+
+ </script>
+
 <div class="container-fluid">
 <%= form_for(@user, :html => {:class => 'form-horizontal'}) do |f| %>
   <% if @user.errors.any? %>
@@ -15,14 +48,17 @@
 <% if !current_user.nil? and current_user.is_admin? %>
   <div class="form-group">
     <%= f.label :user_type, :class => "col-lg-2 control-label"  %>
-    <div class="col-lg-8"> <%= f.select(:user_type, [['Parents', 'parents'],['Children', 'children'],['Admin', 'admin']])%></div>
+    <div class="col-lg-8"> <%= f.select(:user_type, [['Children', 'children'],['Parents', 'parents'],['Admin', 'admin']])%></div>
   </div>
+
+
   <div class="form-group">
     <%= f.label :memberid, :class => "col-lg-2 control-label"  %>
     <div class="col-lg-8"> <%= f.text_field :member_id, :class => "form-control" %></div>
   </div>
 <% end %>
 
+<%= f.hidden_field(:user_type) %>
   <div class="form-group">
     <%= f.label :name, :class => "col-lg-2 control-label"  %>
     <div class="col-lg-8"> <%= f.text_field :name, :class => "form-control" %></div>
@@ -63,7 +99,7 @@
 
 
   <div class="form-group">
-    <%= f.label :ic, :class => "col-lg-2 control-label"  %>
+    <%= f.label :ic, :class => "col-lg-2 control-label", :id => 'my-kids'  %>
     <div class="col-lg-8"> <%= f.text_field :ic, :class => "form-control" %></div>
   </div>
 
@@ -91,7 +127,8 @@
 
 
 
-
+<div id="parents-group">
+  
   <div class="form-group">
     <%= f.label :parent_name, :class => "col-lg-2 control-label"  %>
     <div class="col-lg-3"> <%= f.text_field :parent_name, :class => "form-control" %></div>
@@ -106,6 +143,7 @@
     <%= f.label :parent_phone, :class => "col-lg-2 control-label"  %>
     <div class="col-lg-3"> <%= f.text_field :parent_phone, :class => "form-control" %></div>
   </div>
+</div>
 
 
 

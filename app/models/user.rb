@@ -5,8 +5,11 @@ has_many :books, through: :loans
 has_many :loans, dependent: :destroy
 
 validates :member_id, uniqueness: :true, unless: :is_pending?
+validates :ic, presence: :true, format: { with: /\d{6}\-\d{2}\-\d{4}/,
+    message: "valid IC format" }
 
-after_create :capitalize_name
+
+after_create :capitalize_name, :fill_up_birthday, :fill_up_gender
 
 	def is_pending?
 		self.member_id == 'Pending'
@@ -38,6 +41,36 @@ after_create :capitalize_name
 
   def email_optional?
     true
+  end
+
+  def fill_up_birthday
+				a = self	
+			  		unless a.ic.empty?
+			  			b = a.ic[0...6].scan(/../)
+							if b[0] > "17"
+								b[0] = "19" + b[0]
+							else 
+								b[0] = "20" + b[0]
+							end
+							year = b[0]
+							month = b[1]
+							day = b[2]
+							unless day > "31"
+							a.update(birthday: Date.new(year.to_i, month.to_i, day.to_i))
+							end
+						end
+  end
+
+  def fill_up_gender
+  	a = self
+  		unless a.ic.empty?
+  			b = a.ic
+  			if b[13].to_i.odd?
+  			a.update(gender: 'Male')
+  			else
+  			a.update(gender: 'Female')
+  			end 
+  		end
   end
 
 	def is_admin?

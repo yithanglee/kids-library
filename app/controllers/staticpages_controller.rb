@@ -9,7 +9,7 @@ class StaticpagesController < ApplicationController
   end
 
   def help
-
+  	
   end
 
   def set_new_password
