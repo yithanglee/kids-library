@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 	before_filter :set_user_language
 
 def set_user_language
-  I18n.locale = "cn"
+  I18n.locale = "en"
 end
 
 

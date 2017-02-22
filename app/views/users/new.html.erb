@@ -3,7 +3,10 @@
 
 $(document).ready(function() {
 
-
+$('#agree').click(function(){
+$('div#registration-form').show()
+$('div#library-rules').hide()
+})
 
   $("select#user_user_type").change(function(){
      $user_type = $(this).val();
@@ -25,24 +28,30 @@ $(document).ready(function() {
 
  </script>
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12" id="library-rules">
         <div class="panel panel-default">
           <div class="panel-body">
-            Registration Rules:
-            <ul>
-              <li>You need to visit the library and sign the guest book 4 times.</li>
-              <li>Membership for life is RM 50.00</li>
-              <li>Each member card can borrow 2 books.</li>
-              <li>Books must be returned after 2 weeks, unless the loan was extended.</li>
-              <li>Late fines are RM 0.50 by per book per week.</li>
-              <li>CD loan requires RM 0.50 per CD.</li>
-              <li>Librarian will issue you the member ID after payment.</li>
-              <li>If you have any other issues, kindly visit our library.</li>
-            </ul>
+            申请会员须知图书馆规则
+            <ol>
+<li>欲借书者必须先申请成为会员（任何年龄层）。非会员可在馆内阅读但不可外借。</li>
+<li>会员条件：沙登卫理公会会友（沙登卫理公会会友之两岁以下孩童免费申请）或莅临图书馆达四次之社区居民。</li>
+<li>申请者必须填妥表格，连同终身会员费（RM50）交上。12岁以下申请者必须有家长或监护人同意。重做会员卡须缴交RM10。</li>
+<li>申请者必须清楚也同意所有图书馆规则才签名，若孩童太小则需家长或监护人代签。</li>
+<li>每张会员卡可借两本书或两片影音系列（CD/VCD/DVD）。</li>
+<li>每片影音系列须缴费RM0.50。</li>
+<li>归还期限为两个星期。迟还每本书或每片影音系列罚款数额为RM0.50/星期。</li>
+<li>借出书籍或影音系列可重借一次。会员也可自行上网重借，也只限重借一次。</li>
+<li>若所借的书损坏（掉进水，被画到图画不清，不见页数，重要页数被涂鸦。。。），图书馆有权要借书者以原价赔偿。</li>
+<li>图书馆委员会评估其它损坏对书本整体的影响而作出处罚。如罚书本原价的10% 或20% 。</li>
+<li>父母可进行亲子阅读，但不可大声玩闹，玩追逐游戏。</li>
+<li>不可在图书馆内吃东西或喝饮料。</li>
+<li>请保持馆内静态阅读空间的宁静与舒适感。</li>
+            </ol>
+            <div class="btn btn-primary" id="agree">Agree</div>
           </div>
         </div>
       </div>
-      <div class="col-lg-12">  
+      <div class="col-lg-12" style="display: none;" id="registration-form">  
         <div class="panel panel-default">
           <div class="panel-heading"><h1>New User</h1></div>
             <div class="panel-body" style="font-size:14px;">
