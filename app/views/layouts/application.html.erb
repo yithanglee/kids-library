@@ -120,12 +120,28 @@
 
      </footer>
     <script type="text/javascript">
-    $('#book').keypress(function(event){
+document.getElementById('book').onkeydown = function(e) {
+e = e || window.event;
+//alert(e.keyCode);
+switch( e.keyCode || e.which) {
+case 37:
+case 36:
 
-    if( event.keyCode == 13 || event.keyCode == 17 || event.keyCode == 74 || event.keyCode == 78 || event.keyCode == 18 || event.keyCode == 36)
-        event.preventDefault();
+if(e.altKey) {
+return false;
+}
+}
+}
 
-    });
+$(function() {
+$('#book').keydown(function(objEvent) {
+
+if (objEvent.keyCode == 9 || objEvent.keyCode == 13) {
+objEvent.preventDefault();
+}
+
+});
+});
 
       function countChar(val) {
       var len = val.value.length;

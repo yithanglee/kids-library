@@ -22,10 +22,10 @@ $(document).ready(function() {
   $( "#book" ).focus();
   $("#flash").delay(10000).fadeOut('slow');
 
-$('#agree').click(function(){
-$('div#registration-form').show()
-$('div#library-rules').hide()
-})
+  $('#agree').click(function(){
+  $('div#registration-form').show()
+  $('div#library-rules').hide()
+  })
 
   $("select#user_user_type").change(function(){
      $user_type = $(this).val();
