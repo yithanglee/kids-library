@@ -45,7 +45,6 @@ class Loan < ApplicationRecord
 		if self.has_returned == false
 			self.update(has_returned: true, actual_return_date: Time.zone.today, fine_amount: self.estimate_fine)
 		end
-		
 	end
 
 	def returned?
